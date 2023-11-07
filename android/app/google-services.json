@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "356941073207",
+    "firebase_url": "https://diginotes-ef087-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "diginotes-ef087",
+    "storage_bucket": "diginotes-ef087.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:356941073207:android:9fbdf780341667328ee8b2",
+        "android_client_info": {
+          "package_name": "com.example.digi_notes_2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "356941073207-0kmhbeqaogakcqsfa166l39b2e45q5qj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.digi_notes_2",
+            "certificate_hash": "c5b35f5434daf15d4a25b25b758cdfe451b2acf0"
+          }
+        },
+        {
+          "client_id": "356941073207-j7netflr77m5pdijmjl8ggasfsnlmca0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_X1JoMzRwTqt95UHxbHeGF6gorGRjuJ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "356941073207-j7netflr77m5pdijmjl8ggasfsnlmca0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

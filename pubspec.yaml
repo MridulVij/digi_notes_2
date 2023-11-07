@@ -1,0 +1,29 @@
+name: digi_notes_2
+description: A new Flutter project.
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.0.5 <4.0.0'
+
+dependencies:
+  firebase_core: ^2.21.0
+  firebase_database: ^10.3.3
+  flutter:
+    sdk: flutter
+  flutter_native_splash: ^2.3.1
+  provider: ^6.0.5
+  shared_preferences: ^2.2.2
+  
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/splash.gif
+    - assets/images/
+    - assets/icons/
