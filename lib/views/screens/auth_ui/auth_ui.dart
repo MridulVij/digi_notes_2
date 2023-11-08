@@ -1,9 +1,10 @@
 // Google Sign In UI
 import 'package:flutter/material.dart';
+import '../../../providers/auth_providers.dart';
 import '../../constants/colors/colors.dart';
 
 class SignInUI extends StatelessWidget {
-  const SignInUI({super.key});
+  SignInUI({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +37,7 @@ class SignInUI extends StatelessWidget {
               ),
             ),
             const Divider(endIndent: 10, indent: 10),
-            const Continuewithgoogle(),
+            Continuewithgoogle(),
             Column(
               children: <Widget>[
                 const Row(
@@ -70,7 +71,8 @@ class SignInUI extends StatelessWidget {
 }
 
 class Continuewithgoogle extends StatelessWidget {
-  const Continuewithgoogle({super.key});
+  Continuewithgoogle({super.key});
+  GoogleSignInProvider googleSignInProvider = GoogleSignInProvider();
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +83,7 @@ class Continuewithgoogle extends StatelessWidget {
           borderRadius: BorderRadius.circular(10.0),
           splashColor: Colors.white,
           onTap: () {
-            //
+            googleSignInProvider.googleLogin();
           },
           child: Container(
             decoration: BoxDecoration(

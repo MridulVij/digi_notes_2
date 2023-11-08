@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:digi_notes_2/views/screens/dashboard_ui/dashboard.dart';
 import 'package:flutter/services.dart';
-
-import '../auth_ui/sign_in.dart';
-import '../navbar.dart';
+import '../../../providers/auth_providers.dart';
 
 class SplashUI extends StatefulWidget {
   const SplashUI({super.key});
@@ -22,7 +19,7 @@ class _SplashUIState extends State<SplashUI>
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (_) => const SignInUI()),
+        MaterialPageRoute(builder: (_) => const AuthVerifier()),
       );
     });
   }
