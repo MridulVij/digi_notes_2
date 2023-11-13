@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'providers/auth_providers.dart';
 import 'providers/detail_selector_provider.dart';
 import 'views/screens/splash_ui/splash.dart';
+import 'views/widgets/detail_selector.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,14 +20,14 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => DetailsSelectorProvider()),
-        ChangeNotifierProvider(create: (_) => GoogleSignInProvider()),
+        ChangeNotifierProvider(create: (context) => DetailsSelectorProvider()),
+        ChangeNotifierProvider(create: (context) => GoogleSignInProvider()),
       ],
       builder: (context, child) {
         return MaterialApp(
             theme: ThemeData(primarySwatch: Colors.blue, useMaterial3: true),
             debugShowCheckedModeBanner: false,
-            home: const SplashUI());
+            home: DetailSelectorUI());
       },
     );
   }

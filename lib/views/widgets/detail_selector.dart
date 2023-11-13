@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../providers/detail_selector_provider.dart';
 import '../components/custom_selector.dart';
 
 enum Session {
@@ -41,264 +44,265 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
   var course = Course.civil;
   var semester = Semester.one;
 
-  // String word = '';
-  // String ch = '';
-  // void search() {
-  //   word += ch;
-  //   print('Keyword: ${word}');
-  // }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text("Session"),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+    return Consumer<DetailsSelectorProvider>(
+      builder: (context, state, child) {
+        return Scaffold(
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              CustomSelector(
-                forwardIcon: false,
-                backwardIcon: false,
-                centerText: true,
-                titleText: "  2020  ",
-                isSquareShapeButton: true,
-                isSelected: session == Session.one,
-                onPress: () {
-                  setState(() {
-                    session = Session.one;
-                  });
-                },
+              Text("Session"),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CustomSelector(
+                    forwardIcon: false,
+                    backwardIcon: false,
+                    centerText: true,
+                    titleText: "  2021  ",
+                    isSquareShapeButton: true,
+                    isSelected: session == Session.one,
+                    onPress: () {
+                      setState(() {
+                        session = Session.one;
+                      });
+                    },
+                  ),
+                  const SizedBox(
+                    width: 25,
+                  ),
+                  CustomSelector(
+                    forwardIcon: false,
+                    backwardIcon: false,
+                    centerText: true,
+                    titleText: " 2022 ",
+                    isSquareShapeButton: true,
+                    isSelected: session == Session.two,
+                    onPress: () {
+                      setState(() {
+                        session = Session.two;
+                      });
+                    },
+                  ),
+                ],
               ),
-              const SizedBox(
-                width: 25,
+              Text("University"),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CustomSelector(
+                    forwardIcon: false,
+                    backwardIcon: false,
+                    centerText: true,
+                    titleText: "             K.U.K            ",
+                    isSquareShapeButton: true,
+                    isSelected: university == University.kuk,
+                    onPress: () {
+                      setState(() {
+                        university = University.kuk;
+                      });
+                    },
+                  ),
+                  const SizedBox(
+                    width: 25,
+                  ),
+                  CustomSelector(
+                    forwardIcon: false,
+                    backwardIcon: false,
+                    centerText: true,
+                    titleText: "        H.S.B.T.E       ",
+                    isSquareShapeButton: true,
+                    isSelected: university == University.hsbte,
+                    onPress: () {
+                      setState(() {
+                        university = University.hsbte;
+                      });
+                    },
+                  ),
+                ],
               ),
-              CustomSelector(
-                forwardIcon: false,
-                backwardIcon: false,
-                centerText: true,
-                titleText: " 2021 ",
-                isSquareShapeButton: true,
-                isSelected: session == Session.two,
-                onPress: () {
-                  setState(() {
-                    session = Session.two;
-                  });
-                },
+              Text("Course"),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CustomSelector(
+                    forwardIcon: false,
+                    backwardIcon: false,
+                    centerText: true,
+                    titleText: "  CSE ",
+                    isSquareShapeButton: true,
+                    isSelected: course == Course.cse,
+                    onPress: () {
+                      setState(() {
+                        course = Course.cse;
+                      });
+                    },
+                  ),
+                  const SizedBox(
+                    width: 25,
+                  ),
+                  CustomSelector(
+                    forwardIcon: false,
+                    backwardIcon: false,
+                    centerText: true,
+                    titleText: "CIVIL",
+                    isSquareShapeButton: true,
+                    isSelected: course == Course.civil,
+                    onPress: () {
+                      setState(() {
+                        course = Course.civil;
+                      });
+                    },
+                  ),
+                ],
               ),
+              Text("Semester"),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CustomSelector(
+                    forwardIcon: false,
+                    backwardIcon: false,
+                    centerText: true,
+                    titleText: " 1st ",
+                    isSquareShapeButton: true,
+                    isSelected: semester == Semester.one,
+                    onPress: () {
+                      setState(() {
+                        semester = Semester.one;
+                      });
+                    },
+                  ),
+                  const SizedBox(
+                    width: 25,
+                  ),
+                  CustomSelector(
+                    forwardIcon: false,
+                    backwardIcon: false,
+                    centerText: true,
+                    titleText: " 2nd ",
+                    isSquareShapeButton: true,
+                    isSelected: semester == Semester.two,
+                    onPress: () {
+                      setState(() {
+                        semester = Semester.two;
+                      });
+                    },
+                  ),
+                  const SizedBox(
+                    width: 25,
+                  ),
+                  CustomSelector(
+                    forwardIcon: false,
+                    backwardIcon: false,
+                    centerText: true,
+                    titleText: " 3rd ",
+                    isSquareShapeButton: true,
+                    isSelected: semester == Semester.three,
+                    onPress: () {
+                      setState(() {
+                        semester = Semester.three;
+                      });
+                    },
+                  ),
+                  const SizedBox(
+                    width: 25,
+                  ),
+                  CustomSelector(
+                    forwardIcon: false,
+                    backwardIcon: false,
+                    centerText: true,
+                    titleText: " 4th ",
+                    isSquareShapeButton: true,
+                    isSelected: semester == Semester.four,
+                    onPress: () {
+                      setState(() {
+                        semester = Semester.four;
+                      });
+                    },
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CustomSelector(
+                    forwardIcon: false,
+                    backwardIcon: false,
+                    centerText: true,
+                    titleText: " 5th ",
+                    isSquareShapeButton: true,
+                    isSelected: semester == Semester.five,
+                    onPress: () {
+                      setState(() {
+                        semester = Semester.five;
+                      });
+                    },
+                  ),
+                  const SizedBox(
+                    width: 25,
+                  ),
+                  CustomSelector(
+                    forwardIcon: false,
+                    backwardIcon: false,
+                    centerText: true,
+                    titleText: " 6th ",
+                    isSquareShapeButton: true,
+                    isSelected: semester == Semester.six,
+                    onPress: () {
+                      setState(() {
+                        semester = Semester.six;
+                      });
+                    },
+                  ),
+                  const SizedBox(
+                    width: 25,
+                  ),
+                  CustomSelector(
+                    forwardIcon: false,
+                    backwardIcon: false,
+                    centerText: true,
+                    titleText: " 7th ",
+                    isSquareShapeButton: true,
+                    isSelected: semester == Semester.seven,
+                    onPress: () {
+                      setState(() {
+                        semester = Semester.seven;
+                      });
+                    },
+                  ),
+                  const SizedBox(
+                    width: 25,
+                  ),
+                  CustomSelector(
+                    forwardIcon: false,
+                    backwardIcon: false,
+                    centerText: true,
+                    titleText: " 8th ",
+                    isSquareShapeButton: true,
+                    isSelected: semester == Semester.eight,
+                    onPress: () {
+                      setState(() {
+                        semester = Semester.eight;
+                      });
+                    },
+                  ),
+                ],
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    // state.getPdfs();
+                  },
+                  child: Text("Search"))
             ],
           ),
-          Text("University"),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CustomSelector(
-                forwardIcon: false,
-                backwardIcon: false,
-                centerText: true,
-                titleText: "             K.U.K            ",
-                isSquareShapeButton: true,
-                isSelected: university == University.kuk,
-                onPress: () {
-                  setState(() {
-                    university = University.kuk;
-                  });
-                },
-              ),
-              const SizedBox(
-                width: 25,
-              ),
-              CustomSelector(
-                forwardIcon: false,
-                backwardIcon: false,
-                centerText: true,
-                titleText: "        H.S.B.T.E       ",
-                isSquareShapeButton: true,
-                isSelected: university == University.hsbte,
-                onPress: () {
-                  setState(() {
-                    university = University.hsbte;
-                  });
-                },
-              ),
-            ],
-          ),
-          Text("Course"),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CustomSelector(
-                forwardIcon: false,
-                backwardIcon: false,
-                centerText: true,
-                titleText: "  CSE ",
-                isSquareShapeButton: true,
-                isSelected: course == Course.cse,
-                onPress: () {
-                  setState(() {
-                    course = Course.cse;
-                  });
-                },
-              ),
-              const SizedBox(
-                width: 25,
-              ),
-              CustomSelector(
-                forwardIcon: false,
-                backwardIcon: false,
-                centerText: true,
-                titleText: "CIVIL",
-                isSquareShapeButton: true,
-                isSelected: course == Course.civil,
-                onPress: () {
-                  setState(() {
-                    course = Course.civil;
-                  });
-                },
-              ),
-            ],
-          ),
-          Text("Semester"),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CustomSelector(
-                forwardIcon: false,
-                backwardIcon: false,
-                centerText: true,
-                titleText: " 1st ",
-                isSquareShapeButton: true,
-                isSelected: semester == Semester.one,
-                onPress: () {
-                  setState(() {
-                    semester = Semester.one;
-                  });
-                },
-              ),
-              const SizedBox(
-                width: 25,
-              ),
-              CustomSelector(
-                forwardIcon: false,
-                backwardIcon: false,
-                centerText: true,
-                titleText: " 2nd ",
-                isSquareShapeButton: true,
-                isSelected: semester == Semester.two,
-                onPress: () {
-                  setState(() {
-                    semester = Semester.two;
-                  });
-                },
-              ),
-              const SizedBox(
-                width: 25,
-              ),
-              CustomSelector(
-                forwardIcon: false,
-                backwardIcon: false,
-                centerText: true,
-                titleText: " 3rd ",
-                isSquareShapeButton: true,
-                isSelected: semester == Semester.three,
-                onPress: () {
-                  setState(() {
-                    semester = Semester.three;
-                  });
-                },
-              ),
-              const SizedBox(
-                width: 25,
-              ),
-              CustomSelector(
-                forwardIcon: false,
-                backwardIcon: false,
-                centerText: true,
-                titleText: " 4th ",
-                isSquareShapeButton: true,
-                isSelected: semester == Semester.four,
-                onPress: () {
-                  setState(() {
-                    semester = Semester.four;
-                  });
-                },
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CustomSelector(
-                forwardIcon: false,
-                backwardIcon: false,
-                centerText: true,
-                titleText: " 5th ",
-                isSquareShapeButton: true,
-                isSelected: semester == Semester.five,
-                onPress: () {
-                  setState(() {
-                    semester = Semester.five;
-                  });
-                },
-              ),
-              const SizedBox(
-                width: 25,
-              ),
-              CustomSelector(
-                forwardIcon: false,
-                backwardIcon: false,
-                centerText: true,
-                titleText: " 6th ",
-                isSquareShapeButton: true,
-                isSelected: semester == Semester.six,
-                onPress: () {
-                  setState(() {
-                    semester = Semester.six;
-                  });
-                },
-              ),
-              const SizedBox(
-                width: 25,
-              ),
-              CustomSelector(
-                forwardIcon: false,
-                backwardIcon: false,
-                centerText: true,
-                titleText: " 7th ",
-                isSquareShapeButton: true,
-                isSelected: semester == Semester.seven,
-                onPress: () {
-                  setState(() {
-                    semester = Semester.seven;
-                  });
-                },
-              ),
-              const SizedBox(
-                width: 25,
-              ),
-              CustomSelector(
-                forwardIcon: false,
-                backwardIcon: false,
-                centerText: true,
-                titleText: " 8th ",
-                isSquareShapeButton: true,
-                isSelected: semester == Semester.eight,
-                onPress: () {
-                  setState(() {
-                    semester = Semester.eight;
-                  });
-                },
-              ),
-            ],
-          ),
-          ElevatedButton(onPressed: () {}, child: Text("Search"))
-        ],
-      ),
+        );
+      },
     );
   }
 }
