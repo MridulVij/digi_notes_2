@@ -103,11 +103,13 @@
 //   }
 // }
 
+import 'package:digi_notes_2/utils/routes.dart';
 import 'package:digi_notes_2/views/constants/colors/colors.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'views/components/result_screen.dart';
+import 'views/constants/colors/consts.dart';
 import 'views/screens/splash_ui/splash.dart';
 import 'views/components/detail_selector.dart';
 
@@ -125,12 +127,13 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Digi Notes',
-      home: DetailSelectorUI(),
       theme: ThemeData(
         useMaterial3: true,
         textTheme: TextTheme(),
         scaffoldBackgroundColor: ConstColors.whitetext,
       ),
+      initialRoute: RouterNames.splash_screen,
+      onGenerateRoute: Routes.generateRoute,
     );
   }
 }

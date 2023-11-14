@@ -37,14 +37,14 @@ class _NavbarUIState extends State<NavbarUI> {
           leading:
               IconButton(onPressed: () {}, icon: Icon(Icons.menu_outlined)),
           actions: [
-            InkWell(
-              onTap: () {},
-              child: Image.asset(
-                'assets/icons/linkd.png',
-                height: 20,
-                width: 45,
-              ),
-            ),
+            // InkWell(
+            //   onTap: () {},
+            //   child: Image.asset(
+            //     'assets/icons/linkd.png',
+            //     height: 20,
+            //     width: 45,
+            //   ),
+            // ),
             IconButton(
               icon: Icon(Icons.notifications),
               onPressed: () {},
@@ -77,25 +77,25 @@ class _NavbarUIState extends State<NavbarUI> {
           icon: Icon(
             Icons.home_filled,
           ),
-          label: 'Home',
+          label: 'Dashboard',
         ),
         BottomNavigationBarItem(
           icon: Icon(
             Icons.folder_copy,
           ),
-          label: 'Qs\'n Papers',
+          label: 'Tech News',
         ),
         BottomNavigationBarItem(
           icon: Icon(
             Icons.file_copy_rounded,
           ),
-          label: 'Syllabus',
+          label: 'Road Maps',
         ),
         BottomNavigationBarItem(
           icon: Icon(
             Icons.people_alt,
           ),
-          label: 'Guide',
+          label: 'My Profile',
         ),
       ],
     );
