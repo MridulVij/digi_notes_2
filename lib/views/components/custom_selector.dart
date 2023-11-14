@@ -35,23 +35,20 @@ class _CustomSelectorState extends State<CustomSelector> {
     return GestureDetector(
       onTap: widget.onPress,
       child: Container(
-        // animation of button is pending
         height: 50,
-        // width: MediaQuery.sizeOf(context).width * 0.29,
-
         decoration: BoxDecoration(
-            color: buttonColor,
-            boxShadow: [
-              BoxShadow(
-                color: ConstColors.lightGrey,
-                blurRadius: 4,
-                offset: const Offset(0, 2),
-              )
-            ],
-            borderRadius: widget.isSquareShapeButton == true
-                ? BorderRadius.circular(10)
-                : BorderRadius.circular(30),
-            border: Border.all(width: 1, color: ConstColors.lightGrey)),
+          color: buttonColor,
+          boxShadow: [
+            BoxShadow(
+              color: ConstColors.primaryColor,
+              blurRadius: 4,
+              offset: const Offset(0, 2),
+            )
+          ],
+          borderRadius: widget.isSquareShapeButton == true
+              ? BorderRadius.circular(10)
+              : BorderRadius.circular(30),
+        ),
         child:
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           widget.backwardIcon == true

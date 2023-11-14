@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../widgets/detail_selector.dart';
+import '../../components/detail_selector.dart';
 
 class DashboardUI extends StatefulWidget {
   const DashboardUI({super.key});
