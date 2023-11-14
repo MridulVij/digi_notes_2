@@ -45,6 +45,17 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
   var course = Course.civil;
   var semester = Semester.one;
 
+  DetailFetcher detailFetcher = DetailFetcher();
+  DetailsFetcherAccordingToUserInput path =
+      DetailsFetcherAccordingToUserInput();
+  dynamic response;
+
+  Future fetchStart() async {
+    response =
+        await detailFetcher.customFetcher(path.qp_22_kuk_cse_7th_syllabus);
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     // return Consumer<DetailsSelectorProvider>(

@@ -5,12 +5,12 @@ class CustomLoading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: const Color.fromARGB(112, 0, 0, 0),
-      height: double.maxFinite,
-      width: double.maxFinite,
-      child: Center(
-        child: Image.asset('assets/images/creatify_loading.gif'),
+    return Center(
+      child: Image.asset(
+        'assets/images/creatify_loading.gif',
+        fit: BoxFit.cover,
+        // width: 100,
+        height: 50,
       ),
     );
   }

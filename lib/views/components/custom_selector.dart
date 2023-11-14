@@ -67,11 +67,11 @@ class _CustomSelectorState extends State<CustomSelector> {
           Padding(
             padding: widget.centerText == false
                 ? const EdgeInsets.fromLTRB(0, 0, 10, 0)
-                : const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                : const EdgeInsets.fromLTRB(8, 0, 8, 0),
             child: Text(' ${widget.titleText} ',
                 style: TextStyle(
-                    fontSize: 12.5,
-                    fontWeight: FontWeight.bold,
+                    fontSize: 13.5,
+                    fontWeight: FontWeight.w500,
                     color: textColor)),
           ),
           widget.forwardIcon == true

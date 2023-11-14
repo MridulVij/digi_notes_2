@@ -106,7 +106,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
+import 'views/components/result_screen.dart';
 import 'views/screens/splash_ui/splash.dart';
+import 'views/widgets/detail_selector.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -121,7 +123,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashUI(),
+      home: ResultScreen(),
       theme: ThemeData(useMaterial3: true, textTheme: TextTheme()),
     );
   }
