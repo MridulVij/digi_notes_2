@@ -11,7 +11,7 @@ class ShimmerEffect extends StatelessWidget {
         itemCount: 10, // Number of shimmering items
         itemBuilder: (context, index) {
           return ListTile(
-            leading: CircleAvatar(
+            leading: const CircleAvatar(
               radius: 30.0,
             ),
             title: Container(

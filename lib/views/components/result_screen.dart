@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
+import '../../utils/enums.dart';
 import '../constants/colors/colors.dart';
 import 'custom_appbar.dart';
 import 'custom_buttons.dart';
 import 'custom_selector.dart';
-
-enum Resource { timetable, syllabus, notes, pyqp }
 
 class ResultScreen extends StatefulWidget {
   const ResultScreen({super.key});

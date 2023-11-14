@@ -1,10 +1,10 @@
-import 'package:digi_notes_2/views/screens/syllabus/syllabus.dart';
+import 'package:digi_notes_2/views/screens/tech%20news/tech_news.dart';
 import 'package:flutter/material.dart';
 import 'package:digi_notes_2/views/constants/colors/colors.dart';
 
 import 'dashboard_ui/dashboard.dart';
-import 'guide/guide.dart';
-import 'ques_papers_ui/question_papers_ui.dart';
+import 'my profile/my_profile.dart';
+import 'road map/road_map.dart';
 
 class NavbarUI extends StatefulWidget {
   const NavbarUI({super.key});
@@ -17,9 +17,9 @@ class _NavbarUIState extends State<NavbarUI> {
   int _currentIndex = 0;
   List<Widget> screenList = [
     const DashboardUI(),
-    const QuestionPapersUI(),
-    const SyllabusUI(),
-    const GuideUI(),
+    const TechNewsUI(),
+    const RoadMapUI(),
+    const MyProfileUI(),
   ];
 
   void _onTabTapped(int index) {
@@ -68,7 +68,6 @@ class _NavbarUIState extends State<NavbarUI> {
       unselectedItemColor: ConstColors.lightGrey,
       selectedItemColor: ConstColors.primaryColor,
       type: BottomNavigationBarType.fixed,
-      // backgroundColor: CustomColors.otherColor,
       iconSize: 18.5,
       unselectedFontSize: 10,
       selectedFontSize: 11.5,

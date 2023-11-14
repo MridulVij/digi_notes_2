@@ -5,36 +5,11 @@ import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 
 import '../../data/api/detail_fetcher.dart';
+import '../../utils/enums.dart';
 import 'custom_buttons.dart';
 import 'custom_container.dart';
 import 'custom_selector.dart';
 import '../constants/colors/consts.dart';
-
-enum Session {
-  two,
-  one,
-}
-
-enum University {
-  hsbte,
-  kuk,
-}
-
-enum Course {
-  civil,
-  cse,
-}
-
-enum Semester {
-  eight,
-  seven,
-  six,
-  five,
-  four,
-  three,
-  two,
-  one,
-}
 
 class DetailSelectorUI extends StatefulWidget {
   const DetailSelectorUI({super.key});
