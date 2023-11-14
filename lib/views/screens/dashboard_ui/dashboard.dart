@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../widgets/detail_selector.dart';
+
 class DashboardUI extends StatefulWidget {
   const DashboardUI({super.key});
 
@@ -29,7 +31,7 @@ class _DashboardUIState extends State<DashboardUI> {
                 ElevatedButton(onPressed: () {}, child: Text("Syllabus")),
                 ElevatedButton(onPressed: () {}, child: Text("Guide"))
               ],
-            )
+            ),
           ],
         ),
       ),

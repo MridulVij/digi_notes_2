@@ -13,6 +13,15 @@ class SignInUI extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: <Widget>[
+            Center(
+              child: Text(
+                'Skills > Degree',
+                style: TextStyle(
+                    color: ConstColors.whitetext,
+                    fontSize: 30,
+                    fontWeight: FontWeight.w300),
+              ),
+            ),
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
