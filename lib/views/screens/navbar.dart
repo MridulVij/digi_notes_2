@@ -1,6 +1,8 @@
 import 'package:digi_notes_2/views/screens/tech%20news/tech_news.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:digi_notes_2/views/constants/colors/colors.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'dashboard_ui/dashboard.dart';
 import 'my profile/my_profile.dart';
@@ -22,11 +24,19 @@ class _NavbarUIState extends State<NavbarUI> {
     const MyProfileUI(),
   ];
 
+  final String Url = "https://www.javatpoint.com/";
+
   void _onTabTapped(int index) {
     setState(() {
       _currentIndex = index;
     });
+    if (_currentIndex == 1) {
+      launchUrl(Uri.parse(Url));
+    }
   }
+
+  final userData = FirebaseAuth.instance.currentUser;
+  // String userName = 'User';
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +46,8 @@ class _NavbarUIState extends State<NavbarUI> {
           elevation: 0.0,
           leading:
               IconButton(onPressed: () {}, icon: Icon(Icons.menu_outlined)),
+          title: Text('Hi, ${userData!.displayName}'),
+          titleSpacing: 0.0,
           actions: [
             // InkWell(
             //   onTap: () {},
@@ -80,19 +92,19 @@ class _NavbarUIState extends State<NavbarUI> {
         ),
         BottomNavigationBarItem(
           icon: Icon(
-            Icons.folder_copy,
+            Icons.newspaper_sharp,
           ),
           label: 'Tech News',
         ),
         BottomNavigationBarItem(
           icon: Icon(
-            Icons.file_copy_rounded,
+            Icons.map_sharp,
           ),
           label: 'Road Maps',
         ),
         BottomNavigationBarItem(
           icon: Icon(
-            Icons.people_alt,
+            Icons.account_circle_rounded,
           ),
           label: 'My Profile',
         ),
