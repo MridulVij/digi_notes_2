@@ -38,18 +38,19 @@ class _ResultScreenState extends State<ResultScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CustomButton(
+                        iconBackgroundColor: ConstColors.primaryColor,
                         icon: Icons.arrow_back_rounded,
                         iconColor: ConstColors.whitetext,
                         onPress: () {},
                         radius: 22),
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.all(4.0),
                       child: Text(
                         'Resources',
                         style: TextStyle(
-                            color: Color.fromARGB(255, 189, 235, 255),
+                            color: ConstColors.primaryColor,
                             fontSize: 40,
-                            fontWeight: FontWeight.normal),
+                            fontWeight: FontWeight.w300),
                       ),
                     )
                   ],

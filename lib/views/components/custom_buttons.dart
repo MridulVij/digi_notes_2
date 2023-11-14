@@ -7,19 +7,21 @@ class CustomButton extends StatelessWidget {
   final double radius;
   final Color iconColor;
   final VoidCallback onPress;
+  final Color iconBackgroundColor;
   const CustomButton(
       {super.key,
       required this.icon,
       required this.radius,
       required this.iconColor,
-      required this.onPress});
+      required this.onPress,
+      required this.iconBackgroundColor});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: CircleAvatar(
-        backgroundColor: ConstColors.primaryColor,
+        backgroundColor: iconBackgroundColor,
         radius: radius,
         child: Center(
           child: IconButton(

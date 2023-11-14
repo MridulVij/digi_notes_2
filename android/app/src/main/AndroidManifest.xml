@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 <uses-permission android:name="android.permission.INTERNET" />
     <application
-        android:label="digi_notes_2"
+        android:label="Digi Notes"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

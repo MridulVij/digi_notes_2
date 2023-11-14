@@ -124,6 +124,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      title: 'Digi Notes',
       home: DetailSelectorUI(),
       theme: ThemeData(
         useMaterial3: true,
@@ -133,3 +134,6 @@ class MainApp extends StatelessWidget {
     );
   }
 }
+
+
+//  Navigator.pushReplacementNamed(context, RoutesName.authverifier);
