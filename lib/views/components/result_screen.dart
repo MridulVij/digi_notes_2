@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -8,7 +9,8 @@ import 'custom_buttons.dart';
 import 'custom_selector.dart';
 
 class ResultScreen extends StatefulWidget {
-  const ResultScreen({super.key});
+  ResultScreen({super.key, required this.querySnapshot});
+  final QuerySnapshot? querySnapshot;
 
   @override
   State<ResultScreen> createState() => _ResultScreenState();
@@ -40,7 +42,9 @@ class _ResultScreenState extends State<ResultScreen> {
                         iconBackgroundColor: ConstColors.primaryColor,
                         icon: Icons.arrow_back_rounded,
                         iconColor: ConstColors.whitetext,
-                        onPress: () {},
+                        onPress: () {
+                          Navigator.pop(context);
+                        },
                         radius: 22),
                     Padding(
                       padding: EdgeInsets.all(4.0),

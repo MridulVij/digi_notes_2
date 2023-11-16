@@ -3,6 +3,8 @@ import 'package:digi_notes_2/views/components/detail_selector.dart';
 import 'package:digi_notes_2/views/components/result_screen.dart';
 import 'package:digi_notes_2/views/screens/auth_ui/auth_ui.dart';
 import 'package:digi_notes_2/views/screens/dashboard_ui/dashboard.dart';
+import 'package:digi_notes_2/views/screens/dev/dev.dart';
+import 'package:digi_notes_2/views/screens/dsa/dsa.dart';
 import 'package:digi_notes_2/views/screens/road%20map/road_map.dart';
 import 'package:digi_notes_2/views/screens/splash_ui/splash.dart';
 import 'package:digi_notes_2/views/screens/tech%20news/tech_news.dart';
@@ -32,8 +34,7 @@ class Routes {
               return const DashboardUI();
             case RouterNames.detail_selector:
               return const DetailSelectorUI();
-            case RouterNames.result_screen:
-              return const ResultScreen();
+
             case RouterNames.sign_in_screen:
               return SignInUI();
             case RouterNames.splash_screen:
@@ -44,6 +45,10 @@ class Routes {
               return const TechNewsUI();
             case RouterNames.road_maps:
               return const RoadMapUI();
+            case RouterNames.dsa:
+              return const DSAUI();
+            case RouterNames.dev:
+              return const DEVUI();
 
             default:
               return const Scaffold(

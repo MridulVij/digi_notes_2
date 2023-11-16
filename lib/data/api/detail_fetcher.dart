@@ -10,7 +10,6 @@ class DetailFetcher {
         .collection(value[2])
         .doc(value[3])
         .collection(value[4])
-        .doc(value[5])
         .snapshots();
 
     return response;

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:digi_notes_2/views/components/result_screen.dart';
 import 'package:digi_notes_2/views/constants/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -19,23 +20,40 @@ class DetailSelectorUI extends StatefulWidget {
 }
 
 class _DetailSelectorUIState extends State<DetailSelectorUI> {
-  var session = Session.one;
-  var university = University.hsbte;
-  var course = Course.civil;
-  var semester = Semester.one;
+  var session = Session.nill;
+  var university = University.nill;
+  var course = Course.nill;
+  var semester = Semester.nill;
 
   DetailFetcher detailFetcher = DetailFetcher();
-  DetailsFetcherAccordingToUserInput path =
-      DetailsFetcherAccordingToUserInput();
-  dynamic response;
+  QuerySnapshot? querySnapshot;
+  Future<void> getQuestionPapers(String path) async {
+    // Specify the path to the collection
+    CollectionReference questionPapersCollection =
+        await FirebaseFirestore.instance.collection(path);
 
-  Future fetchStart() async {
-    response =
-        await detailFetcher.customFetcher(path.qp_22_kuk_cse_7th_syllabus);
+    // Get documents in the collection
+    querySnapshot = await questionPapersCollection.get();
     setState(() {});
+    // // Process each document in the collection
+    // for (QueryDocumentSnapshot document in querySnapshot.docs) {
+    //   // Access document data as a Map
+    //   Map<String, dynamic> questionPaperData =
+    //       document.data() as Map<String, dynamic>;
+
+    //   // Print or process the data as needed
+    //   print('Document ID: ${document.id}');
+    //   print('Title: ${questionPaperData['url']}');
+    //   print('Subject: ${questionPaperData['subject']}');
+    //   // Add more fields as per your document structure
+    // }
   }
 
-  void fetchByPath() {}
+  String base = "question_papers";
+  String sess = "";
+  String univrsty = "";
+  String corse = "";
+  String sem = "";
 
   @override
   Widget build(BuildContext context) {
@@ -70,6 +88,9 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                             setState(() {
                               session = Session.one;
                             });
+                            sess = "/2021";
+
+                            print(base);
                           },
                         ),
                         Gap(25),
@@ -84,6 +105,8 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                             setState(() {
                               session = Session.two;
                             });
+                            sess = "/2022";
+                            print(base);
                           },
                         ),
                       ],
@@ -114,6 +137,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                             setState(() {
                               university = University.kuk;
                             });
+                            univrsty = "/KUK";
                           },
                         ),
                         Gap(25),
@@ -128,6 +152,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                             setState(() {
                               university = University.hsbte;
                             });
+                            univrsty = "/HSBTE";
                           },
                         ),
                       ],
@@ -158,6 +183,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                             setState(() {
                               course = Course.cse;
                             });
+                            corse = "/CSE";
                           },
                         ),
                         const Gap(25),
@@ -172,6 +198,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                             setState(() {
                               course = Course.civil;
                             });
+                            corse = "/CIVIL";
                           },
                         ),
                       ],
@@ -202,6 +229,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                             setState(() {
                               semester = Semester.one;
                             });
+                            sem = "/1st";
                           },
                         ),
                         const Gap(25),
@@ -216,6 +244,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                             setState(() {
                               semester = Semester.two;
                             });
+                            sem = "/2nd";
                           },
                         ),
                         const Gap(25),
@@ -230,6 +259,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                             setState(() {
                               semester = Semester.three;
                             });
+                            sem = "/3rd";
                           },
                         ),
                         const Gap(25),
@@ -244,6 +274,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                             setState(() {
                               semester = Semester.four;
                             });
+                            sem = "/4th";
                           },
                         ),
                       ],
@@ -263,6 +294,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                             setState(() {
                               semester = Semester.five;
                             });
+                            sem = "/5th";
                           },
                         ),
                         const Gap(25),
@@ -277,6 +309,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                             setState(() {
                               semester = Semester.six;
                             });
+                            sem = "/6th";
                           },
                         ),
                         const Gap(25),
@@ -291,6 +324,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                             setState(() {
                               semester = Semester.seven;
                             });
+                            sem = "/7th";
                           },
                         ),
                         const Gap(25),
@@ -305,6 +339,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                             setState(() {
                               semester = Semester.eight;
                             });
+                            sem = "/8th";
                           },
                         ),
                       ],
@@ -315,7 +350,18 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
               ),
               //
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  String queryUrl = base + sess + univrsty + corse + sem;
+                  print(queryUrl);
+                  getQuestionPapers(queryUrl);
+                  // Navigator.pushNamed(context, RouterNames.result_screen);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ResultScreen(
+                                querySnapshot: querySnapshot,
+                              )));
+                },
                 child: CustomContainer(
                     boxColor: ConstColors.lightSky,
                     textColor: ConstColors.whitetext,
@@ -325,7 +371,11 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                       iconBackgroundColor: ConstColors.whitetext,
                       icon: Icons.search,
                       radius: 20,
-                      onPress: () {},
+                      onPress: () {
+                        // String queryUrl = base + sess + univrsty + corse + sem;
+                        // print(queryUrl);
+                        // getQuestionPapers(queryUrl);
+                      },
                       iconColor: ConstColors.primaryColor,
                     ),
                     title: "Search"),

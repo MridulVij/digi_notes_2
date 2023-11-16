@@ -1,19 +1,23 @@
 enum Session {
+  nill,
   two,
   one,
 }
 
 enum University {
+  nill,
   hsbte,
   kuk,
 }
 
 enum Course {
+  nill,
   civil,
   cse,
 }
 
 enum Semester {
+  nill,
   eight,
   seven,
   six,
@@ -24,4 +28,4 @@ enum Semester {
   one,
 }
 
-enum Resource { timetable, syllabus, notes, pyqp }
+enum Resource { nill, timetable, syllabus, notes, pyqp }

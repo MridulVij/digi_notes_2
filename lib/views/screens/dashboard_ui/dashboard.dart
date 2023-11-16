@@ -131,26 +131,36 @@ class _DashboardUIState extends State<DashboardUI> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              CustomContainer(
-                boxColor: ConstColors.lightSky,
-                inRow: false,
-                isSearchMode: false,
-                textColor: ConstColors.primaryColor,
-                title: skillSection[0],
-                child: Image.asset(
-                  skillIconPaths[0],
-                  height: 130,
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, RouterNames.dsa);
+                },
+                child: CustomContainer(
+                  boxColor: ConstColors.lightSky,
+                  inRow: false,
+                  isSearchMode: false,
+                  textColor: ConstColors.primaryColor,
+                  title: skillSection[0],
+                  child: Image.asset(
+                    skillIconPaths[0],
+                    height: 130,
+                  ),
                 ),
               ),
-              CustomContainer(
-                boxColor: ConstColors.lightSky,
-                inRow: false,
-                isSearchMode: false,
-                textColor: ConstColors.primaryColor,
-                title: skillSection[1],
-                child: Image.asset(
-                  skillIconPaths[1],
-                  height: 130,
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, RouterNames.dev);
+                },
+                child: CustomContainer(
+                  boxColor: ConstColors.lightSky,
+                  inRow: false,
+                  isSearchMode: false,
+                  textColor: ConstColors.primaryColor,
+                  title: skillSection[1],
+                  child: Image.asset(
+                    skillIconPaths[1],
+                    height: 130,
+                  ),
                 ),
               )
             ],
