@@ -107,7 +107,9 @@ import 'package:digi_notes_2/utils/routes.dart';
 import 'package:digi_notes_2/views/constants/colors/colors.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import 'providers/auth_providers.dart';
 import 'views/components/result_screen.dart';
 import 'views/constants/colors/consts.dart';
 import 'views/screens/splash_ui/splash.dart';
@@ -124,16 +126,21 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Digi Notes',
-      theme: ThemeData(
-        useMaterial3: true,
-        textTheme: TextTheme(),
-        scaffoldBackgroundColor: ConstColors.whitetext,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => GoogleSignInProvider()),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Digi Notes',
+        theme: ThemeData(
+          useMaterial3: true,
+          textTheme: TextTheme(),
+          scaffoldBackgroundColor: ConstColors.whitetext,
+        ),
+        initialRoute: RouterNames.splash_screen,
+        onGenerateRoute: Routes.generateRoute,
       ),
-      initialRoute: RouterNames.splash_screen,
-      onGenerateRoute: Routes.generateRoute,
     );
   }
 }

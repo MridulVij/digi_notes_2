@@ -1,10 +1,16 @@
+import 'package:digi_notes_2/views/constants/colors/consts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../providers/auth_providers.dart';
 import '../../components/custom_autotext.dart';
+import '../../components/custom_buttons.dart';
+import '../../components/custom_container.dart';
 import '../../components/custom_links.dart';
+import '../../components/custom_loading.dart';
 
 class ProfileUI extends StatefulWidget {
   const ProfileUI({super.key});
@@ -62,7 +68,7 @@ class _ProfileUIState extends State<ProfileUI> {
                 ],
               ),
             ),
-            // const Spacer(),
+
             const Divider(
               color: Colors.grey,
               endIndent: 40,
@@ -116,7 +122,6 @@ class _ProfileUIState extends State<ProfileUI> {
                         height: 43,
                       ),
                     ),
-
                     IconButton(
                       onPressed: () {
                         Uri uri = Uri.parse(SocialMediaLinks.linkedin);
@@ -128,17 +133,6 @@ class _ProfileUIState extends State<ProfileUI> {
                         height: 33,
                       ),
                     ),
-                    // IconButton(
-                    //   onPressed: () {
-                    //     Uri uri = Uri.parse(SocialMediaLinks.threads);
-                    //     launchUrl(uri,
-                    //         mode: LaunchMode.externalNonBrowserApplication);
-                    //   },
-                    //   icon: SvgPicture.asset(
-                    //     'assets/icons/th.svg',
-                    //     height: 42,
-                    //   ),
-                    // ),
                   ],
                 ),
               ],
@@ -148,13 +142,7 @@ class _ProfileUIState extends State<ProfileUI> {
               endIndent: 40,
               indent: 40,
             ),
-            _isLoading == true
-                ? const Center(
-                    child: CircularProgressIndicator(
-                      strokeWidth: 6,
-                    ),
-                  )
-                : const SizedBox(),
+
             Image.asset(
               'assets/images/jmieti_creatify.png',
               color: Colors.black,
@@ -171,7 +159,7 @@ class _ProfileUIState extends State<ProfileUI> {
               ],
             ),
 
-            Padding(
+            const Padding(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: Align(
                 alignment: Alignment.topLeft,
@@ -186,13 +174,37 @@ class _ProfileUIState extends State<ProfileUI> {
             ),
             ListTile(
               onTap: () {},
-              title: Text("Theme Mode"),
-              subtitle: Text("Dark / Light"),
-              leading: Icon(Icons.dark_mode),
+              title: const Text("Theme Mode"),
+              subtitle: const Text("Dark / Light"),
+              leading: const Icon(Icons.dark_mode),
             ),
             const Divider(
               color: Colors.grey,
             ),
+            _isLoading
+                ? const CustomLoading()
+                : GestureDetector(
+                    onTap: () async {
+                      setState(() {
+                        _isLoading = true;
+                      });
+                      final provider = Provider.of<GoogleSignInProvider>(
+                          context,
+                          listen: false);
+                      await provider.logOut();
+                      setState(() {
+                        _isLoading = false;
+                      });
+                    },
+                    child: CustomContainer(
+                        title: "Log Out  ",
+                        boxColor: Colors.red,
+                        inRow: true,
+                        isSearchMode: false,
+                        textColor: Colors.white,
+                        child:
+                            Icon(Icons.logout, color: Colors.white, size: 20)),
+                  ),
           ],
         ),
       ),

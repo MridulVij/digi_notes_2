@@ -1,3 +1,4 @@
+import 'package:digi_notes_2/views/constants/colors/consts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../providers/auth_providers.dart';
@@ -17,10 +18,7 @@ class _SplashUIState extends State<SplashUI>
     // Wait for 2 seconds and then navigate to the home screen
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (_) => const AuthVerifier()),
-      );
+      Navigator.pushReplacementNamed(context, RouterNames.auth_verifier);
     });
   }
 

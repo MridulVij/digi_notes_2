@@ -23,10 +23,6 @@ class _TechNewsUIState extends State<TechNewsUI> {
             children: [
               Gap(250),
               CustomLoading(),
-              Text(
-                "       Loading...",
-                style: TextStyle(color: ConstColors.whitetext, fontSize: 9.5),
-              ),
               Gap(200),
               Text('If Something is Not Opened,',
                   style: TextStyle(

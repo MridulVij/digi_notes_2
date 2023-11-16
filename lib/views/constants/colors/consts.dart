@@ -12,4 +12,5 @@ class RouterNames {
   static const detail_selector = 'detail_selector';
   static const splash_screen = 'splash_screen';
   static const sign_in_screen = 'sign_in_screen';
+  static const auth_verifier = 'auth_verifier';
 }

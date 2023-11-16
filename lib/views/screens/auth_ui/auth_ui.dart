@@ -60,48 +60,49 @@ class _SignInUIState extends State<SignInUI> {
               ),
             ),
             const Divider(endIndent: 10, indent: 10),
-            isLoading == true ? CustomLoading() : SizedBox(),
-            Container(
-              decoration:
-                  BoxDecoration(borderRadius: BorderRadius.circular(20)),
-              child: Ink(
-                child: InkWell(
-                  borderRadius: BorderRadius.circular(10.0),
-                  splashColor: Colors.white,
-                  onTap: () async {
-                    showLoading();
-                    await googleSignInProvider.googleLogin();
-                    showLoading();
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: ConstColors.whitetext,
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    margin: const EdgeInsets.all(10),
-                    padding: const EdgeInsets.all(8),
-                    width: 250,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          'assets/icons/googlepng.png',
-                          height: 30,
-                          width: 30,
+            isLoading == true
+                ? CustomLoading()
+                : Container(
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                    child: Ink(
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(10.0),
+                        splashColor: Colors.white,
+                        onTap: () async {
+                          showLoading();
+                          await googleSignInProvider.googleLogin();
+                          showLoading();
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: ConstColors.whitetext,
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          margin: const EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(8),
+                          width: 250,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset(
+                                'assets/icons/googlepng.png',
+                                height: 30,
+                                width: 30,
+                              ),
+                              const Text(
+                                ' Continue with Google',
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 16.0,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ],
+                          ),
                         ),
-                        const Text(
-                          ' Continue with Google',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.w500),
-                        ),
-                      ],
+                      ),
                     ),
                   ),
-                ),
-              ),
-            ),
             Column(
               children: <Widget>[
                 const Row(
