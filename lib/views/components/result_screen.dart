@@ -23,9 +23,24 @@ class _ResultScreenState extends State<ResultScreen> {
   String notes = "";
   String syllabus = "";
   String timetable = "";
+
+  String pdfUrl = "";
   void fetchResources() {
-    //
+    // Process each document in the collection
+    for (QueryDocumentSnapshot document in widget.querySnapshot!.docs) {
+      // Access document data as a Map
+      Map<String, dynamic> questionPaperData =
+          document.data() as Map<String, dynamic>;
+
+      // Print or process the data as needed
+      // pdfUrl = questionPaperData['url'];
+      print('Document ID: ${document.id}');
+      print('url: ${questionPaperData['url']}');
+
+      // pdfUrl = questionPaperData['url'];
+    }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,6 +90,7 @@ class _ResultScreenState extends State<ResultScreen> {
                             setState(() {
                               resource = Resource.pyqp;
                             });
+                            fetchResources();
                           },
                           titleText: " Prev-Year\nQs'n Papers",
                         ),
@@ -133,9 +149,7 @@ class _ResultScreenState extends State<ResultScreen> {
         body: ListView.builder(
           itemCount: 5,
           itemBuilder: (context, index) {
-            return const Column(
-              children: [],
-            );
+            return CustomCards();
           },
         ));
   }
@@ -147,19 +161,13 @@ class CustomCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text('Titletext'),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(width: 1, color: Colors.grey),
-            ),
-          ),
-        ],
-      ),
+      padding: EdgeInsets.all(5),
+      margin: EdgeInsets.all(10),
+      height: 300,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(width: 1, color: ConstColors.primaryColor),
+          color: Colors.white),
     );
   }
 }
