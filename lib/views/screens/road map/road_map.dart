@@ -41,6 +41,7 @@ class _RoadMapUIState extends State<RoadMapUI> {
         itemCount: 6,
         itemBuilder: (context, index) {
           return CustomContainer(
+            boxColor: ConstColors.lightSky,
             child: Image.network(
               logoImageLink[index],
               fit: BoxFit.cover,

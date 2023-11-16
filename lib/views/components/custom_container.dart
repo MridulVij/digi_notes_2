@@ -8,12 +8,14 @@ class CustomContainer extends StatelessWidget {
       required this.title,
       required this.inRow,
       required this.isSearchMode,
-      required this.textColor});
+      required this.textColor,
+      required this.boxColor});
   final Widget child;
   final String title;
   final bool inRow;
   final bool isSearchMode;
   final Color textColor;
+  final Color boxColor;
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +23,7 @@ class CustomContainer extends StatelessWidget {
       padding: const EdgeInsets.all(5),
       margin: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-          color: isSearchMode
-              ? ConstColors.primaryColor
-              : Color.fromARGB(255, 242, 251, 255),
+          color: isSearchMode ? ConstColors.primaryColor : boxColor,
           boxShadow: [
             BoxShadow(
               blurRadius: 5,
@@ -40,24 +40,27 @@ class CustomContainer extends StatelessWidget {
                   title,
                   style: TextStyle(
                       color: textColor,
-                      fontSize: 30,
+                      fontSize: 20,
                       fontWeight: FontWeight.w300),
                 ),
-                child
+                Center(child: child)
               ],
             )
           : Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                   Text(
                     title,
                     style: TextStyle(
                         color: ConstColors.primaryColor,
-                        fontSize: 30,
+                        fontSize: 28,
                         fontWeight: FontWeight.w300),
                   ),
-                  child
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Center(child: child),
+                  )
                 ]),
     );
   }

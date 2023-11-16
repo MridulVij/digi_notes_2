@@ -49,6 +49,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomContainer(
+                boxColor: ConstColors.lightSky,
                 textColor: ConstColors.primaryColor,
                 isSearchMode: false,
                 inRow: false,
@@ -92,6 +93,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                 ),
               ),
               CustomContainer(
+                boxColor: ConstColors.lightSky,
                 textColor: ConstColors.primaryColor,
                 isSearchMode: false,
                 inRow: false,
@@ -135,6 +137,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                 ),
               ),
               CustomContainer(
+                boxColor: ConstColors.lightSky,
                 textColor: ConstColors.primaryColor,
                 isSearchMode: false,
                 inRow: false,
@@ -178,6 +181,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                 ),
               ),
               CustomContainer(
+                boxColor: ConstColors.lightSky,
                 textColor: ConstColors.primaryColor,
                 isSearchMode: false,
                 inRow: false,
@@ -313,6 +317,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
               InkWell(
                 onTap: () {},
                 child: CustomContainer(
+                    boxColor: ConstColors.lightSky,
                     textColor: ConstColors.whitetext,
                     inRow: true,
                     isSearchMode: true,

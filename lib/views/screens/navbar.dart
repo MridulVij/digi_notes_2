@@ -2,6 +2,7 @@ import 'package:digi_notes_2/views/screens/tech%20news/tech_news.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:digi_notes_2/views/constants/colors/colors.dart';
+import 'package:gap/gap.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'dashboard_ui/dashboard.dart';
@@ -21,7 +22,7 @@ class _NavbarUIState extends State<NavbarUI> {
     const DashboardUI(),
     const TechNewsUI(),
     const RoadMapUI(),
-    const MyProfileUI(),
+    const ProfileUI(),
   ];
 
   final String Url = "https://www.javatpoint.com/";
@@ -38,33 +39,45 @@ class _NavbarUIState extends State<NavbarUI> {
   final userData = FirebaseAuth.instance.currentUser;
   // String userName = 'User';
 
+  int energies = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: ConstColors.primaryColor,
+          backgroundColor: ConstColors.whitetext,
           elevation: 0.0,
-          leading:
-              IconButton(onPressed: () {}, icon: Icon(Icons.menu_outlined)),
-          title: Text('Hi, ${userData!.displayName}'),
-          titleSpacing: 0.0,
+          title: Text('Hi, ${userData!.displayName}',
+              style: const TextStyle(fontSize: 18)),
+          titleSpacing: 10.0,
           actions: [
-            // InkWell(
-            //   onTap: () {},
-            //   child: Image.asset(
-            //     'assets/icons/linkd.png',
-            //     height: 20,
-            //     width: 45,
-            //   ),
-            // ),
-            IconButton(
-              icon: Icon(Icons.notifications),
-              onPressed: () {},
+            const Gap(1),
+            GestureDetector(
+              onTap: () {},
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: Colors.red[100]),
+                child: Row(
+                  children: [
+                    energies <= 0
+                        ? const SizedBox()
+                        : Text(
+                            '${energies}',
+                            style: const TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.bold),
+                          ),
+                    Image.asset(
+                      'assets/icons/fire.png',
+                      height: 40,
+                    ),
+                  ],
+                ),
+              ),
             ),
-            IconButton(
-              icon: Icon(Icons.settings),
-              onPressed: () {},
-            )
+            const Gap(6),
           ],
         ),
         body: screenList[_currentIndex],
