@@ -1,6 +1,7 @@
 import 'package:digi_notes_2/views/constants/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../components/custom_loading.dart';
@@ -13,6 +14,15 @@ class TechNewsUI extends StatefulWidget {
 }
 
 class _TechNewsUIState extends State<TechNewsUI> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    launchUrl(Uri.parse(Url));
+  }
+
+  final String Url = "https://www.javatpoint.com/";
   @override
   Widget build(BuildContext context) {
     return Scaffold(

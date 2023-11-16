@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../components/custom_container.dart';
+import '../../constants/colors/consts.dart';
 
 class DashboardUI extends StatefulWidget {
   const DashboardUI({super.key});
@@ -49,26 +50,36 @@ class _DashboardUIState extends State<DashboardUI> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              CustomContainer(
-                boxColor: ConstColors.lightSky,
-                inRow: false,
-                isSearchMode: false,
-                textColor: ConstColors.primaryColor,
-                title: title[0],
-                child: SvgPicture.asset(
-                  iconPaths[0],
-                  height: 130,
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, RouterNames.detail_selector);
+                },
+                child: CustomContainer(
+                  boxColor: ConstColors.lightSky,
+                  inRow: false,
+                  isSearchMode: false,
+                  textColor: ConstColors.primaryColor,
+                  title: title[0],
+                  child: SvgPicture.asset(
+                    iconPaths[0],
+                    height: 130,
+                  ),
                 ),
               ),
-              CustomContainer(
-                boxColor: ConstColors.lightSky,
-                inRow: false,
-                isSearchMode: false,
-                textColor: ConstColors.primaryColor,
-                title: title[1],
-                child: SvgPicture.asset(
-                  iconPaths[1],
-                  height: 130,
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, RouterNames.detail_selector);
+                },
+                child: CustomContainer(
+                  boxColor: ConstColors.lightSky,
+                  inRow: false,
+                  isSearchMode: false,
+                  textColor: ConstColors.primaryColor,
+                  title: title[1],
+                  child: SvgPicture.asset(
+                    iconPaths[1],
+                    height: 130,
+                  ),
                 ),
               )
             ],
@@ -76,26 +87,36 @@ class _DashboardUIState extends State<DashboardUI> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              CustomContainer(
-                boxColor: ConstColors.lightSky,
-                inRow: false,
-                isSearchMode: false,
-                textColor: ConstColors.primaryColor,
-                title: title[2],
-                child: Image.asset(
-                  iconPaths[2],
-                  height: 130,
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, RouterNames.detail_selector);
+                },
+                child: CustomContainer(
+                  boxColor: ConstColors.lightSky,
+                  inRow: false,
+                  isSearchMode: false,
+                  textColor: ConstColors.primaryColor,
+                  title: title[2],
+                  child: Image.asset(
+                    iconPaths[2],
+                    height: 130,
+                  ),
                 ),
               ),
-              CustomContainer(
-                boxColor: ConstColors.lightSky,
-                inRow: false,
-                isSearchMode: false,
-                textColor: ConstColors.primaryColor,
-                title: title[3],
-                child: SvgPicture.asset(
-                  iconPaths[3],
-                  height: 130,
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, RouterNames.detail_selector);
+                },
+                child: CustomContainer(
+                  boxColor: ConstColors.lightSky,
+                  inRow: false,
+                  isSearchMode: false,
+                  textColor: ConstColors.primaryColor,
+                  title: title[3],
+                  child: SvgPicture.asset(
+                    iconPaths[3],
+                    height: 130,
+                  ),
                 ),
               )
             ],
@@ -137,26 +158,39 @@ class _DashboardUIState extends State<DashboardUI> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              CustomContainer(
-                boxColor: ConstColors.lightSky,
-                inRow: false,
-                isSearchMode: false,
-                textColor: ConstColors.primaryColor,
-                title: skillSection[2],
-                child: SvgPicture.asset(
-                  skillIconPaths[2],
-                  height: 130,
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, RouterNames.road_maps);
+                },
+                child: CustomContainer(
+                  boxColor: ConstColors.lightSky,
+                  inRow: false,
+                  isSearchMode: false,
+                  textColor: ConstColors.primaryColor,
+                  title: skillSection[2],
+                  child: SvgPicture.asset(
+                    skillIconPaths[2],
+                    height: 130,
+                  ),
                 ),
               ),
-              CustomContainer(
-                boxColor: ConstColors.lightSky,
-                inRow: false,
-                isSearchMode: false,
-                textColor: ConstColors.primaryColor,
-                title: skillSection[3],
-                child: SvgPicture.asset(
-                  skillIconPaths[3],
-                  height: 130,
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, RouterNames.tech_news);
+                  Future.delayed(const Duration(milliseconds: 500), () {
+                    Navigator.pop(context);
+                  });
+                },
+                child: CustomContainer(
+                  boxColor: ConstColors.lightSky,
+                  inRow: false,
+                  isSearchMode: false,
+                  textColor: ConstColors.primaryColor,
+                  title: skillSection[3],
+                  child: SvgPicture.asset(
+                    skillIconPaths[3],
+                    height: 130,
+                  ),
                 ),
               )
             ],

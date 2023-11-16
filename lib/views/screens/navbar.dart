@@ -37,7 +37,6 @@ class _NavbarUIState extends State<NavbarUI> {
   }
 
   final userData = FirebaseAuth.instance.currentUser;
-  // String userName = 'User';
 
   int energies = 0;
 

@@ -13,4 +13,8 @@ class RouterNames {
   static const splash_screen = 'splash_screen';
   static const sign_in_screen = 'sign_in_screen';
   static const auth_verifier = 'auth_verifier';
+  static const tech_news = 'tech_news';
+  static const road_maps = 'road_maps';
+  static const dsa = 'dsa';
+  static const dev = 'dev';
 }
