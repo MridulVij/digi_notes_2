@@ -4,11 +4,14 @@ import 'package:digi_notes_2/views/constants/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import '../../data/api/detail_fetcher.dart';
+import '../../providers/internet_provider.dart';
 import '../../utils/enums.dart';
+import '../../utils/global_functions.dart';
 import 'custom_buttons.dart';
 import 'custom_container.dart';
 import 'custom_loading.dart';
 import 'custom_selector.dart';
+import 'custom_snackbar.dart';
 
 class DetailSelectorUI extends StatefulWidget {
   const DetailSelectorUI({super.key});
@@ -47,6 +50,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
     setState(() {});
   }
 
+  InternetProvider internetProvider = InternetProvider();
   @override
   Widget build(BuildContext context) {
     // return Consumer<DetailsSelectorProvider>(
@@ -345,19 +349,40 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                   //
                   InkWell(
                     onTap: () async {
-                      refresh();
                       String queryUrl = base + sess + univrsty + corse + sem;
-                      print(queryUrl);
-                      await getQuestionPapers(queryUrl);
-                      refresh();
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ResultScreen(
-                            querySnapshot: querySnapshot,
-                          ),
-                        ),
-                      );
+
+                      if (queryUrl.isNotEmpty &&
+                          base.isNotEmpty &&
+                          sess.isNotEmpty &&
+                          univrsty.isNotEmpty &&
+                          corse.isNotEmpty &&
+                          sem.isNotEmpty) {
+                        refresh();
+                        bool result =
+                            await internetProvider.checkInternetConnectivity();
+                        if (result) {
+                          print(queryUrl);
+                          // api fetching start
+                          await getQuestionPapers(queryUrl);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ResultScreen(
+                                querySnapshot: querySnapshot,
+                              ),
+                            ),
+                          );
+                          refresh();
+                        } else {
+                          CustomSnackbar.showCustomSnackbar(context,
+                              "Please Check Your Internet Connection!", 1);
+                          refresh();
+                        }
+                      } else {
+                        print('Options is not selected - Error');
+                        CustomSnackbar.showCustomSnackbar(
+                            context, "Please Select All Options!", 3);
+                      }
                     },
                     child: CustomContainer(
                         boxColor: ConstColors.lightSky,
@@ -382,10 +407,10 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
             ),
             isLoading
                 ? Container(
-                    color: const Color.fromARGB(127, 0, 0, 0),
+                    color: const Color.fromARGB(182, 0, 0, 0),
                     child: const CustomLoading(),
                   )
-                : SizedBox(),
+                : const SizedBox(),
           ],
         ),
       ),

@@ -108,12 +108,9 @@ import 'package:digi_notes_2/views/constants/colors/colors.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import 'providers/auth_providers.dart';
-import 'views/components/result_screen.dart';
+import 'providers/internet_provider.dart';
 import 'views/constants/colors/consts.dart';
-import 'views/screens/splash_ui/splash.dart';
-import 'views/components/detail_selector.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -129,6 +126,7 @@ class MainApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => GoogleSignInProvider()),
+        // ChangeNotifierProvider(create: (context) => InternetProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

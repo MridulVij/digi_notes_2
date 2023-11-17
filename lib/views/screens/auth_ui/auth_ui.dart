@@ -1,7 +1,9 @@
 // Google Sign In UI
 import 'package:flutter/material.dart';
 import '../../../providers/auth_providers.dart';
+import '../../../utils/global_functions.dart';
 import '../../components/custom_loading.dart';
+import '../../components/custom_snackbar.dart';
 import '../../constants/colors/colors.dart';
 
 bool isLoading = false;
@@ -72,6 +74,11 @@ class _SignInUIState extends State<SignInUI> {
                         onTap: () async {
                           showLoading();
                           await googleSignInProvider.googleLogin();
+                          GlobalFunctions globalFunctions = GlobalFunctions();
+                          globalFunctions.checkInternetConnectionAndNotify(
+                              context,
+                              "Please Check Your Internet Connection!",
+                              1);
                           showLoading();
                         },
                         child: Container(
