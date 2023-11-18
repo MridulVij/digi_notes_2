@@ -7,13 +7,12 @@ class CustomContainer extends StatelessWidget {
       required this.child,
       required this.title,
       required this.inRow,
-      required this.isSearchMode,
       required this.textColor,
       required this.boxColor});
   final Widget child;
   final String title;
   final bool inRow;
-  final bool isSearchMode;
+
   final Color textColor;
   final Color boxColor;
 
@@ -23,7 +22,7 @@ class CustomContainer extends StatelessWidget {
       padding: const EdgeInsets.all(5),
       margin: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-          color: isSearchMode ? ConstColors.primaryColor : boxColor,
+          color: boxColor,
           boxShadow: [
             BoxShadow(
               blurRadius: 5,

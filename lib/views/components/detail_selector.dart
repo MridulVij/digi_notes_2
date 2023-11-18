@@ -69,7 +69,6 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                   CustomContainer(
                     boxColor: ConstColors.lightSky,
                     textColor: ConstColors.primaryColor,
-                    isSearchMode: false,
                     inRow: false,
                     title: "Session",
                     child: Column(
@@ -118,7 +117,6 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                   CustomContainer(
                     boxColor: ConstColors.lightSky,
                     textColor: ConstColors.primaryColor,
-                    isSearchMode: false,
                     inRow: false,
                     title: "University",
                     child: Column(
@@ -164,7 +162,6 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                   CustomContainer(
                     boxColor: ConstColors.lightSky,
                     textColor: ConstColors.primaryColor,
-                    isSearchMode: false,
                     inRow: false,
                     title: "Course",
                     child: Column(
@@ -210,7 +207,6 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                   CustomContainer(
                     boxColor: ConstColors.lightSky,
                     textColor: ConstColors.primaryColor,
-                    isSearchMode: false,
                     inRow: false,
                     title: "Semester",
                     child: Column(
@@ -393,7 +389,6 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                         boxColor: ConstColors.lightSky,
                         textColor: ConstColors.whitetext,
                         inRow: true,
-                        isSearchMode: true,
                         child: CustomButton(
                           iconBackgroundColor: ConstColors.whitetext,
                           icon: Icons.search,

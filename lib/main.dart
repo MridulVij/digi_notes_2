@@ -109,7 +109,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'providers/auth_providers.dart';
-import 'providers/internet_provider.dart';
 import 'utils/notifications_services.dart';
 import 'views/constants/colors/consts.dart';
 

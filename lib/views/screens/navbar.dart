@@ -49,35 +49,35 @@ class _NavbarUIState extends State<NavbarUI> {
           title: Text('Hi, ${userData!.displayName}',
               style: const TextStyle(fontSize: 18)),
           titleSpacing: 10.0,
-          actions: [
-            const Gap(1),
-            GestureDetector(
-              onTap: () {},
-              child: Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
-                    color: Colors.red[100]),
-                child: Row(
-                  children: [
-                    energies <= 0
-                        ? const SizedBox()
-                        : Text(
-                            '${energies}',
-                            style: const TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.bold),
-                          ),
-                    Image.asset(
-                      'assets/icons/fire.png',
-                      height: 40,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            const Gap(6),
-          ],
+          // actions: [
+          //   const Gap(1),
+          //   GestureDetector(
+          //     onTap: () {},
+          //     child: Container(
+          //       padding:
+          //           const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          //       decoration: BoxDecoration(
+          //           borderRadius: BorderRadius.circular(50),
+          //           color: Colors.red[100]),
+          //       child: Row(
+          //         children: [
+          //           energies <= 0
+          //               ? const SizedBox()
+          //               : Text(
+          //                   '${energies}',
+          //                   style: const TextStyle(
+          //                       fontSize: 14, fontWeight: FontWeight.bold),
+          //                 ),
+          //           Image.asset(
+          //             'assets/icons/fire.png',
+          //             height: 40,
+          //           ),
+          //         ],
+          //       ),
+          //     ),
+          //   ),
+          //   const Gap(6),
+          // ],
         ),
         body: screenList[_currentIndex],
         bottomNavigationBar: _bottomNavigationbar());

@@ -113,7 +113,7 @@ class _ProfileUIState extends State<ProfileUI> {
                     ),
                     IconButton(
                       onPressed: () {
-                        Uri uri = Uri.parse(SocialMediaLinks.youtube);
+                        Uri uri = Uri.parse(SocialMediaLinks.whatsapp);
                         launchUrl(uri,
                             mode: LaunchMode.externalNonBrowserApplication);
                       },
@@ -211,7 +211,6 @@ class _ProfileUIState extends State<ProfileUI> {
                         title: "Log Out  ",
                         boxColor: Colors.red,
                         inRow: true,
-                        isSearchMode: false,
                         textColor: Colors.white,
                         child:
                             Icon(Icons.logout, color: Colors.white, size: 20)),

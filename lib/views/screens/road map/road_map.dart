@@ -48,7 +48,6 @@ class _RoadMapUIState extends State<RoadMapUI> {
               height: 100,
             ),
             inRow: false,
-            isSearchMode: false,
             textColor: ConstColors.lightGrey,
             title: technologyName[index],
           );

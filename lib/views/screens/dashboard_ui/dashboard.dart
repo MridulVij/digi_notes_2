@@ -57,7 +57,6 @@ class _DashboardUIState extends State<DashboardUI> {
                 child: CustomContainer(
                   boxColor: ConstColors.lightSky,
                   inRow: false,
-                  isSearchMode: false,
                   textColor: ConstColors.primaryColor,
                   title: title[0],
                   child: SvgPicture.asset(
@@ -73,7 +72,6 @@ class _DashboardUIState extends State<DashboardUI> {
                 child: CustomContainer(
                   boxColor: ConstColors.lightSky,
                   inRow: false,
-                  isSearchMode: false,
                   textColor: ConstColors.primaryColor,
                   title: title[1],
                   child: SvgPicture.asset(
@@ -94,7 +92,6 @@ class _DashboardUIState extends State<DashboardUI> {
                 child: CustomContainer(
                   boxColor: ConstColors.lightSky,
                   inRow: false,
-                  isSearchMode: false,
                   textColor: ConstColors.primaryColor,
                   title: title[2],
                   child: Image.asset(
@@ -110,7 +107,6 @@ class _DashboardUIState extends State<DashboardUI> {
                 child: CustomContainer(
                   boxColor: ConstColors.lightSky,
                   inRow: false,
-                  isSearchMode: false,
                   textColor: ConstColors.primaryColor,
                   title: title[3],
                   child: SvgPicture.asset(
@@ -138,7 +134,6 @@ class _DashboardUIState extends State<DashboardUI> {
                 child: CustomContainer(
                   boxColor: ConstColors.lightSky,
                   inRow: false,
-                  isSearchMode: false,
                   textColor: ConstColors.primaryColor,
                   title: skillSection[0],
                   child: Image.asset(
@@ -154,7 +149,6 @@ class _DashboardUIState extends State<DashboardUI> {
                 child: CustomContainer(
                   boxColor: ConstColors.lightSky,
                   inRow: false,
-                  isSearchMode: false,
                   textColor: ConstColors.primaryColor,
                   title: skillSection[1],
                   child: Image.asset(
@@ -175,7 +169,6 @@ class _DashboardUIState extends State<DashboardUI> {
                 child: CustomContainer(
                   boxColor: ConstColors.lightSky,
                   inRow: false,
-                  isSearchMode: false,
                   textColor: ConstColors.primaryColor,
                   title: skillSection[2],
                   child: SvgPicture.asset(
@@ -194,7 +187,6 @@ class _DashboardUIState extends State<DashboardUI> {
                 child: CustomContainer(
                   boxColor: ConstColors.lightSky,
                   inRow: false,
-                  isSearchMode: false,
                   textColor: ConstColors.primaryColor,
                   title: skillSection[3],
                   child: SvgPicture.asset(
