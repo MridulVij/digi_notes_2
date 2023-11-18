@@ -143,6 +143,3 @@ class MainApp extends StatelessWidget {
     );
   }
 }
-
-
-//  Navigator.pushReplacementNamed(context, RoutesName.authverifier);
