@@ -6,14 +6,14 @@ class CustomButton extends StatelessWidget {
   final IconData icon;
   final double radius;
   final Color iconColor;
-  final VoidCallback onPress;
+  final VoidCallback? onPress;
   final Color iconBackgroundColor;
   const CustomButton(
       {super.key,
       required this.icon,
       required this.radius,
       required this.iconColor,
-      required this.onPress,
+      this.onPress,
       required this.iconBackgroundColor});
 
   @override

@@ -50,6 +50,8 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
     setState(() {});
   }
 
+  GlobalFunctions globalFunctions = GlobalFunctions();
+
   InternetProvider internetProvider = InternetProvider();
   @override
   Widget build(BuildContext context) {
@@ -364,11 +366,14 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                           print(queryUrl);
                           // api fetching start
                           await getQuestionPapers(queryUrl);
+                          String pathShower =
+                              globalFunctions.removeFirstPath(queryUrl);
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => ResultScreen(
                                 querySnapshot: querySnapshot,
+                                queryPath: pathShower,
                               ),
                             ),
                           );
@@ -393,11 +398,6 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                           iconBackgroundColor: ConstColors.whitetext,
                           icon: Icons.search,
                           radius: 20,
-                          onPress: () {
-                            // String queryUrl = base + sess + univrsty + corse + sem;
-                            // print(queryUrl);
-                            // getQuestionPapers(queryUrl);
-                          },
                           iconColor: ConstColors.primaryColor,
                         ),
                         title: "Search"),

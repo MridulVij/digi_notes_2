@@ -11,8 +11,10 @@ import 'image_viewer.dart';
 import 'pdf_viewer.dart';
 
 class ResultScreen extends StatefulWidget {
-  ResultScreen({super.key, required this.querySnapshot});
+  ResultScreen(
+      {super.key, required this.querySnapshot, required this.queryPath});
   final QuerySnapshot? querySnapshot;
+  String queryPath = "Unknown Path, Please Go Back & Search Again!";
 
   @override
   State<ResultScreen> createState() => _ResultScreenState();
@@ -68,12 +70,14 @@ class _ResultScreenState extends State<ResultScreen> {
         break;
       case "timetable":
         data = TimeTable!['url'];
+
       case "pyqp":
         data = PYQP!['url'];
       case "notes":
-        data = Notes!['subj'];
+        data = Notes!['url'];
       default:
-        print("Null");
+        data = PYQP!['url'];
+        count = PYQP!.entries.length;
     }
     checkFileExtension(data);
     setState(() {});
@@ -97,142 +101,165 @@ class _ResultScreenState extends State<ResultScreen> {
     return lowercaseInput.contains(lowercaseFileType);
   }
 
+  int count = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CustomAppBar(
-            height: 130,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
+      appBar: CustomAppBar(
+          height: 155,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CustomButton(
+                      iconBackgroundColor: ConstColors.primaryColor,
+                      icon: Icons.arrow_back_rounded,
+                      iconColor: ConstColors.whitetext,
+                      onPress: () {
+                        Navigator.pop(context);
+                      },
+                      radius: 22),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Text(
+                      'Resources',
+                      style: TextStyle(
+                          color: ConstColors.primaryColor,
+                          fontSize: 40,
+                          fontWeight: FontWeight.w300),
+                    ),
+                  )
+                ],
+              ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CustomButton(
-                        iconBackgroundColor: ConstColors.primaryColor,
-                        icon: Icons.arrow_back_rounded,
-                        iconColor: ConstColors.whitetext,
-                        onPress: () {
-                          Navigator.pop(context);
-                        },
-                        radius: 22),
                     Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: Text(
-                        'Resources',
-                        style: TextStyle(
-                            color: ConstColors.primaryColor,
-                            fontSize: 40,
-                            fontWeight: FontWeight.w300),
+                      padding: const EdgeInsets.all(6),
+                      child: CustomSelector(
+                        backwardIcon: false,
+                        centerText: true,
+                        forwardIcon: false,
+                        isSelected: resource == Resource.pyqp,
+                        isSquareShapeButton: false,
+                        onPress: () {
+                          setState(() {
+                            resource = Resource.pyqp;
+                          });
+                          resultWanted = "pyqp";
+                          fetchResources();
+                          count = PYQP!.entries.length;
+                        },
+                        titleText: " Prev-Year\nQs'n Papers",
                       ),
-                    )
-                  ],
-                ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(6),
-                        child: CustomSelector(
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(6),
+                      child: CustomSelector(
                           backwardIcon: false,
                           centerText: true,
                           forwardIcon: false,
-                          isSelected: resource == Resource.pyqp,
+                          isSelected: resource == Resource.notes,
                           isSquareShapeButton: false,
                           onPress: () {
                             setState(() {
-                              resource = Resource.pyqp;
+                              resource = Resource.notes;
                             });
-                            resultWanted = "pyqp";
+                            resultWanted = "notes";
                             fetchResources();
+                            count = Notes!.entries.length;
                           },
-                          titleText: " Prev-Year\nQs'n Papers",
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(6),
-                        child: CustomSelector(
-                            backwardIcon: false,
-                            centerText: true,
-                            forwardIcon: false,
-                            isSelected: resource == Resource.notes,
-                            isSquareShapeButton: false,
-                            onPress: () {
-                              setState(() {
-                                resource = Resource.notes;
-                              });
-                              resultWanted = "notes";
-                              fetchResources();
-                            },
-                            titleText: "Notes"),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(6),
-                        child: CustomSelector(
-                            backwardIcon: false,
-                            centerText: true,
-                            forwardIcon: false,
-                            isSelected: resource == Resource.syllabus,
-                            isSquareShapeButton: false,
-                            onPress: () {
-                              setState(() {
-                                resource = Resource.syllabus;
-                              });
-                              resultWanted = "syllabus";
-                              fetchResources();
-                            },
-                            titleText: "Syllabus"),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(6),
-                        child: CustomSelector(
-                            backwardIcon: false,
-                            centerText: true,
-                            forwardIcon: false,
-                            isSelected: resource == Resource.timetable,
-                            isSquareShapeButton: false,
-                            onPress: () {
-                              setState(() {
-                                resource = Resource.timetable;
-                              });
-                              resultWanted = "timetable";
-                              fetchResources();
-                            },
-                            titleText: "Time Table"),
-                      )
-                    ],
-                  ),
+                          titleText: "Notes"),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(6),
+                      child: CustomSelector(
+                          backwardIcon: false,
+                          centerText: true,
+                          forwardIcon: false,
+                          isSelected: resource == Resource.syllabus,
+                          isSquareShapeButton: false,
+                          onPress: () {
+                            setState(() {
+                              resource = Resource.syllabus;
+                            });
+                            resultWanted = "syllabus";
+                            fetchResources();
+                            count = Syllabus!.entries.length;
+                          },
+                          titleText: "Syllabus"),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(6),
+                      child: CustomSelector(
+                          backwardIcon: false,
+                          centerText: true,
+                          forwardIcon: false,
+                          isSelected: resource == Resource.timetable,
+                          isSquareShapeButton: false,
+                          onPress: () {
+                            setState(() {
+                              resource = Resource.timetable;
+                            });
+                            resultWanted = "timetable";
+                            fetchResources();
+                            count = TimeTable!.entries.length;
+                          },
+                          titleText: "Time Table"),
+                    )
+                  ],
                 ),
-                const Gap(3)
-              ],
-            )),
-        body: ListView.builder(
-          itemBuilder: (context, index) {
-            return InkWell(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => isPDF
-                        ? PdfViewer(
-                            path: data,
-                          )
-                        : ImageViewer(imageUrls: [data], initialIndex: 0),
+              ),
+              Row(
+                children: [
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                    child: Text(
+                      widget.queryPath,
+                      style: TextStyle(
+                          color: ConstColors.primaryColor,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w300),
+                    ),
                   ),
-                );
-              },
-              child: CustomResultBox(),
-            );
-          },
-        ));
+                ],
+              )
+            ],
+          )),
+      body: ListView.builder(
+        itemCount: count,
+        itemBuilder: (context, index) {
+          return InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => isPDF
+                      ? PdfViewer(
+                          path: data,
+                        )
+                      : ImageViewer(imageUrls: [data], initialIndex: 0),
+                ),
+              );
+            },
+            child: CustomResultBox(isPdf: isPDF),
+          );
+        },
+      ),
+    );
   }
 }
 
 class CustomResultBox extends StatelessWidget {
-  const CustomResultBox({super.key});
+  const CustomResultBox({super.key, required this.isPdf});
+  final bool isPdf;
 
   @override
   Widget build(BuildContext context) {
@@ -248,15 +275,30 @@ class CustomResultBox extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                IconButton(
-                  icon: Icon(Icons.download),
-                  onPressed: () {},
+                Container(
+                  child: isPdf
+                      ? Icon(
+                          Icons.picture_as_pdf,
+                          color: Colors.red,
+                        )
+                      : Icon(
+                          Icons.photo,
+                          color: Colors.blue,
+                        ),
                 ),
-                IconButton(
-                  icon: Icon(Icons.share),
-                  onPressed: () {},
+                Row(
+                  children: [
+                    IconButton(
+                      icon: Icon(Icons.download),
+                      onPressed: () {},
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.share),
+                      onPressed: () {},
+                    ),
+                  ],
                 )
               ],
             ),

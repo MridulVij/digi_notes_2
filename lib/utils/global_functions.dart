@@ -14,4 +14,19 @@ class GlobalFunctions {
     }
     return true;
   }
+
+  String removeFirstPath(String path) {
+    // Split the path using '/'
+    List<String> pathParts = path.split('/');
+
+    // Remove the first part of the path
+    if (pathParts.isNotEmpty) {
+      pathParts.removeAt(0);
+    }
+
+    // Join the path parts back together with '/'
+    String updatedPath = pathParts.join('/');
+
+    return updatedPath;
+  }
 }
