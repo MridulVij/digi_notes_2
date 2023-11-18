@@ -1,5 +1,7 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 
+import '../providers/notification_provider.dart';
+
 class FirebaseNotifications {
   final fN = FirebaseMessaging.instance;
   Future<void> initNotifications() async {
@@ -21,5 +23,6 @@ Future<List<Map<String, dynamic>>> backgroundNotifications(
     "subtitle": message.notification?.body,
     "data": message.data,
   });
+
   return LM;
 }

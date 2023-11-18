@@ -42,17 +42,6 @@ class _ResultScreenState extends State<ResultScreen> {
   Map<String, dynamic>? TimeTable, Syllabus, PYQP, Notes;
   List<QueryDocumentSnapshot>? document;
   void fetchResources() async {
-    // Process each document in the collection
-    // for (QueryDocumentSnapshot document in widget.querySnapshot!.docs) {
-    //   // Access document data as a Map
-    //   Map<String, dynamic> questionPaperData =
-    //       document.data() as Map<String, dynamic>;
-
-    //   // Print or process the data as needed
-    //   // pdfUrl = questionPaperData['url'];
-    //   print('Document ID: ${document.id}');
-    //   print('url: ${questionPaperData['url']}');
-    // }
     document = await widget.querySnapshot!.docs;
     Notes = document![0].data() as Map<String, dynamic>;
     PYQP = document![1].data() as Map<String, dynamic>;

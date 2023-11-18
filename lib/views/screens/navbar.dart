@@ -1,10 +1,13 @@
+import 'package:digi_notes_2/views/constants/colors/consts.dart';
 import 'package:digi_notes_2/views/screens/tech%20news/tech_news.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:digi_notes_2/views/constants/colors/colors.dart';
 import 'package:gap/gap.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../providers/notification_provider.dart';
 import '../components/custom_snackbar.dart';
 import 'dashboard_ui/dashboard.dart';
 import 'my profile/my_profile.dart';
@@ -25,6 +28,11 @@ class _NavbarUIState extends State<NavbarUI> {
     const RoadMapUI(),
     const ProfileUI(),
   ];
+  @override
+  void initState() {
+    super.initState();
+    context.read<NotificationProvider>().addItemsInCart();
+  }
 
   final String Url = "https://www.javatpoint.com/";
 
@@ -45,50 +53,59 @@ class _NavbarUIState extends State<NavbarUI> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          backgroundColor: ConstColors.lightSky,
-          elevation: 0.0,
-          title: Text('Hi, ${userData!.displayName}',
-              style: const TextStyle(fontSize: 18)),
-          titleSpacing: 10.0,
-          actions: [
-            IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.notifications_none_outlined)),
-            GestureDetector(
-              onTap: () {
-                CustomSnackbar.showCustomSnackbar(
-                    context, "Feature Available in 1.1 Version", 2);
-              },
-              child: Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
-                    color: Colors.red[100]),
-                child: Row(
-                  children: [
-                    energies <= 0
-                        ? const SizedBox()
-                        : Text(
-                            '${energies}',
-                            style: const TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.bold),
-                          ),
-                    Image.asset(
-                      'assets/icons/fire.png',
-                      height: 40,
-                    ),
-                  ],
+    return Consumer<NotificationProvider>(
+      builder: (context, state, child) => Scaffold(
+          appBar: AppBar(
+            backgroundColor: ConstColors.lightSky,
+            elevation: 0.0,
+            title: Text('😊Hi, ${userData!.displayName}',
+                style: const TextStyle(fontSize: 18)),
+            titleSpacing: 10.0,
+            actions: [
+              IconButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, RouterNames.notifications);
+                  },
+                  icon: state.cartItems.length > 0
+                      ? Icon(Icons.notifications_none_outlined)
+                      : Icon(
+                          Icons.notifications,
+                          color: Colors.green,
+                        )),
+              GestureDetector(
+                onTap: () {
+                  CustomSnackbar.showCustomSnackbar(
+                      context, "Feature Available in 1.1 Version", 2);
+                },
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      color: Colors.red[100]),
+                  child: Row(
+                    children: [
+                      energies <= 0
+                          ? const SizedBox()
+                          : Text(
+                              '${energies}',
+                              style: const TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.bold),
+                            ),
+                      Image.asset(
+                        'assets/icons/fire.png',
+                        height: 40,
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            const Gap(6),
-          ],
-        ),
-        body: screenList[_currentIndex],
-        bottomNavigationBar: _bottomNavigationbar());
+              const Gap(6),
+            ],
+          ),
+          body: screenList[_currentIndex],
+          bottomNavigationBar: _bottomNavigationbar()),
+    );
   }
 
   Widget _bottomNavigationbar() {

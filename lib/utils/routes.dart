@@ -3,6 +3,7 @@ import 'package:digi_notes_2/views/components/detail_selector.dart';
 import 'package:digi_notes_2/views/components/result_screen.dart';
 import 'package:digi_notes_2/views/screens/auth_ui/auth_ui.dart';
 import 'package:digi_notes_2/views/screens/dashboard_ui/dashboard.dart';
+import 'package:digi_notes_2/views/screens/dashboard_ui/widgets/notification/notification_ui.dart';
 import 'package:digi_notes_2/views/screens/dev/dev.dart';
 import 'package:digi_notes_2/views/screens/dsa/dsa.dart';
 import 'package:digi_notes_2/views/screens/road%20map/road_map.dart';
@@ -49,7 +50,8 @@ class Routes {
               return const DSAUI();
             case RouterNames.dev:
               return const DEVUI();
-
+            case RouterNames.notifications:
+              return NotificationUI();
             default:
               return const Scaffold(
                 body: Center(

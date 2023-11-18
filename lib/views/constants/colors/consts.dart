@@ -17,4 +17,5 @@ class RouterNames {
   static const road_maps = 'road_maps';
   static const dsa = 'dsa';
   static const dev = 'dev';
+  static const notifications = 'notifications';
 }
