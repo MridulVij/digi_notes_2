@@ -1,7 +1,5 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 
-import '../providers/notification_provider.dart';
-
 class FirebaseNotifications {
   final fN = FirebaseMessaging.instance;
   Future<void> initNotifications() async {

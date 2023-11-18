@@ -21,7 +21,7 @@ class _NotificationUIState extends State<NotificationUI> {
       builder: (context, state, child) {
         return Scaffold(
           appBar: CustomAppBar(
-            height: 80,
+            height: 120,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -53,12 +53,19 @@ class _NotificationUIState extends State<NotificationUI> {
                     )
                   ],
                 ),
+                TextButton(
+                    onPressed: () {
+                      Provider.of<NotificationProvider>(context, listen: false)
+                          .removeAllItemsFromCart();
+                    },
+                    child: Text("Clear All Notifications"))
               ],
             ),
           ),
           body: ListView.builder(
             itemCount: state.cartItems.length,
             itemBuilder: (context, index) {
+              var title = state.cartItems[index];
               return Container(
                 margin: EdgeInsets.all(4),
                 decoration: BoxDecoration(
@@ -72,8 +79,8 @@ class _NotificationUIState extends State<NotificationUI> {
                       ),
                     ]),
                 child: ListTile(
-                  title: Text('Title'),
-                  subtitle: Text('Subtitle'),
+                  title: Text(title["title"].toString()),
+                  subtitle: Text(title["subtitle"].toString()),
                   trailing: IconButton(
                     icon: Icon(Icons.delete),
                     onPressed: () {

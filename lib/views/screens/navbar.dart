@@ -63,15 +63,16 @@ class _NavbarUIState extends State<NavbarUI> {
             titleSpacing: 10.0,
             actions: [
               IconButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, RouterNames.notifications);
-                  },
-                  icon: state.cartItems.length > 0
-                      ? Icon(Icons.notifications_none_outlined)
-                      : Icon(
-                          Icons.notifications,
-                          color: Colors.green,
-                        )),
+                onPressed: () {
+                  Navigator.pushNamed(context, RouterNames.notifications);
+                },
+                icon: state.cartItems.isEmpty
+                    ? const Icon(Icons.notifications_none_outlined)
+                    : const Icon(
+                        Icons.notifications,
+                        color: Colors.green,
+                      ),
+              ),
               GestureDetector(
                 onTap: () {
                   CustomSnackbar.showCustomSnackbar(
