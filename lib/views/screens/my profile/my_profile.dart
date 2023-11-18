@@ -11,6 +11,7 @@ import '../../components/custom_buttons.dart';
 import '../../components/custom_container.dart';
 import '../../components/custom_links.dart';
 import '../../components/custom_loading.dart';
+import '../../components/custom_snackbar.dart';
 
 class ProfileUI extends StatefulWidget {
   const ProfileUI({super.key});
@@ -31,6 +32,16 @@ class _ProfileUIState extends State<ProfileUI> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: Text(
+                  "My Profile",
+                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
+                ),
+              ),
+            ),
             Container(
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: Row(
@@ -42,7 +53,6 @@ class _ProfileUIState extends State<ProfileUI> {
                 ],
               ),
             ),
-
             Container(
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: Row(
@@ -68,28 +78,71 @@ class _ProfileUIState extends State<ProfileUI> {
                 ],
               ),
             ),
-
             const Divider(
               color: Colors.grey,
               endIndent: 40,
               indent: 40,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: AutoSizeText(
-                "DATA PRIVACY NOTICE: This App Only Takes E-MAIL ID and UserName of User from Google Login Don't Worry Your Data is 100% Safe as a Indian Developer have Designed and Developed this App So, Please Keep Faith & Support Indian Developers for Adding More Advance Features!",
-                color: Colors.grey,
-                fontSize: 15,
-                textAlign: TextAlign.center,
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: Text(
+                  "Settings",
+                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
+                ),
               ),
             ),
+            ListTile(
+              onTap: () {
+                CustomSnackbar.showCustomSnackbar(
+                    context, "Feature Available in 1.1 Version", 2);
+              },
+              title: const Text("Unlock Premium"),
+              subtitle: const Text("Unlock All Resources, Remove Ads."),
+              leading: const Icon(Icons.workspace_premium_sharp),
+            ),
+            ListTile(
+              onTap: () {
+                CustomSnackbar.showCustomSnackbar(
+                    context, "Feature Available in 1.1 Version", 2);
+              },
+              title: const Text("Theme Mode"),
+              subtitle: const Text("Dark / Light"),
+              leading: const Icon(Icons.dark_mode),
+            ),
+            ListTile(
+              onTap: () {
+                CustomSnackbar.showCustomSnackbar(
+                    context, "Feature Available in 1.1 Version", 2);
+              },
+              title: const Text("Clear Cache"),
+              subtitle: const Text("Delete Old Trash Pdf's, Images in App"),
+              leading: const Icon(Icons.delete),
+            ),
+            ListTile(
+              onTap: () {},
+              title: const Text("Donate Developer"),
+              subtitle: const Text("Buy me Coffee / Appreciate Hard Work!"),
+              leading: const Icon(Icons.monetization_on),
+            ),
+            ListTile(
+              onTap: () {
+                launchUrl(
+                    Uri.parse(
+                        'https://www.linkedin.com/in/mridul-vij-31969b160/'),
+                    mode: LaunchMode.externalNonBrowserApplication);
+              },
+              title: const Text("About Developer"),
+              subtitle:
+                  const Text("What is Creatify?, Who developed this App?"),
+              leading: const Icon(Icons.person),
+            ),
             const Divider(
               color: Colors.grey,
               endIndent: 40,
               indent: 40,
             ),
-            //
-
             Column(
               children: [
                 const Text("Follow Us On:",
@@ -148,49 +201,45 @@ class _ProfileUIState extends State<ProfileUI> {
                 ),
               ],
             ),
-            const Divider(
-              color: Colors.grey,
-              endIndent: 40,
-              indent: 40,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: AutoSizeText(
+                "Data Privacy Notice - This App Only Stores UserName & Email ID, We don't take personal phone number of any student / user. As an indian developer we respect our user's privacy policy! ",
+                color: Colors.grey,
+                fontSize: 15,
+                textAlign: TextAlign.center,
+              ),
             ),
-
             Image.asset(
               'assets/images/jmieti_creatify.png',
               color: Colors.black,
-              height: 100,
+              height: 80,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                AutoSizeText(
-                  'COPYRIGHT 2023 - Digi Notes By Creatify',
-                  color: Colors.grey,
-                  fontSize: 10,
+                Padding(
+                  padding: const EdgeInsets.all(0.0),
+                  child: AutoSizeText(
+                    'App Version - Digi Notes 1.0 (Early Access)',
+                    color: Colors.grey,
+                    fontSize: 10,
+                  ),
                 ),
               ],
             ),
-
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              child: Align(
-                alignment: Alignment.topLeft,
-                child: Text(
-                  "Settings",
-                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: AutoSizeText(
+                    'COPYRIGHT 2023 - All Rights Reserved',
+                    color: Colors.grey,
+                    fontSize: 10,
+                  ),
                 ),
-              ),
-            ),
-            const Divider(
-              color: Colors.grey,
-            ),
-            ListTile(
-              onTap: () {},
-              title: const Text("Theme Mode"),
-              subtitle: const Text("Dark / Light"),
-              leading: const Icon(Icons.dark_mode),
-            ),
-            const Divider(
-              color: Colors.grey,
+              ],
             ),
             _isLoading
                 ? const CustomLoading()

@@ -5,6 +5,7 @@ import 'package:digi_notes_2/views/constants/colors/colors.dart';
 import 'package:gap/gap.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../components/custom_snackbar.dart';
 import 'dashboard_ui/dashboard.dart';
 import 'my profile/my_profile.dart';
 import 'road map/road_map.dart';
@@ -32,6 +33,8 @@ class _NavbarUIState extends State<NavbarUI> {
       _currentIndex = index;
     });
     if (_currentIndex == 1) {
+      CustomSnackbar.showCustomSnackbar(
+          context, "Early Access Doesn't Represent Final Feature", 2);
       launchUrl(Uri.parse(Url));
     }
   }
@@ -44,40 +47,45 @@ class _NavbarUIState extends State<NavbarUI> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: ConstColors.whitetext,
+          backgroundColor: ConstColors.lightSky,
           elevation: 0.0,
           title: Text('Hi, ${userData!.displayName}',
               style: const TextStyle(fontSize: 18)),
           titleSpacing: 10.0,
-          // actions: [
-          //   const Gap(1),
-          //   GestureDetector(
-          //     onTap: () {},
-          //     child: Container(
-          //       padding:
-          //           const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-          //       decoration: BoxDecoration(
-          //           borderRadius: BorderRadius.circular(50),
-          //           color: Colors.red[100]),
-          //       child: Row(
-          //         children: [
-          //           energies <= 0
-          //               ? const SizedBox()
-          //               : Text(
-          //                   '${energies}',
-          //                   style: const TextStyle(
-          //                       fontSize: 14, fontWeight: FontWeight.bold),
-          //                 ),
-          //           Image.asset(
-          //             'assets/icons/fire.png',
-          //             height: 40,
-          //           ),
-          //         ],
-          //       ),
-          //     ),
-          //   ),
-          //   const Gap(6),
-          // ],
+          actions: [
+            IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.notifications_none_outlined)),
+            GestureDetector(
+              onTap: () {
+                CustomSnackbar.showCustomSnackbar(
+                    context, "Feature Available in 1.1 Version", 2);
+              },
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: Colors.red[100]),
+                child: Row(
+                  children: [
+                    energies <= 0
+                        ? const SizedBox()
+                        : Text(
+                            '${energies}',
+                            style: const TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.bold),
+                          ),
+                    Image.asset(
+                      'assets/icons/fire.png',
+                      height: 40,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const Gap(6),
+          ],
         ),
         body: screenList[_currentIndex],
         bottomNavigationBar: _bottomNavigationbar());
@@ -85,6 +93,7 @@ class _NavbarUIState extends State<NavbarUI> {
 
   Widget _bottomNavigationbar() {
     return BottomNavigationBar(
+      backgroundColor: ConstColors.lightSky,
       currentIndex: _currentIndex,
       onTap: _onTabTapped,
       showSelectedLabels: true,

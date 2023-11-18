@@ -49,12 +49,15 @@ class CustomContainer extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                  Text(
-                    title,
-                    style: TextStyle(
-                        color: ConstColors.primaryColor,
-                        fontSize: 28,
-                        fontWeight: FontWeight.w300),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Text(
+                      title,
+                      style: TextStyle(
+                          color: textColor,
+                          fontSize: 28,
+                          fontWeight: FontWeight.w300),
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),

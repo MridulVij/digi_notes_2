@@ -386,7 +386,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                       }
                     },
                     child: CustomContainer(
-                        boxColor: ConstColors.lightSky,
+                        boxColor: ConstColors.primaryColor,
                         textColor: ConstColors.whitetext,
                         inRow: true,
                         child: CustomButton(

@@ -10,8 +10,16 @@ class FirebaseNotifications {
   }
 }
 
-Future<void> backgroundNotifications(RemoteMessage message) async {
+List<Map<String, dynamic>> LM = [];
+Future<List<Map<String, dynamic>>> backgroundNotifications(
+    RemoteMessage message) async {
   print('${message.notification?.title}');
   print('${message.notification?.body}');
   print('${message.data}');
+  LM.add({
+    "title": message.notification?.title,
+    "subtitle": message.notification?.body,
+    "data": message.data,
+  });
+  return LM;
 }

@@ -109,6 +109,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'providers/auth_providers.dart';
+import 'providers/notification_provider.dart';
 import 'utils/notifications_services.dart';
 import 'views/constants/colors/consts.dart';
 
@@ -127,12 +128,14 @@ class MainApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => GoogleSignInProvider()),
-        // ChangeNotifierProvider(create: (context) => InternetProvider()),
+        ChangeNotifierProvider(create: (context) => NotificationProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Digi Notes',
         theme: ThemeData(
+          primarySwatch: Colors.blue,
+          primaryColor: Colors.blue,
           useMaterial3: true,
           textTheme: TextTheme(),
           scaffoldBackgroundColor: ConstColors.whitetext,
