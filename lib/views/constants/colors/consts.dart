@@ -18,4 +18,5 @@ class RouterNames {
   static const dsa = 'dsa';
   static const dev = 'dev';
   static const notifications = 'notifications';
+  static const donate = 'donate';
 }

@@ -12,6 +12,7 @@ import 'package:digi_notes_2/views/screens/tech%20news/tech_news.dart';
 import 'package:flutter/material.dart';
 
 import '../views/constants/colors/consts.dart';
+import 'donate_developer.dart';
 
 class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -52,6 +53,8 @@ class Routes {
               return const DEVUI();
             case RouterNames.notifications:
               return NotificationUI();
+            case RouterNames.donate:
+              return Donate();
             default:
               return const Scaffold(
                 body: Center(

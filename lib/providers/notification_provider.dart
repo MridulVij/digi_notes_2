@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class NotificationProvider extends ChangeNotifier {
   List<Map<String, dynamic>> cartItems = [];
 
-  void addItemsInCart() async {
+  Future<void> addItemsInCart() async {
     Future<List<Map<String, dynamic>>> result =
         backgroundNotifications(RemoteMessage());
     for (var output in await result) {

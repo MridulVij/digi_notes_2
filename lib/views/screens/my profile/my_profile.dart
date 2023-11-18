@@ -121,7 +121,9 @@ class _ProfileUIState extends State<ProfileUI> {
               leading: const Icon(Icons.delete),
             ),
             ListTile(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, RouterNames.donate);
+              },
               title: const Text("Donate Developer"),
               subtitle: const Text("Buy me Coffee / Appreciate Hard Work!"),
               leading: const Icon(Icons.monetization_on),

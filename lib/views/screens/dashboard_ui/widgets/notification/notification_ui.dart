@@ -14,11 +14,11 @@ class NotificationUI extends StatefulWidget {
 }
 
 class _NotificationUIState extends State<NotificationUI> {
-  int notificationCount = 0;
   @override
   Widget build(BuildContext context) {
     return Consumer<NotificationProvider>(
       builder: (context, state, child) {
+        int notificationCount = state.cartItems.length;
         return Scaffold(
           appBar: CustomAppBar(
             height: 120,
@@ -53,19 +53,29 @@ class _NotificationUIState extends State<NotificationUI> {
                     )
                   ],
                 ),
-                TextButton(
-                    onPressed: () {
-                      Provider.of<NotificationProvider>(context, listen: false)
-                          .removeAllItemsFromCart();
-                    },
-                    child: Text("Clear All Notifications"))
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextButton(
+                        onPressed: () {
+                          Provider.of<NotificationProvider>(context,
+                                  listen: false)
+                              .removeAllItemsFromCart();
+                        },
+                        child: Text(
+                          "Clear All Notifications",
+                          style: TextStyle(color: ConstColors.primaryColor),
+                        )),
+                  ],
+                )
               ],
             ),
           ),
           body: ListView.builder(
             itemCount: state.cartItems.length,
             itemBuilder: (context, index) {
-              var title = state.cartItems[index];
+              Map<String, dynamic> title =
+                  state.cartItems[index] as Map<String, dynamic>;
               return Container(
                 margin: EdgeInsets.all(4),
                 decoration: BoxDecoration(

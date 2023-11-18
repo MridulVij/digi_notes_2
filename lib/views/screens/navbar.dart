@@ -31,7 +31,7 @@ class _NavbarUIState extends State<NavbarUI> {
   @override
   void initState() {
     super.initState();
-    context.read<NotificationProvider>().addItemsInCart();
+    // context.read<NotificationProvider>().addItemsInCart();
   }
 
   final String Url = "https://www.javatpoint.com/";
@@ -62,17 +62,19 @@ class _NavbarUIState extends State<NavbarUI> {
                 style: const TextStyle(fontSize: 18)),
             titleSpacing: 10.0,
             actions: [
-              IconButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, RouterNames.notifications);
-                },
-                icon: state.cartItems.isEmpty
-                    ? const Icon(Icons.notifications_none_outlined)
-                    : const Icon(
-                        Icons.notifications,
-                        color: Colors.green,
-                      ),
-              ),
+              // Notifications
+
+              // IconButton(
+              //   onPressed: () {
+              //     Navigator.pushNamed(context, RouterNames.notifications);
+              //   },
+              //   icon: state.cartItems.isEmpty
+              //       ? const Icon(Icons.notifications_none_outlined)
+              //       : const Icon(
+              //           Icons.notifications,
+              //           color: Colors.green,
+              //         ),
+              // ),
               GestureDetector(
                 onTap: () {
                   CustomSnackbar.showCustomSnackbar(
