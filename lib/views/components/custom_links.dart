@@ -6,4 +6,6 @@ class SocialMediaLinks {
   static const String youtube = "https://www.youtube.com/@creatifyappsstore";
   // static const String threads = "https://www.threads.net/@mvismad_official";
   // static const String facebook = "https://www.facebook.com/mvismad";
+  static const String whatsapp =
+      "https://whatsapp.com/channel/0029Va9SXXV3GJOufFVbuJ1x";
 }

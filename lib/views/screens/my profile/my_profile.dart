@@ -113,6 +113,17 @@ class _ProfileUIState extends State<ProfileUI> {
                     ),
                     IconButton(
                       onPressed: () {
+                        Uri uri = Uri.parse(SocialMediaLinks.youtube);
+                        launchUrl(uri,
+                            mode: LaunchMode.externalNonBrowserApplication);
+                      },
+                      icon: Image.asset(
+                        'assets/icons/wtsp.png',
+                        height: 42,
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () {
                         Uri uri = Uri.parse(SocialMediaLinks.telegram);
                         launchUrl(uri,
                             mode: LaunchMode.externalNonBrowserApplication);
