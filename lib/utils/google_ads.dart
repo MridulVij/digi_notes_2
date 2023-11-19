@@ -5,9 +5,9 @@ class GoogleAds {
   static RewardedAd? rewardedAd;
   int rewardedAttempts = 0;
 
-  void createRewardedAd() {
+  void initRewardedAd() {
     RewardedAd.load(
-      adUnitId: 'ca-app-pub-5498431563071990/1780688864',
+      adUnitId: 'ca-app-pub-5498431563071990/5553987697',
       request: const AdRequest(),
       rewardedAdLoadCallback: RewardedAdLoadCallback(
         onAdLoaded: (ad) {
@@ -22,14 +22,14 @@ class GoogleAds {
           }
 
           if (rewardedAttempts <= 5) {
-            createRewardedAd();
+            initRewardedAd();
           }
         },
       ),
     );
   }
 
-  showInterstitialAd() {
+  showRewardedAd() {
     if (rewardedAd == null) {
       if (kDebugMode) {
         print('trying to show before loading');
@@ -40,14 +40,14 @@ class GoogleAds {
       onAdShowedFullScreenContent: (ad) => print('ad showed $ad'),
       onAdDismissedFullScreenContent: (ad) {
         ad.dispose();
-        createRewardedAd();
+        initRewardedAd();
       },
       onAdFailedToShowFullScreenContent: (ad, error) {
         ad.dispose();
         if (kDebugMode) {
           print('failed to show the ad $ad');
         }
-        createRewardedAd();
+        initRewardedAd();
       },
     );
     rewardedAd!.show(
