@@ -212,11 +212,11 @@ class _ProfileUIState extends State<ProfileUI> {
                 textAlign: TextAlign.center,
               ),
             ),
-            Image.asset(
-              'assets/images/jmieti_creatify.png',
-              color: Colors.black,
-              height: 80,
-            ),
+            // Image.asset(
+            //   'assets/images/jmieti_creatify.png',
+            //   color: Colors.black,
+            //   height: 80,
+            // ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
