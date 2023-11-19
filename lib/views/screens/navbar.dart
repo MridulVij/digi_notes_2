@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:digi_notes_2/views/constants/colors/consts.dart';
 import 'package:digi_notes_2/views/screens/tech%20news/tech_news.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,6 +8,7 @@ import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../providers/emoji_provider.dart';
 import '../../providers/notification_provider.dart';
 import '../components/custom_snackbar.dart';
 import 'dashboard_ui/dashboard.dart';
@@ -28,11 +30,6 @@ class _NavbarUIState extends State<NavbarUI> {
     const RoadMapUI(),
     const ProfileUI(),
   ];
-  @override
-  void initState() {
-    super.initState();
-    // context.read<NotificationProvider>().addItemsInCart();
-  }
 
   final String Url = "https://www.javatpoint.com/";
 
@@ -56,25 +53,29 @@ class _NavbarUIState extends State<NavbarUI> {
     return Consumer<NotificationProvider>(
       builder: (context, state, child) => Scaffold(
           appBar: AppBar(
-            backgroundColor: ConstColors.lightSky,
+            backgroundColor: ConstColors.whitetext,
             elevation: 0.0,
-            title: Text('😊Hi, ${userData!.displayName}',
-                style: const TextStyle(fontSize: 18)),
+            title: Row(
+              children: [
+                Text('😉 Hi, ${userData!.displayName}',
+                    style: const TextStyle(fontSize: 18)),
+              ],
+            ),
             titleSpacing: 10.0,
             actions: [
               // Notifications
 
-              // IconButton(
-              //   onPressed: () {
-              //     Navigator.pushNamed(context, RouterNames.notifications);
-              //   },
-              //   icon: state.cartItems.isEmpty
-              //       ? const Icon(Icons.notifications_none_outlined)
-              //       : const Icon(
-              //           Icons.notifications,
-              //           color: Colors.green,
-              //         ),
-              // ),
+              IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, RouterNames.notifications);
+                },
+                icon: state.cartItems.isEmpty
+                    ? const Icon(Icons.notifications_none_outlined)
+                    : const Icon(
+                        Icons.notifications,
+                        color: Colors.green,
+                      ),
+              ),
               GestureDetector(
                 onTap: () {
                   CustomSnackbar.showCustomSnackbar(
@@ -113,13 +114,13 @@ class _NavbarUIState extends State<NavbarUI> {
 
   Widget _bottomNavigationbar() {
     return BottomNavigationBar(
-      backgroundColor: ConstColors.lightSky,
+      backgroundColor: ConstColors.whitetext,
       currentIndex: _currentIndex,
       onTap: _onTabTapped,
       showSelectedLabels: true,
       showUnselectedLabels: true,
       unselectedItemColor: ConstColors.lightGrey,
-      selectedItemColor: ConstColors.primaryColor,
+      selectedItemColor: Colors.black,
       type: BottomNavigationBarType.fixed,
       iconSize: 18.5,
       unselectedFontSize: 10,

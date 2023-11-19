@@ -109,6 +109,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'providers/auth_providers.dart';
+import 'providers/detail_fetch_provider.dart';
 import 'providers/notification_provider.dart';
 import 'utils/notifications_services.dart';
 import 'views/constants/colors/consts.dart';
@@ -129,11 +130,17 @@ class MainApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => GoogleSignInProvider()),
         ChangeNotifierProvider(create: (context) => NotificationProvider()),
+        ChangeNotifierProvider(create: (context) => DetailFetchProvider())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Digi Notes',
         theme: ThemeData(
+          appBarTheme: AppBarTheme(
+            elevation: 0.0,
+            surfaceTintColor: Colors.grey[200],
+            // backgroundColor: Colors.white,
+          ),
           primarySwatch: Colors.blue,
           primaryColor: Colors.blue,
           useMaterial3: true,

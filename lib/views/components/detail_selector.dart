@@ -3,7 +3,9 @@ import 'package:digi_notes_2/views/components/result_screen.dart';
 import 'package:digi_notes_2/views/constants/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:provider/provider.dart';
 import '../../data/api/detail_fetcher.dart';
+import '../../providers/detail_fetch_provider.dart';
 import '../../providers/internet_provider.dart';
 import '../../utils/enums.dart';
 import '../../utils/global_functions.dart';
@@ -26,17 +28,15 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
   var course = Course.nill;
   var semester = Semester.nill;
 
-  DetailFetcher detailFetcher = DetailFetcher();
-  QuerySnapshot? querySnapshot;
-  Future<void> getQuestionPapers(String path) async {
-    // Specify the path to the collection
-    CollectionReference questionPapersCollection =
-        await FirebaseFirestore.instance.collection(path);
-
-    // Get documents in the collection
-    querySnapshot = await questionPapersCollection.get();
-    setState(() {});
-  }
+  // QuerySnapshot? querySnapshot;
+  // Future<void> getQuestionPapers(String path) async {
+  //   // Specify the path to the collection
+  //   CollectionReference questionPapersCollection =
+  //       await FirebaseFirestore.instance.collection(path);
+  //   // Get documents in the collection
+  //   querySnapshot = await questionPapersCollection.get();
+  //   setState(() {});
+  // }
 
   String base = "question_papers";
   String sess = "";
@@ -361,14 +361,16 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                         if (result) {
                           print(queryUrl);
                           // api fetching start
-                          await getQuestionPapers(queryUrl);
+                          await Provider.of<DetailFetchProvider>(context,
+                                  listen: false)
+                              .getQuestionPapers(queryUrl);
                           String pathShower =
                               globalFunctions.removeFirstPath(queryUrl);
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => ResultScreen(
-                                querySnapshot: querySnapshot,
+                                // querySnapshot:
                                 queryPath: pathShower,
                               ),
                             ),

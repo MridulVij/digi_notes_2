@@ -19,19 +19,11 @@ class _RoadMapUIState extends State<RoadMapUI> {
     'Angular.js',
     'Node.js'
   ];
-  List<String> logoImageLink = [
-    'https://storage.googleapis.com/cms-storage-bucket/70760bf1e88b184bb1bc.png',
-    'https://storage.googleapis.com/cms-storage-bucket/70760bf1e88b184bb1bc.png',
-    'https://storage.googleapis.com/cms-storage-bucket/70760bf1e88b184bb1bc.png',
-    'https://storage.googleapis.com/cms-storage-bucket/70760bf1e88b184bb1bc.png',
-    'https://storage.googleapis.com/cms-storage-bucket/70760bf1e88b184bb1bc.png',
-    'https://storage.googleapis.com/cms-storage-bucket/70760bf1e88b184bb1bc.png',
-    'https://storage.googleapis.com/cms-storage-bucket/70760bf1e88b184bb1bc.png',
-    'https://storage.googleapis.com/cms-storage-bucket/70760bf1e88b184bb1bc.png'
-  ];
+  List<String> logoImageLink = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[200],
       body: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2, // You can change this value based on your needs
@@ -41,14 +33,14 @@ class _RoadMapUIState extends State<RoadMapUI> {
         itemCount: 6,
         itemBuilder: (context, index) {
           return CustomContainer(
-            boxColor: ConstColors.lightSky,
+            boxColor: ConstColors.whitetext,
             child: Image.network(
               logoImageLink[index],
               fit: BoxFit.cover,
               height: 100,
             ),
             inRow: false,
-            textColor: ConstColors.lightGrey,
+            textColor: Colors.black,
             title: technologyName[index],
           );
         },

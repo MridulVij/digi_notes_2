@@ -49,7 +49,9 @@ class _ProfileUIState extends State<ProfileUI> {
                 children: [
                   ClipRRect(
                       borderRadius: BorderRadius.circular(100),
-                      child: Image.network(userData!.photoURL!)),
+                      child: userData!.photoURL!.isNotEmpty
+                          ? Image.network(userData!.photoURL!)
+                          : Icon(Icons.account_circle)),
                 ],
               ),
             ),
@@ -217,6 +219,30 @@ class _ProfileUIState extends State<ProfileUI> {
             //   color: Colors.black,
             //   height: 80,
             // ),
+
+            _isLoading
+                ? const CustomLoading()
+                : GestureDetector(
+                    onTap: () async {
+                      setState(() {
+                        _isLoading = true;
+                      });
+                      final provider = Provider.of<GoogleSignInProvider>(
+                          context,
+                          listen: false);
+                      await provider.logOut();
+                      setState(() {
+                        _isLoading = false;
+                      });
+                    },
+                    child: CustomContainer(
+                        title: "Log Out  ",
+                        boxColor: Colors.red,
+                        inRow: true,
+                        textColor: Colors.white,
+                        child:
+                            Icon(Icons.logout, color: Colors.white, size: 20)),
+                  ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -243,29 +269,6 @@ class _ProfileUIState extends State<ProfileUI> {
                 ),
               ],
             ),
-            _isLoading
-                ? const CustomLoading()
-                : GestureDetector(
-                    onTap: () async {
-                      setState(() {
-                        _isLoading = true;
-                      });
-                      final provider = Provider.of<GoogleSignInProvider>(
-                          context,
-                          listen: false);
-                      await provider.logOut();
-                      setState(() {
-                        _isLoading = false;
-                      });
-                    },
-                    child: CustomContainer(
-                        title: "Log Out  ",
-                        boxColor: Colors.red,
-                        inRow: true,
-                        textColor: Colors.white,
-                        child:
-                            Icon(Icons.logout, color: Colors.white, size: 20)),
-                  ),
           ],
         ),
       ),

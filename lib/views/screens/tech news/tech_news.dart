@@ -26,7 +26,7 @@ class _TechNewsUIState extends State<TechNewsUI> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: ConstColors.primaryColor,
+        backgroundColor: const Color.fromARGB(255, 122, 122, 122),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

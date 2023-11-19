@@ -21,6 +21,7 @@ class _NotificationUIState extends State<NotificationUI> {
         int notificationCount = state.cartItems.length;
         return Scaffold(
           appBar: CustomAppBar(
+            appBarColor: Colors.grey[200],
             height: 120,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,7 +31,7 @@ class _NotificationUIState extends State<NotificationUI> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CustomButton(
-                        iconBackgroundColor: ConstColors.primaryColor,
+                        iconBackgroundColor: Colors.black,
                         icon: Icons.arrow_back_rounded,
                         iconColor: ConstColors.whitetext,
                         onPress: () {
@@ -46,7 +47,7 @@ class _NotificationUIState extends State<NotificationUI> {
                                 ? "${notificationCount.toString()} Notification"
                                 : "${notificationCount.toString()} Notification's",
                         style: TextStyle(
-                            color: ConstColors.primaryColor,
+                            color: Colors.black,
                             fontSize: 40,
                             fontWeight: FontWeight.w300),
                       ),
@@ -64,7 +65,7 @@ class _NotificationUIState extends State<NotificationUI> {
                         },
                         child: Text(
                           "Clear All Notifications",
-                          style: TextStyle(color: ConstColors.primaryColor),
+                          style: TextStyle(color: Colors.black),
                         )),
                   ],
                 )
