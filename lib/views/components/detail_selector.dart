@@ -344,7 +344,6 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                       ],
                     ),
                   ),
-                  //
                   InkWell(
                     onTap: () async {
                       String queryUrl = base + sess + univrsty + corse + sem;
