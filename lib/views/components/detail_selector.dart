@@ -51,7 +51,6 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
   }
 
   GlobalFunctions globalFunctions = GlobalFunctions();
-
   InternetProvider internetProvider = InternetProvider();
   @override
   Widget build(BuildContext context) {
@@ -362,14 +361,13 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                           // api fetching start
                           await Provider.of<DetailFetchProvider>(context,
                                   listen: false)
-                              .getQuestionPapers(queryUrl);
+                              .collectionFetchApi(queryUrl);
                           String pathShower =
                               globalFunctions.removeFirstPath(queryUrl);
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => ResultScreen(
-                                // querySnapshot:
                                 queryPath: pathShower,
                               ),
                             ),
@@ -387,16 +385,17 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                       }
                     },
                     child: CustomContainer(
-                        boxColor: ConstColors.primaryColor,
-                        textColor: ConstColors.whitetext,
-                        inRow: true,
-                        child: CustomButton(
-                          iconBackgroundColor: ConstColors.whitetext,
-                          icon: Icons.search,
-                          radius: 20,
-                          iconColor: ConstColors.primaryColor,
-                        ),
-                        title: "Search"),
+                      boxColor: ConstColors.primaryColor,
+                      textColor: ConstColors.whitetext,
+                      inRow: true,
+                      child: CustomButton(
+                        iconBackgroundColor: ConstColors.whitetext,
+                        icon: Icons.search,
+                        radius: 20,
+                        iconColor: ConstColors.primaryColor,
+                      ),
+                      title: "Search",
+                    ),
                   )
                 ],
               ),

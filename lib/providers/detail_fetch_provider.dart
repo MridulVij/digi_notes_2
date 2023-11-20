@@ -3,12 +3,23 @@ import 'package:flutter/material.dart';
 
 class DetailFetchProvider extends ChangeNotifier {
   QuerySnapshot? querySnapshot;
-  Future<void> getQuestionPapers(String path) async {
+  Future<void> collectionFetchApi(String path) async {
     // Specify the path to the collection
     CollectionReference questionPapersCollection =
         await FirebaseFirestore.instance.collection(path);
     // Get documents in the collection
     querySnapshot = await questionPapersCollection.get();
+    notifyListeners();
+  }
+
+  DocumentSnapshot? documentSnapshot;
+  Future<void> documentFetchApi(String path) async {
+    // Specify the path to the collection
+    DocumentReference<Map<String, dynamic>> questionPapersCollection =
+        await FirebaseFirestore.instance.collection(path).doc();
+    // Get documents in the collection
+    // problem here
+    documentSnapshot = questionPapersCollection.get();
     notifyListeners();
   }
 }
