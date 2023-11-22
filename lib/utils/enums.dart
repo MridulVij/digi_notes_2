@@ -28,4 +28,4 @@ enum Semester {
   one,
 }
 
-enum Resource { nill, timetable, syllabus, notes, pyqp }
+enum Resource { nill, timetable, syllabus, notes, sessionals, pyqp }

@@ -27,7 +27,7 @@ class _NavbarUIState extends State<NavbarUI> {
   List<Widget> screenList = [
     const DashboardUI(),
     const TechNewsUI(),
-    const RoadMapUI(),
+    // const RoadMapUI(),
     const ProfileUI(),
   ];
 

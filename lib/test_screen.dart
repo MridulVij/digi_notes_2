@@ -15,7 +15,9 @@ class TestScreen extends StatefulWidget {
 }
 
 class _TestScreenState extends State<TestScreen> {
-  ////
+  final CollectionReference paths = FirebaseFirestore.instance
+      .collection('main_data/2022/KUK/CSE/7th/Notes/oose');
+
   bool isPNG = false;
   bool isPDF = false;
   void checkFileExtension(String url) {
@@ -26,16 +28,12 @@ class _TestScreenState extends State<TestScreen> {
     print('.pdf found: $isPDF');
   }
 
-////
   bool checkFileType(String input, String fileType) {
     String lowercaseInput = input.toLowerCase();
     String lowercaseFileType = fileType.toLowerCase();
     return lowercaseInput.contains(lowercaseFileType);
   }
 
-////
-  final CollectionReference paths = FirebaseFirestore.instance
-      .collection('main_data/2022/KUK/CSE/7th/Notes/oose');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,7 +74,7 @@ class _TestScreenState extends State<TestScreen> {
           } else {
             return Center(
                 child: Container(
-              color: const Color.fromARGB(182, 0, 0, 0),
+              color: Color.fromARGB(125, 0, 0, 0),
               child: const CustomLoading(),
             ));
           }
@@ -125,23 +123,24 @@ class CustomResultBox extends StatelessWidget {
                 ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            // mainAxisAlignment: MainAxisAlignment.,
             children: [
-              Text(
-                ' $title',
-                style: const TextStyle(fontSize: 15),
-                softWrap: true,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
+              Padding(
+                padding: const EdgeInsets.only(top: 6),
+                child: Text(
+                  ' $title',
+                  style: const TextStyle(fontSize: 15),
+                  softWrap: true,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                // mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  const Gap(140),
+                  const Gap(190),
                   IconButton(
-                    icon: const Icon(
-                      Icons.remove_red_eye,
-                      size: 18,
-                    ),
+                    icon: Icon(Icons.remove_red_eye, size: 18),
                     onPressed: () {
                       print("View File");
                       Navigator.push(
@@ -156,23 +155,26 @@ class CustomResultBox extends StatelessWidget {
                       );
                     },
                   ),
+                  // IconButton(
+                  //   icon: const Icon(
+                  //     Icons.download,
+                  //     size: 18,
+                  //   ),
+                  //   onPressed: () {
+                  //     print("Download File");
+                  //   },
+                  // ),
                   IconButton(
-                    icon: const Icon(
-                      Icons.download,
-                      size: 18,
-                    ),
-                    onPressed: () {
-                      print("Download File");
-                    },
-                  ),
-                  IconButton(
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.share,
                       size: 18,
+                      // color: ConstColors.primaryColor,
                     ),
                     onPressed: () {
+                      String appLink = "";
                       print("Share File");
-                      Share.share(url, subject: 'Download Link:');
+                      Share.share(
+                          "File Download Link: ${url}\n\nWant More Resources?\nDownload Digi Notes App Specially Designed for Your College!\nApp Download Link:\n${appLink}");
                     },
                   ),
                 ],
@@ -184,6 +186,3 @@ class CustomResultBox extends StatelessWidget {
     );
   }
 }
-
-//
-

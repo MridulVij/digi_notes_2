@@ -2,24 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class DetailFetchProvider extends ChangeNotifier {
-  QuerySnapshot? querySnapshot;
+  CollectionReference? products;
   Future<void> collectionFetchApi(String path) async {
-    // Specify the path to the collection
-    CollectionReference questionPapersCollection =
-        await FirebaseFirestore.instance.collection(path);
-    // Get documents in the collection
-    querySnapshot = await questionPapersCollection.get();
+    products = FirebaseFirestore.instance.collection(path);
     notifyListeners();
   }
-
-  // DocumentSnapshot? documentSnapshot;
-  // Future<void> documentFetchApi(String path) async {
-  //   // Specify the path to the collection
-  //   DocumentReference<Map<String, dynamic>> questionPapersCollection =
-  //       await FirebaseFirestore.instance.collection(path).doc();
-  //   // Get documents in the collection
-  //   // problem here
-  //   documentSnapshot = questionPapersCollection.get();
-  //   notifyListeners();
-  // }
 }
