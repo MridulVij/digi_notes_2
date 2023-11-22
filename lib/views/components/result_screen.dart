@@ -26,11 +26,6 @@ class _ResultScreenState extends State<ResultScreen> {
   // App Bar Selector!
   var resource = Resource.pyqp;
 
-  void testFetch() {
-    CollectionReference _products = FirebaseFirestore.instance
-        .collection('main_data/2022/KUK/CSE/7th/Notes/oose');
-  }
-
   bool isPNG = false;
   bool isPDF = false;
   void checkFileExtension(String url) {
@@ -49,6 +44,7 @@ class _ResultScreenState extends State<ResultScreen> {
 
   @override
   Widget build(BuildContext context) {
+    DocumentSnapshot? documentSnapshot;
     return Consumer<DetailFetchProvider>(
       builder: (context, state, child) => Scaffold(
         appBar: CustomAppBar(
@@ -195,9 +191,8 @@ class _ResultScreenState extends State<ResultScreen> {
               return ListView.builder(
                 itemCount: asyncSnapshot.data!.docs.length,
                 itemBuilder: (context, index) {
-                  final DocumentSnapshot documentSnapshot =
-                      asyncSnapshot.data!.docs[index];
-                  checkFileExtension(documentSnapshot['u']);
+                  documentSnapshot = asyncSnapshot.data!.docs[index];
+                  // checkFileExtension(documentSnapshot['u']);
                   return InkWell(
                     splashColor: Colors.grey[350],
                     onTap: () {
@@ -206,17 +201,17 @@ class _ResultScreenState extends State<ResultScreen> {
                         MaterialPageRoute(
                           builder: (context) => isPDF
                               ? PdfViewer(
-                                  path: documentSnapshot['u'],
+                                  path: documentSnapshot!['u'],
                                 )
                               : ImageViewer(
-                                  imageUrls: [documentSnapshot['u']],
+                                  imageUrls: [documentSnapshot!['u']],
                                   initialIndex: 0),
                         ),
                       );
                     },
                     child: CustomResultBox(
-                      title: documentSnapshot['t'],
-                      url: documentSnapshot['u'],
+                      title: documentSnapshot!['t'],
+                      url: documentSnapshot!['u'],
                       isPdf: isPDF,
                     ),
                   );
