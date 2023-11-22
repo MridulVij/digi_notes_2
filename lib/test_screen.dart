@@ -1,7 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
+import 'package:gap/gap.dart';
+import 'package:share_plus/share_plus.dart';
 import 'views/components/custom_loading.dart';
+import 'views/components/image_viewer.dart';
+import 'views/components/pdf_viewer.dart';
 import 'views/constants/colors/colors.dart';
 
 class TestScreen extends StatefulWidget {
@@ -12,18 +15,6 @@ class TestScreen extends StatefulWidget {
 }
 
 class _TestScreenState extends State<TestScreen> {
-  @override
-  void initState() {
-    super.initState();
-    fetchData();
-  }
-
-  // CollectionReference? paths;
-  void fetchData() {
-    // final CollectionReference paths =
-    //     FirebaseFirestore.instance.collection('test');
-  }
-
   ////
   bool isPNG = false;
   bool isPDF = false;
@@ -58,9 +49,27 @@ class _TestScreenState extends State<TestScreen> {
                 final DocumentSnapshot documentSnapshot =
                     asyncSnapshot.data!.docs[index];
                 checkFileExtension(documentSnapshot['u']);
-                return CustomResultBox(
-                  title: documentSnapshot['t'],
-                  isPdf: isPDF,
+                return InkWell(
+                  splashColor: Colors.grey[350],
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => isPDF
+                            ? PdfViewer(
+                                path: documentSnapshot['u'],
+                              )
+                            : ImageViewer(
+                                imageUrls: [documentSnapshot['u']],
+                                initialIndex: 0),
+                      ),
+                    );
+                  },
+                  child: CustomResultBox(
+                    title: documentSnapshot['t'],
+                    url: documentSnapshot['u'],
+                    isPdf: isPDF,
+                  ),
                 );
               },
             );
@@ -77,62 +86,94 @@ class _TestScreenState extends State<TestScreen> {
   }
 }
 
+// CustomResultBox Widget
 class CustomResultBox extends StatelessWidget {
-  const CustomResultBox({super.key, required this.isPdf, required this.title});
+  const CustomResultBox(
+      {super.key, required this.isPdf, required this.title, required this.url});
   final bool isPdf;
   final String title;
+  final String url;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(5),
-      margin: const EdgeInsets.all(10),
+      padding: const EdgeInsets.all(6),
+      margin: const EdgeInsets.all(6),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              color: ConstColors.lightGrey,
-              blurRadius: 4,
-              offset: const Offset(0, 2),
-            )
-          ],
-          color: Colors.white),
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: ConstColors.lightGrey,
+            blurRadius: 4,
+            offset: const Offset(0, 2),
+          )
+        ],
+        color: Colors.white,
+      ),
       child: Row(
         children: [
           isPdf
               ? const Icon(
                   Icons.picture_as_pdf_rounded,
                   color: Colors.red,
-                  size: 80,
+                  size: 60,
                 )
               : const Icon(
                   Icons.photo_library_rounded,
                   color: Colors.blue,
-                  size: 80,
+                  size: 60,
                 ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                title,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                ),
+                ' $title',
+                style: const TextStyle(fontSize: 15),
+                softWrap: true,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
+                  const Gap(140),
                   IconButton(
-                    icon: const Icon(Icons.remove_red_eye),
-                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.remove_red_eye,
+                      size: 18,
+                    ),
+                    onPressed: () {
+                      print("View File");
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => isPdf
+                              ? PdfViewer(
+                                  path: url,
+                                )
+                              : ImageViewer(imageUrls: [url], initialIndex: 0),
+                        ),
+                      );
+                    },
                   ),
                   IconButton(
-                    icon: const Icon(Icons.download),
-                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.download,
+                      size: 18,
+                    ),
+                    onPressed: () {
+                      print("Download File");
+                    },
                   ),
                   IconButton(
-                    icon: const Icon(Icons.share),
-                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.share,
+                      size: 18,
+                    ),
+                    onPressed: () {
+                      print("Share File");
+                      Share.share(url, subject: 'Download Link:');
+                    },
                   ),
                 ],
               ),
