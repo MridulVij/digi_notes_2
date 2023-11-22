@@ -34,8 +34,8 @@ class Routes {
           switch (settings.name) {
             case RouterNames.dashboard:
               return const DashboardUI();
-            case RouterNames.detail_selector:
-              return const DetailSelectorUI();
+            // case RouterNames.detail_selector:
+            // return const DetailSelectorUI();
 
             case RouterNames.sign_in_screen:
               return SignInUI();

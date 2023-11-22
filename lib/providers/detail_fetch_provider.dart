@@ -12,14 +12,14 @@ class DetailFetchProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  DocumentSnapshot? documentSnapshot;
-  Future<void> documentFetchApi(String path) async {
-    // Specify the path to the collection
-    DocumentReference<Map<String, dynamic>> questionPapersCollection =
-        await FirebaseFirestore.instance.collection(path).doc();
-    // Get documents in the collection
-    // problem here
-    documentSnapshot = questionPapersCollection.get();
-    notifyListeners();
-  }
+  // DocumentSnapshot? documentSnapshot;
+  // Future<void> documentFetchApi(String path) async {
+  //   // Specify the path to the collection
+  //   DocumentReference<Map<String, dynamic>> questionPapersCollection =
+  //       await FirebaseFirestore.instance.collection(path).doc();
+  //   // Get documents in the collection
+  //   // problem here
+  //   documentSnapshot = questionPapersCollection.get();
+  //   notifyListeners();
+  // }
 }

@@ -111,7 +111,9 @@ import 'package:provider/provider.dart';
 import 'providers/auth_providers.dart';
 import 'providers/detail_fetch_provider.dart';
 import 'providers/notification_provider.dart';
+import 'test_screen.dart';
 import 'utils/notifications_services.dart';
+import 'views/components/result_screen.dart';
 import 'views/constants/colors/consts.dart';
 
 void main() async {
@@ -147,8 +149,9 @@ class MainApp extends StatelessWidget {
           textTheme: TextTheme(),
           scaffoldBackgroundColor: ConstColors.whitetext,
         ),
-        initialRoute: RouterNames.splash_screen,
-        onGenerateRoute: Routes.generateRoute,
+        // initialRoute: RouterNames.splash_screen,
+        // onGenerateRoute: Routes.generateRoute,
+        home: TestScreen(),
       ),
     );
   }
