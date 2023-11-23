@@ -9,6 +9,7 @@ import '../../providers/detail_fetch_provider.dart';
 import '../../providers/internet_provider.dart';
 import '../../utils/enums.dart';
 import '../../utils/global_functions.dart';
+import 'custom_appbar.dart';
 import 'custom_buttons.dart';
 import 'custom_container.dart';
 import 'custom_loading.dart';
@@ -55,6 +56,26 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppBar(
+        appBarColor: Color.fromARGB(255, 242, 251, 255),
+        child: Row(
+          children: [
+            CustomButton(
+                iconBackgroundColor: ConstColors.primaryColor,
+                icon: Icons.arrow_back_rounded,
+                iconColor: ConstColors.whitetext,
+                onPress: () => Navigator.pop(context),
+                radius: 22),
+            Text(
+              'Search Resources',
+              style: TextStyle(
+                  color: ConstColors.primaryColor,
+                  fontSize: 30,
+                  fontWeight: FontWeight.w300),
+            ),
+          ],
+        ),
+      ),
       body: SafeArea(
         child: Stack(
           children: [

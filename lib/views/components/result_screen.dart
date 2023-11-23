@@ -89,7 +89,7 @@ class _ResultScreenState extends State<ResultScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 CustomButton(
                     iconBackgroundColor: ConstColors.primaryColor,
@@ -100,10 +100,10 @@ class _ResultScreenState extends State<ResultScreen> {
                 Padding(
                   padding: const EdgeInsets.all(4.0),
                   child: Text(
-                    'Resources',
+                    'Acadmic Resources',
                     style: TextStyle(
                         color: ConstColors.primaryColor,
-                        fontSize: 40,
+                        fontSize: 30,
                         fontWeight: FontWeight.w300),
                   ),
                 )

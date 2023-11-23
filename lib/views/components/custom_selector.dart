@@ -35,7 +35,7 @@ class _CustomSelectorState extends State<CustomSelector> {
     return GestureDetector(
       onTap: widget.onPress,
       child: Container(
-        height: 50,
+        height: 40,
         decoration: BoxDecoration(
           color: buttonColor,
           boxShadow: [
@@ -67,7 +67,7 @@ class _CustomSelectorState extends State<CustomSelector> {
                 : const EdgeInsets.fromLTRB(8, 0, 8, 0),
             child: Text(' ${widget.titleText} ',
                 style: TextStyle(
-                    fontSize: 10.5,
+                    fontSize: 11.5,
                     fontWeight: FontWeight.w500,
                     color: textColor)),
           ),
