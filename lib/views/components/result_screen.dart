@@ -204,17 +204,17 @@ class _ResultScreenState extends State<ResultScreen> {
                       MaterialPageRoute(
                         builder: (context) => isPDF
                             ? PdfViewer(
-                                path: documentSnapshot!['u'],
+                                path: documentSnapshot['u'],
                               )
                             : ImageViewer(
-                                imageUrls: [documentSnapshot!['u']],
+                                imageUrls: [documentSnapshot['u']],
                                 initialIndex: 0),
                       ),
                     );
                   },
                   child: CustomResultBox(
-                    title: documentSnapshot!['t'],
-                    url: documentSnapshot!['u'],
+                    title: documentSnapshot['t'],
+                    url: documentSnapshot['u'],
                     isPdf: isPDF,
                   ),
                 );
@@ -272,7 +272,6 @@ class CustomResultBox extends StatelessWidget {
                 ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            // mainAxisAlignment: MainAxisAlignment.,
             children: [
               Padding(
                 padding: const EdgeInsets.only(top: 6),
@@ -285,7 +284,6 @@ class CustomResultBox extends StatelessWidget {
                 ),
               ),
               Row(
-                // mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   const Gap(190),
                   IconButton(
