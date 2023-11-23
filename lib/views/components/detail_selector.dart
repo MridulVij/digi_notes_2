@@ -29,16 +29,6 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
   var course = Course.nill;
   var semester = Semester.nill;
 
-  // QuerySnapshot? querySnapshot;
-  // Future<void> getQuestionPapers(String path) async {
-  //   // Specify the path to the collection
-  //   CollectionReference questionPapersCollection =
-  //       await FirebaseFirestore.instance.collection(path);
-  //   // Get documents in the collection
-  //   querySnapshot = await questionPapersCollection.get();
-  //   setState(() {});
-  // }
-
   String base = "main_data";
   String sess = "";
   String univrsty = "";
@@ -365,7 +355,6 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                   InkWell(
                     onTap: () async {
                       String queryUrl = base + sess + univrsty + corse + sem;
-
                       if (queryUrl.isNotEmpty &&
                           base.isNotEmpty &&
                           sess.isNotEmpty &&
@@ -377,8 +366,6 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                             await internetProvider.checkInternetConnectivity();
                         if (result) {
                           print(queryUrl);
-                          // api fetching start
-
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -403,13 +390,13 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                       boxColor: ConstColors.primaryColor,
                       textColor: ConstColors.whitetext,
                       inRow: true,
+                      title: "Search",
                       child: CustomButton(
                         iconBackgroundColor: ConstColors.whitetext,
                         icon: Icons.search,
                         radius: 20,
                         iconColor: ConstColors.primaryColor,
                       ),
-                      title: "Search",
                     ),
                   )
                 ],

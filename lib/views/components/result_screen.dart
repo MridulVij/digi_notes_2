@@ -82,7 +82,7 @@ class _ResultScreenState extends State<ResultScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        appBarColor: Color.fromARGB(255, 242, 251, 255),
+        appBarColor: const Color.fromARGB(255, 242, 251, 255),
         height: 155,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -132,7 +132,7 @@ class _ResultScreenState extends State<ResultScreen> {
                       },
                       titleText: " Prev-Year\nQs'n Papers",
                     ),
-                    Gap(5),
+                    const Gap(5),
                     CustomSelector(
                         backwardIcon: false,
                         centerText: true,
@@ -148,7 +148,7 @@ class _ResultScreenState extends State<ResultScreen> {
                           finalPath = widget.queryPath + sess!;
                         },
                         titleText: "Sessionals"),
-                    Gap(5),
+                    const Gap(5),
                     CustomSelector(
                         backwardIcon: false,
                         centerText: true,
@@ -164,7 +164,7 @@ class _ResultScreenState extends State<ResultScreen> {
                           finalPath = widget.queryPath + nots!;
                         },
                         titleText: "Notes"),
-                    Gap(5),
+                    const Gap(5),
                     CustomSelector(
                         backwardIcon: false,
                         centerText: true,
@@ -180,7 +180,7 @@ class _ResultScreenState extends State<ResultScreen> {
                           finalPath = widget.queryPath + syllbs!;
                         },
                         titleText: "Syllabus"),
-                    Gap(5),
+                    const Gap(5),
                     CustomSelector(
                         backwardIcon: false,
                         centerText: true,
@@ -196,7 +196,7 @@ class _ResultScreenState extends State<ResultScreen> {
                           finalPath = widget.queryPath + tmetble!;
                         },
                         titleText: "Time Table"),
-                    Gap(5),
+                    const Gap(5),
                   ],
                 ),
               ),
@@ -327,7 +327,7 @@ class CustomResultBox extends StatelessWidget {
                 children: [
                   const Gap(190),
                   IconButton(
-                    icon: Icon(Icons.remove_red_eye, size: 18),
+                    icon: const Icon(Icons.remove_red_eye, size: 18),
                     onPressed: () {
                       print("View File");
                       Navigator.push(
@@ -352,7 +352,7 @@ class CustomResultBox extends StatelessWidget {
                   //   },
                   // ),
                   IconButton(
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.share,
                       size: 18,
                     ),
