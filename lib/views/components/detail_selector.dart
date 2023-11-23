@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:digi_notes_2/views/components/result_screen.dart';
 import 'package:digi_notes_2/views/constants/colors/colors.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
@@ -368,7 +369,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                           print(queryUrl);
                           Navigator.push(
                             context,
-                            MaterialPageRoute(
+                            CupertinoPageRoute(
                               builder: (context) => ResultScreen(
                                 queryPath: queryUrl,
                               ),

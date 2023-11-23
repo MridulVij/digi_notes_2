@@ -18,7 +18,7 @@ class _NotificationUIState extends State<NotificationUI> {
   Widget build(BuildContext context) {
     return Consumer<NotificationProvider>(
       builder: (context, state, child) {
-        int notificationCount = state.cartItems.length;
+        // int notificationCount = ;
         return Scaffold(
           appBar: CustomAppBar(
             appBarColor: Colors.grey[200],
@@ -41,11 +41,11 @@ class _NotificationUIState extends State<NotificationUI> {
                     Padding(
                       padding: const EdgeInsets.all(4.0),
                       child: Text(
-                        notificationCount == 0
+                        state.cartItems.length == 0
                             ? "No Notification's"
-                            : notificationCount < 2
-                                ? "${notificationCount.toString()} Notification"
-                                : "${notificationCount.toString()} Notification's",
+                            : state.cartItems.length < 2
+                                ? "${state.cartItems.length.toString()} Notification"
+                                : "${state.cartItems.length.toString()} Notification's",
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: 40,

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:share_plus/share_plus.dart';
@@ -360,7 +361,7 @@ class CustomResultBox extends StatelessWidget {
                       print("View File");
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
+                        CupertinoPageRoute(
                           builder: (context) => isPdf
                               ? PdfViewer(
                                   path: url,

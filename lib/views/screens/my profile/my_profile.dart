@@ -2,11 +2,13 @@ import 'package:digi_notes_2/views/constants/colors/consts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../providers/auth_providers.dart';
+import '../../../utils/notifications_services.dart';
 import '../../components/custom_autotext.dart';
 import '../../components/custom_buttons.dart';
 import '../../components/custom_container.dart';
@@ -103,39 +105,39 @@ class _ProfileUIState extends State<ProfileUI> {
                     context, "Feature Available in 1.1 Version", 2);
               },
               title: const Text("Unlock Premium"),
-              subtitle: const Text("Unlock All Resources, Remove Ads."),
+              subtitle: Text("Unlock All Resources, Remove Ads.",
+                  style: TextStyle(color: ConstColors.lightGrey)),
               leading: const Icon(Icons.workspace_premium_sharp),
             ),
-            Divider(color: ConstColors.lightGrey),
             ListTile(
               onTap: () {
                 CustomSnackbar.showCustomSnackbar(
                     context, "Feature Available in 1.1 Version", 2);
               },
               title: const Text("Theme Mode"),
-              subtitle: const Text("Dark / Light"),
+              subtitle: Text("Dark / Light",
+                  style: TextStyle(color: ConstColors.lightGrey)),
               leading: const Icon(Icons.dark_mode),
             ),
-            Divider(color: ConstColors.lightGrey),
             ListTile(
               onTap: () {
                 CustomSnackbar.showCustomSnackbar(
                     context, "Feature Available in 1.1 Version", 2);
               },
               title: const Text("Clear Cache"),
-              subtitle: const Text("Delete Old Trash Pdf's, Images in App"),
+              subtitle: Text("Delete Old Trash Pdf's, Images in App",
+                  style: TextStyle(color: ConstColors.lightGrey)),
               leading: const Icon(Icons.delete),
             ),
-            Divider(color: ConstColors.lightGrey),
             ListTile(
               onTap: () {
                 Navigator.pushNamed(context, RouterNames.donate);
               },
               title: const Text("Donate Developer"),
-              subtitle: const Text("Buy me Coffee / Appreciate Hard Work!"),
+              subtitle: Text("Buy me Coffee / Appreciate Hard Work!",
+                  style: TextStyle(color: ConstColors.lightGrey)),
               leading: const Icon(Icons.monetization_on),
             ),
-            Divider(color: ConstColors.lightGrey),
             ListTile(
               onTap: () {
                 launchUrl(
@@ -144,25 +146,26 @@ class _ProfileUIState extends State<ProfileUI> {
                     mode: LaunchMode.externalNonBrowserApplication);
               },
               title: const Text("About Developer"),
-              subtitle:
-                  const Text("What is Creatify?, Who developed this App?"),
+              subtitle: Text("What is Creatify?, Who developed this App?",
+                  style: TextStyle(color: ConstColors.lightGrey)),
               leading: const Icon(Icons.person),
             ),
-            Divider(color: ConstColors.lightGrey),
             ListTile(
-              onTap: () {
+              onTap: () async {
                 String appDownloadLink = "";
-                Share.share("App Download Link:\n${appDownloadLink}");
+                await Share.share("App Download Link:\n${appDownloadLink}");
+                await LocalNotifications.showSimpleNotification(
+                    title: "Thanks For Sharing, Digi Notes App!",
+                    body:
+                        "From Now, Our Algorithm will provide you more resources and advance features!",
+                    payload: 'data');
               },
-              title: const Text("Share Digi Notes App"),
-              subtitle: const Text("Share the Apk file with friends!"),
-              leading: const Icon(Icons.person),
+              title: const Text("Share App"),
+              subtitle: Text("Share Digi Notes Apk file with your friends!",
+                  style: TextStyle(color: ConstColors.lightGrey)),
+              leading: const Icon(Icons.share),
             ),
-            const Divider(
-              color: Colors.grey,
-              endIndent: 40,
-              indent: 40,
-            ),
+            const Gap(10),
             Column(
               children: [
                 const Text("Follow Us On:",

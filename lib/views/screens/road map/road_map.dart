@@ -1,9 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:digi_notes_2/views/constants/colors/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import '../../../providers/detail_fetch_provider.dart';
 import '../../components/custom_container.dart';
 
 class RoadMapUI extends StatefulWidget {
@@ -15,12 +11,6 @@ class RoadMapUI extends StatefulWidget {
 
 class _RoadMapUIState extends State<RoadMapUI> {
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
@@ -30,18 +20,19 @@ class _RoadMapUIState extends State<RoadMapUI> {
           crossAxisSpacing: 2.0,
           mainAxisSpacing: 2.0,
         ),
-        // itemCount: titleTxt!.entries.length,
+        itemCount: 3,
         itemBuilder: (context, index) {
-          return CustomContainer(
-            boxColor: ConstColors.whitetext,
-            child: Image.network(
-              "",
-              fit: BoxFit.cover,
-              height: 100,
+          return InkWell(
+            onTap: () {
+              //
+            },
+            child: CustomContainer(
+              boxColor: ConstColors.whitetext,
+              child: Container(),
+              inRow: false,
+              textColor: Colors.black,
+              title: "",
             ),
-            inRow: false,
-            textColor: Colors.black,
-            title: "",
           );
         },
       ),
