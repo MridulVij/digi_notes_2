@@ -202,16 +202,43 @@ class _ResultScreenState extends State<ResultScreen> {
               ),
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                   child: Text(
                     showPath,
                     style: TextStyle(
                         color: ConstColors.primaryColor,
                         fontSize: 12,
                         fontWeight: FontWeight.w300),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: Container(
+                    padding: const EdgeInsets.all(4),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.green[100],
+                    ),
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          'assets/images/live.gif',
+                          height: 15,
+                          width: 15,
+                        ),
+                        const Text(
+                          ' Live Updating',
+                          style: TextStyle(
+                            fontSize: 10,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],

@@ -109,17 +109,14 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'providers/auth_providers.dart';
-import 'providers/detail_fetch_provider.dart';
 import 'providers/notification_provider.dart';
-import 'test_screen.dart';
 import 'utils/notifications_services.dart';
-import 'views/components/result_screen.dart';
 import 'views/constants/colors/consts.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  await FirebaseNotifications().initNotifications();
+  await LocalNotifications.init();
   runApp(const MainApp());
 }
 
@@ -146,12 +143,11 @@ class MainApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           primaryColor: Colors.blue,
           useMaterial3: true,
-          textTheme: TextTheme(),
+          textTheme: const TextTheme(),
           scaffoldBackgroundColor: ConstColors.whitetext,
         ),
         initialRoute: RouterNames.splash_screen,
         onGenerateRoute: Routes.generateRoute,
-        // home: ResultScreen(queryPath: "main_data/2022/KUK/CSE/7th"),
       ),
     );
   }
