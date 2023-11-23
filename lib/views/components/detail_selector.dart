@@ -358,13 +358,11 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                           print(queryUrl);
                           // api fetching start
 
-                          String pathShower =
-                              globalFunctions.removeFirstPath(queryUrl);
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => ResultScreen(
-                                queryPath: pathShower,
+                                queryPath: queryUrl,
                               ),
                             ),
                           );

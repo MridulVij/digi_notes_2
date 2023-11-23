@@ -67,7 +67,7 @@ class _CustomSelectorState extends State<CustomSelector> {
                 : const EdgeInsets.fromLTRB(8, 0, 8, 0),
             child: Text(' ${widget.titleText} ',
                 style: TextStyle(
-                    fontSize: 13.5,
+                    fontSize: 10.5,
                     fontWeight: FontWeight.w500,
                     color: textColor)),
           ),

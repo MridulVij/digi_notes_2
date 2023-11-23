@@ -111,12 +111,12 @@ class _ResultScreenState extends State<ResultScreen> {
             ),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(6),
-                    child: CustomSelector(
+              child: Padding(
+                padding: const EdgeInsets.all(6.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CustomSelector(
                       backwardIcon: false,
                       centerText: true,
                       forwardIcon: false,
@@ -132,10 +132,8 @@ class _ResultScreenState extends State<ResultScreen> {
                       },
                       titleText: " Prev-Year\nQs'n Papers",
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(6),
-                    child: CustomSelector(
+                    Gap(5),
+                    CustomSelector(
                         backwardIcon: false,
                         centerText: true,
                         forwardIcon: false,
@@ -150,10 +148,8 @@ class _ResultScreenState extends State<ResultScreen> {
                           finalPath = widget.queryPath + sess!;
                         },
                         titleText: "Sessionals"),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(6),
-                    child: CustomSelector(
+                    Gap(5),
+                    CustomSelector(
                         backwardIcon: false,
                         centerText: true,
                         forwardIcon: false,
@@ -164,14 +160,12 @@ class _ResultScreenState extends State<ResultScreen> {
                             resource = Resource.notes;
                           });
                           //
-                          nots = "/Notes/oose";
+                          nots = "/Notes/notes";
                           finalPath = widget.queryPath + nots!;
                         },
                         titleText: "Notes"),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(6),
-                    child: CustomSelector(
+                    Gap(5),
+                    CustomSelector(
                         backwardIcon: false,
                         centerText: true,
                         forwardIcon: false,
@@ -182,12 +176,12 @@ class _ResultScreenState extends State<ResultScreen> {
                             resource = Resource.syllabus;
                           });
                           //
+                          syllbs = "/Syllabus/syllabus";
+                          finalPath = widget.queryPath + syllbs!;
                         },
                         titleText: "Syllabus"),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(6),
-                    child: CustomSelector(
+                    Gap(5),
+                    CustomSelector(
                         backwardIcon: false,
                         centerText: true,
                         forwardIcon: false,
@@ -202,8 +196,9 @@ class _ResultScreenState extends State<ResultScreen> {
                           finalPath = widget.queryPath + tmetble!;
                         },
                         titleText: "Time Table"),
-                  )
-                ],
+                    Gap(5),
+                  ],
+                ),
               ),
             ),
             Row(
@@ -215,7 +210,7 @@ class _ResultScreenState extends State<ResultScreen> {
                     showPath,
                     style: TextStyle(
                         color: ConstColors.primaryColor,
-                        fontSize: 15,
+                        fontSize: 12,
                         fontWeight: FontWeight.w300),
                   ),
                 ),
@@ -252,16 +247,23 @@ class _ResultScreenState extends State<ResultScreen> {
                   },
                   child: CustomResultBox(
                     title: documentSnapshot['t'],
-                    url: documentSnapshot['u'],
+                    url: documentSnapshot['u'] ?? "",
                     isPdf: isPDF,
                   ),
                 );
               },
             );
-          } else {
+          }
+          //  else if (asyncSnapshot.hasError) {
+          //   return Center(
+          //     child: Text(
+          //         "No Data Found Please Try Again Later! We are Working on it!"),
+          //   );
+          // }
+          else {
             return Center(
                 child: Container(
-              color: ConstColors.lightSky,
+              color: const Color.fromARGB(125, 0, 0, 0),
               child: const CustomLoading(),
             ));
           }

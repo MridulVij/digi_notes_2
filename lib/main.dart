@@ -149,9 +149,9 @@ class MainApp extends StatelessWidget {
           textTheme: TextTheme(),
           scaffoldBackgroundColor: ConstColors.whitetext,
         ),
-        // initialRoute: RouterNames.splash_screen,
-        // onGenerateRoute: Routes.generateRoute,
-        home: ResultScreen(queryPath: "main_data/2022/KUK/CSE/7th"),
+        initialRoute: RouterNames.splash_screen,
+        onGenerateRoute: Routes.generateRoute,
+        // home: ResultScreen(queryPath: "main_data/2022/KUK/CSE/7th"),
       ),
     );
   }
