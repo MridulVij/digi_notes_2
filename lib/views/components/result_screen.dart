@@ -4,6 +4,7 @@ import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 
+import '../../data/api/detail_fetcher.dart';
 import '../../providers/detail_fetch_provider.dart';
 import '../../utils/enums.dart';
 import '../constants/colors/colors.dart';
@@ -23,6 +24,11 @@ class ResultScreen extends StatefulWidget {
 }
 
 class _ResultScreenState extends State<ResultScreen> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   // App Bar Selector!
   var resource = Resource.pyqp;
 
@@ -44,188 +50,184 @@ class _ResultScreenState extends State<ResultScreen> {
 
   @override
   Widget build(BuildContext context) {
-    DocumentSnapshot? documentSnapshot;
-    return Consumer<DetailFetchProvider>(
-      builder: (context, state, child) => Scaffold(
-        appBar: CustomAppBar(
-          appBarColor: Color.fromARGB(255, 242, 251, 255),
-          height: 155,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
+    return Scaffold(
+      appBar: CustomAppBar(
+        appBarColor: Color.fromARGB(255, 242, 251, 255),
+        height: 155,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CustomButton(
+                    iconBackgroundColor: ConstColors.primaryColor,
+                    icon: Icons.arrow_back_rounded,
+                    iconColor: ConstColors.whitetext,
+                    onPress: () => Navigator.pop(context),
+                    radius: 22),
+                Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Text(
+                    'Resources',
+                    style: TextStyle(
+                        color: ConstColors.primaryColor,
+                        fontSize: 40,
+                        fontWeight: FontWeight.w300),
+                  ),
+                )
+              ],
+            ),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  CustomButton(
-                      iconBackgroundColor: ConstColors.primaryColor,
-                      icon: Icons.arrow_back_rounded,
-                      iconColor: ConstColors.whitetext,
-                      onPress: () {
-                        Navigator.pop(context);
-                      },
-                      radius: 22),
                   Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Text(
-                      'Resources',
-                      style: TextStyle(
-                          color: ConstColors.primaryColor,
-                          fontSize: 40,
-                          fontWeight: FontWeight.w300),
+                    padding: const EdgeInsets.all(6),
+                    child: CustomSelector(
+                      backwardIcon: false,
+                      centerText: true,
+                      forwardIcon: false,
+                      isSelected: resource == Resource.pyqp,
+                      isSquareShapeButton: false,
+                      onPress: () {
+                        setState(() {
+                          resource = Resource.pyqp;
+                        });
+                        //
+                      },
+                      titleText: " Prev-Year\nQs'n Papers",
                     ),
-                  )
-                ],
-              ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(6),
-                      child: CustomSelector(
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(6),
+                    child: CustomSelector(
                         backwardIcon: false,
                         centerText: true,
                         forwardIcon: false,
-                        isSelected: resource == Resource.pyqp,
+                        isSelected: resource == Resource.sessionals,
                         isSquareShapeButton: false,
                         onPress: () {
                           setState(() {
-                            resource = Resource.pyqp;
+                            resource = Resource.sessionals;
                           });
                           //
                         },
-                        titleText: " Prev-Year\nQs'n Papers",
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(6),
-                      child: CustomSelector(
-                          backwardIcon: false,
-                          centerText: true,
-                          forwardIcon: false,
-                          isSelected: resource == Resource.sessionals,
-                          isSquareShapeButton: false,
-                          onPress: () {
-                            setState(() {
-                              resource = Resource.sessionals;
-                            });
-                            //
-                          },
-                          titleText: "Sessionals"),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(6),
-                      child: CustomSelector(
-                          backwardIcon: false,
-                          centerText: true,
-                          forwardIcon: false,
-                          isSelected: resource == Resource.notes,
-                          isSquareShapeButton: false,
-                          onPress: () {
-                            setState(() {
-                              resource = Resource.notes;
-                            });
-                            //
-                          },
-                          titleText: "Notes"),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(6),
-                      child: CustomSelector(
-                          backwardIcon: false,
-                          centerText: true,
-                          forwardIcon: false,
-                          isSelected: resource == Resource.syllabus,
-                          isSquareShapeButton: false,
-                          onPress: () {
-                            setState(() {
-                              resource = Resource.syllabus;
-                            });
-                            //
-                          },
-                          titleText: "Syllabus"),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(6),
-                      child: CustomSelector(
-                          backwardIcon: false,
-                          centerText: true,
-                          forwardIcon: false,
-                          isSelected: resource == Resource.timetable,
-                          isSquareShapeButton: false,
-                          onPress: () {
-                            setState(() {
-                              resource = Resource.timetable;
-                            });
-                            //
-                          },
-                          titleText: "Time Table"),
-                    )
-                  ],
-                ),
-              ),
-              Row(
-                children: [
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-                    child: Text(
-                      widget.queryPath,
-                      style: TextStyle(
-                          color: ConstColors.primaryColor,
-                          fontSize: 15,
-                          fontWeight: FontWeight.w300),
-                    ),
+                        titleText: "Sessionals"),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.all(6),
+                    child: CustomSelector(
+                        backwardIcon: false,
+                        centerText: true,
+                        forwardIcon: false,
+                        isSelected: resource == Resource.notes,
+                        isSquareShapeButton: false,
+                        onPress: () {
+                          setState(() {
+                            resource = Resource.notes;
+                          });
+                          //
+                        },
+                        titleText: "Notes"),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(6),
+                    child: CustomSelector(
+                        backwardIcon: false,
+                        centerText: true,
+                        forwardIcon: false,
+                        isSelected: resource == Resource.syllabus,
+                        isSquareShapeButton: false,
+                        onPress: () {
+                          setState(() {
+                            resource = Resource.syllabus;
+                          });
+                          //
+                        },
+                        titleText: "Syllabus"),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(6),
+                    child: CustomSelector(
+                        backwardIcon: false,
+                        centerText: true,
+                        forwardIcon: false,
+                        isSelected: resource == Resource.timetable,
+                        isSquareShapeButton: false,
+                        onPress: () {
+                          setState(() {
+                            resource = Resource.timetable;
+                          });
+                          //
+                        },
+                        titleText: "Time Table"),
+                  )
                 ],
-              )
-            ],
-          ),
+              ),
+            ),
+            Row(
+              children: [
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                  child: Text(
+                    widget.queryPath,
+                    style: TextStyle(
+                        color: ConstColors.primaryColor,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w300),
+                  ),
+                ),
+              ],
+            )
+          ],
         ),
-        body: StreamBuilder(
-          stream: state.products!.snapshots(),
-          builder: (context, AsyncSnapshot<QuerySnapshot> asyncSnapshot) {
-            if (asyncSnapshot.hasData) {
-              return ListView.builder(
-                itemCount: asyncSnapshot.data!.docs.length,
-                itemBuilder: (context, index) {
-                  documentSnapshot = asyncSnapshot.data!.docs[index];
-                  // checkFileExtension(documentSnapshot['u']);
-                  return InkWell(
-                    splashColor: Colors.grey[350],
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => isPDF
-                              ? PdfViewer(
-                                  path: documentSnapshot!['u'],
-                                )
-                              : ImageViewer(
-                                  imageUrls: [documentSnapshot!['u']],
-                                  initialIndex: 0),
-                        ),
-                      );
-                    },
-                    child: CustomResultBox(
-                      title: documentSnapshot!['t'],
-                      url: documentSnapshot!['u'],
-                      isPdf: isPDF,
-                    ),
-                  );
-                },
-              );
-            } else {
-              return Center(
-                  child: Container(
-                color: Color.fromARGB(125, 0, 0, 0),
-                child: const CustomLoading(),
-              ));
-            }
-          },
-        ),
+      ),
+      body: StreamBuilder(
+        stream: DetailFetcher().fetchData(widget.queryPath).snapshots(),
+        builder: (context, AsyncSnapshot<QuerySnapshot> asyncSnapshot) {
+          if (asyncSnapshot.hasData) {
+            return ListView.builder(
+              itemCount: asyncSnapshot.data!.docs.length,
+              itemBuilder: (context, index) {
+                DocumentSnapshot documentSnapshot =
+                    asyncSnapshot.data!.docs[index];
+                checkFileExtension(documentSnapshot['u']);
+                return InkWell(
+                  splashColor: Colors.grey[350],
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => isPDF
+                            ? PdfViewer(
+                                path: documentSnapshot!['u'],
+                              )
+                            : ImageViewer(
+                                imageUrls: [documentSnapshot!['u']],
+                                initialIndex: 0),
+                      ),
+                    );
+                  },
+                  child: CustomResultBox(
+                    title: documentSnapshot!['t'],
+                    url: documentSnapshot!['u'],
+                    isPdf: isPDF,
+                  ),
+                );
+              },
+            );
+          } else {
+            return Center(
+                child: Container(
+              color: Color.fromARGB(125, 0, 0, 0),
+              child: const CustomLoading(),
+            ));
+          }
+        },
       ),
     );
   }

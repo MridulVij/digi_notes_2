@@ -1,12 +1,9 @@
-// import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-// class DetailFetcher {
-//   QuerySnapshot? querySnapshot;
-//   Future<void> getQuestionPapers(String path) async {
-//     // Specify the path to the collection
-//     CollectionReference questionPapersCollection =
-//         await FirebaseFirestore.instance.collection(path);
-//     // Get documents in the collection
-//     querySnapshot = await questionPapersCollection.get();
-//   }
-// }
+class DetailFetcher {
+  CollectionReference fetchData(String path) {
+    final CollectionReference data =
+        FirebaseFirestore.instance.collection(path);
+    return data;
+  }
+}
