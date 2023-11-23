@@ -17,7 +17,7 @@ import 'donate_developer.dart';
 class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     return PageRouteBuilder(
-        transitionDuration: const Duration(milliseconds: 190),
+        transitionDuration: const Duration(milliseconds: 175),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           const begin = Offset(1.0, 0.0);
           const end = Offset(0.0, 0.0);
@@ -44,8 +44,8 @@ class Routes {
               return const AuthVerifier();
             case RouterNames.tech_news:
               return const TechNewsUI();
-            // case RouterNames.road_maps:
-            // return const RoadMapUI();
+            case RouterNames.road_maps:
+              return const RoadMapUI();
             case RouterNames.dsa:
               return const DSAUI();
             case RouterNames.dev:

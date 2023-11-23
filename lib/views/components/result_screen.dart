@@ -391,7 +391,7 @@ class CustomResultBox extends StatelessWidget {
                       Share.share(
                           "File Download Link: ${url}\n\nWant More Resources?\nDownload Digi Notes App Specially Designed for Your College!\nApp Download Link:\n${appLink}");
                       LocalNotifications.showSimpleNotification(
-                          title: 'Thanks for Sharing the Documents!',
+                          title: 'Thanks for Sharing Documents!',
                           body:
                               'Share this App to Your Friends to Access Premium Subscription & More Resources!',
                           payload: 'test');
