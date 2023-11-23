@@ -132,7 +132,7 @@ class MainApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => GoogleSignInProvider()),
         ChangeNotifierProvider(create: (context) => NotificationProvider()),
-        ChangeNotifierProvider(create: (context) => DetailFetchProvider())
+        // ChangeNotifierProvider(create: (context) => DetailFetchProvider())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -151,7 +151,7 @@ class MainApp extends StatelessWidget {
         ),
         // initialRoute: RouterNames.splash_screen,
         // onGenerateRoute: Routes.generateRoute,
-        home: ResultScreen(queryPath: "2022/KUK/CSE/7th/Notes/oose"),
+        home: ResultScreen(queryPath: "main_data/2022/KUK/CSE/7th"),
       ),
     );
   }

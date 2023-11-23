@@ -1,11 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
-
 import '../../data/api/detail_fetcher.dart';
-import '../../providers/detail_fetch_provider.dart';
 import '../../utils/enums.dart';
 import '../constants/colors/colors.dart';
 import 'custom_appbar.dart';
@@ -16,7 +13,7 @@ import 'image_viewer.dart';
 import 'pdf_viewer.dart';
 
 class ResultScreen extends StatefulWidget {
-  String queryPath = "Unknown Path, Please Go Back & Search Again!";
+  String queryPath;
   ResultScreen({required this.queryPath});
 
   @override
@@ -27,10 +24,15 @@ class _ResultScreenState extends State<ResultScreen> {
   @override
   void initState() {
     super.initState();
+    splitAndShow();
+    fetchSelector();
   }
 
-  // App Bar Selector!
+  // App Bar Status Selector!
   var resource = Resource.pyqp;
+
+  String? pqyp, sess, nots, syllbs, tmetble;
+  String finalPath = "";
 
   bool isPNG = false;
   bool isPDF = false;
@@ -46,6 +48,34 @@ class _ResultScreenState extends State<ResultScreen> {
     String lowercaseInput = input.toLowerCase();
     String lowercaseFileType = fileType.toLowerCase();
     return lowercaseInput.contains(lowercaseFileType);
+  }
+
+  String showPath = "Error, Please Go Back and Select Options Again!";
+
+  void splitAndShow() {
+    // Split the string into parts based on the slash delimiter
+    List<String> parts = widget.queryPath.split('/');
+
+    // Check if there are at least two parts
+    if (parts.length >= 2) {
+      // Remove the first part (main_data)
+      parts.removeAt(0);
+
+      // Join the remaining parts back into a string
+      showPath = parts.join('/');
+
+      // Output the result
+      print('UI Show Path$showPath');
+    } else {
+      // Handle the case where there are not enough parts
+      print('Invalid input string');
+    }
+  }
+
+  // Chip Fetch Api Selector
+  void fetchSelector() {
+    finalPath = widget.queryPath + "/Pyqp/pyqp";
+    print('API Show Path $finalPath');
   }
 
   @override
@@ -97,6 +127,8 @@ class _ResultScreenState extends State<ResultScreen> {
                           resource = Resource.pyqp;
                         });
                         //
+                        pqyp = "/Pyqp/pyqp";
+                        finalPath = widget.queryPath + pqyp!;
                       },
                       titleText: " Prev-Year\nQs'n Papers",
                     ),
@@ -114,6 +146,8 @@ class _ResultScreenState extends State<ResultScreen> {
                             resource = Resource.sessionals;
                           });
                           //
+                          sess = "/Sessional/sessional";
+                          finalPath = widget.queryPath + sess!;
                         },
                         titleText: "Sessionals"),
                   ),
@@ -130,6 +164,8 @@ class _ResultScreenState extends State<ResultScreen> {
                             resource = Resource.notes;
                           });
                           //
+                          nots = "/Notes/oose";
+                          finalPath = widget.queryPath + nots!;
                         },
                         titleText: "Notes"),
                   ),
@@ -162,6 +198,8 @@ class _ResultScreenState extends State<ResultScreen> {
                             resource = Resource.timetable;
                           });
                           //
+                          tmetble = "/Timetable/timetable";
+                          finalPath = widget.queryPath + tmetble!;
                         },
                         titleText: "Time Table"),
                   )
@@ -174,7 +212,7 @@ class _ResultScreenState extends State<ResultScreen> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
                   child: Text(
-                    widget.queryPath,
+                    showPath,
                     style: TextStyle(
                         color: ConstColors.primaryColor,
                         fontSize: 15,
@@ -187,7 +225,7 @@ class _ResultScreenState extends State<ResultScreen> {
         ),
       ),
       body: StreamBuilder(
-        stream: DetailFetcher().fetchData(widget.queryPath).snapshots(),
+        stream: DetailFetcher().fetchData(finalPath).snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> asyncSnapshot) {
           if (asyncSnapshot.hasData) {
             return ListView.builder(
@@ -223,7 +261,7 @@ class _ResultScreenState extends State<ResultScreen> {
           } else {
             return Center(
                 child: Container(
-              color: Color.fromARGB(125, 0, 0, 0),
+              color: ConstColors.lightSky,
               child: const CustomLoading(),
             ));
           }
@@ -315,7 +353,6 @@ class CustomResultBox extends StatelessWidget {
                     icon: Icon(
                       Icons.share,
                       size: 18,
-                      // color: ConstColors.primaryColor,
                     ),
                     onPressed: () {
                       String appLink = "";
