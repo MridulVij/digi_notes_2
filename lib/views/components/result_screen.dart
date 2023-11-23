@@ -4,6 +4,7 @@ import 'package:gap/gap.dart';
 import 'package:share_plus/share_plus.dart';
 import '../../data/api/detail_fetcher.dart';
 import '../../utils/enums.dart';
+import '../../utils/notifications_services.dart';
 import '../constants/colors/colors.dart';
 import 'custom_appbar.dart';
 import 'custom_buttons.dart';
@@ -388,6 +389,11 @@ class CustomResultBox extends StatelessWidget {
                       print("Share File");
                       Share.share(
                           "File Download Link: ${url}\n\nWant More Resources?\nDownload Digi Notes App Specially Designed for Your College!\nApp Download Link:\n${appLink}");
+                      LocalNotifications.showSimpleNotification(
+                          title: 'Thanks for Sharing the Documents!',
+                          body:
+                              'Share this App to Your Friends to Access Premium Subscription & More Resources!',
+                          payload: 'test');
                     },
                   ),
                 ],

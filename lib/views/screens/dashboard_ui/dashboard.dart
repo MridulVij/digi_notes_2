@@ -72,9 +72,6 @@ class _DashboardUIState extends State<DashboardUI> {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            LocalNotifications.showSimpleNotification(
-                                title: 'test', body: 'test', payload: 'test');
-
                             Navigator.pushNamed(
                                 context, RouterNames.detail_selector);
                           },

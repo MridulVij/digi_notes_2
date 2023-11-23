@@ -4,6 +4,7 @@ import 'package:digi_notes_2/utils/global_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import '../utils/notifications_services.dart';
 import '../views/components/custom_loading.dart';
 import '../views/components/custom_snackbar.dart';
 import '../views/screens/auth_ui/auth_ui.dart';
@@ -36,6 +37,10 @@ class GoogleSignInProvider extends ChangeNotifier {
       );
 
       await FirebaseAuth.instance.signInWithCredential(credential);
+      LocalNotifications.showSimpleNotification(
+          title: 'Thank-Your for Login!',
+          body: 'We will Glad to See You, Digi Notes Welcomes You from Heart!',
+          payload: 'data');
       notifyListeners();
     } catch (e) {
       print(e);
@@ -44,8 +49,12 @@ class GoogleSignInProvider extends ChangeNotifier {
 
   Future logOut() async {
     await googleSignIn.disconnect();
-    // await googleSignIn.signOut();
+
     FirebaseAuth.instance.signOut();
+    LocalNotifications.showSimpleNotification(
+        title: 'Hey, Something Great is Waiting for You!',
+        body: 'Finally, we launched our new feature login again to access!',
+        payload: 'data');
     notifyListeners();
   }
 }

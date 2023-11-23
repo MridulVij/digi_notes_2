@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../providers/auth_providers.dart';
@@ -12,6 +13,7 @@ import '../../components/custom_container.dart';
 import '../../components/custom_links.dart';
 import '../../components/custom_loading.dart';
 import '../../components/custom_snackbar.dart';
+import '../../constants/colors/colors.dart';
 
 class ProfileUI extends StatefulWidget {
   const ProfileUI({super.key});
@@ -104,6 +106,7 @@ class _ProfileUIState extends State<ProfileUI> {
               subtitle: const Text("Unlock All Resources, Remove Ads."),
               leading: const Icon(Icons.workspace_premium_sharp),
             ),
+            Divider(color: ConstColors.lightGrey),
             ListTile(
               onTap: () {
                 CustomSnackbar.showCustomSnackbar(
@@ -113,6 +116,7 @@ class _ProfileUIState extends State<ProfileUI> {
               subtitle: const Text("Dark / Light"),
               leading: const Icon(Icons.dark_mode),
             ),
+            Divider(color: ConstColors.lightGrey),
             ListTile(
               onTap: () {
                 CustomSnackbar.showCustomSnackbar(
@@ -122,6 +126,7 @@ class _ProfileUIState extends State<ProfileUI> {
               subtitle: const Text("Delete Old Trash Pdf's, Images in App"),
               leading: const Icon(Icons.delete),
             ),
+            Divider(color: ConstColors.lightGrey),
             ListTile(
               onTap: () {
                 Navigator.pushNamed(context, RouterNames.donate);
@@ -130,6 +135,7 @@ class _ProfileUIState extends State<ProfileUI> {
               subtitle: const Text("Buy me Coffee / Appreciate Hard Work!"),
               leading: const Icon(Icons.monetization_on),
             ),
+            Divider(color: ConstColors.lightGrey),
             ListTile(
               onTap: () {
                 launchUrl(
@@ -140,6 +146,16 @@ class _ProfileUIState extends State<ProfileUI> {
               title: const Text("About Developer"),
               subtitle:
                   const Text("What is Creatify?, Who developed this App?"),
+              leading: const Icon(Icons.person),
+            ),
+            Divider(color: ConstColors.lightGrey),
+            ListTile(
+              onTap: () {
+                String appDownloadLink = "";
+                Share.share("App Download Link:\n${appDownloadLink}");
+              },
+              title: const Text("Share Digi Notes App"),
+              subtitle: const Text("Share the Apk file with friends!"),
               leading: const Icon(Icons.person),
             ),
             const Divider(

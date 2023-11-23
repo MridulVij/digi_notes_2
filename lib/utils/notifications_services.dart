@@ -27,10 +27,10 @@ Future<List<Map<String, dynamic>>> backgroundNotifications(
     "subtitle": message.notification?.body,
     "data": message.data,
   });
-  LocalNotifications.showSimpleNotification(
-      title: message.notification!.title,
-      body: message.notification!.body,
-      payload: '');
+  // LocalNotifications.showSimpleNotification(
+  //     title: message.notification!.title,
+  //     body: message.notification!.body,
+  //     payload: '');
 
   return LM;
 }
@@ -78,6 +78,7 @@ class LocalNotifications {
             importance: Importance.high,
             priority: Priority.high,
             sound: UriAndroidNotificationSound('assets/tones/notification.mp3'),
+            playSound: true,
             ticker: 'ticker');
     const NotificationDetails notificationDetails =
         NotificationDetails(android: androidNotificationDetails);
