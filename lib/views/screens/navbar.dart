@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:digi_notes_2/views/constants/colors/consts.dart';
 import 'package:digi_notes_2/views/screens/tech%20news/tech_news.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,9 +6,8 @@ import 'package:digi_notes_2/views/constants/colors/colors.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import '../../providers/emoji_provider.dart';
 import '../../providers/notification_provider.dart';
+import '../../utils/google_ads.dart';
 import '../components/custom_snackbar.dart';
 import 'dashboard_ui/dashboard.dart';
 import 'my profile/my_profile.dart';
@@ -23,6 +21,13 @@ class NavbarUI extends StatefulWidget {
 }
 
 class _NavbarUIState extends State<NavbarUI> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    GoogleAds().initRewardedAd();
+  }
+
   int _currentIndex = 0;
   List<Widget> screenList = [
     const DashboardUI(),
@@ -45,7 +50,6 @@ class _NavbarUIState extends State<NavbarUI> {
   }
 
   final userData = FirebaseAuth.instance.currentUser;
-
   int energies = 0;
 
   @override

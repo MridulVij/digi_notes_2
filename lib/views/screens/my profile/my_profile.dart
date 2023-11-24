@@ -6,11 +6,9 @@ import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import '../../../providers/auth_providers.dart';
 import '../../../utils/notifications_services.dart';
 import '../../components/custom_autotext.dart';
-import '../../components/custom_buttons.dart';
 import '../../components/custom_container.dart';
 import '../../components/custom_links.dart';
 import '../../components/custom_loading.dart';
@@ -255,6 +253,7 @@ class _ProfileUIState extends State<ProfileUI> {
                       });
                     },
                     child: CustomContainer(
+                        descriptionTitle: '',
                         title: "Log Out  ",
                         boxColor: Colors.red,
                         inRow: true,

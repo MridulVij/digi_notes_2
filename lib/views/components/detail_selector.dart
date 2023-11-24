@@ -1,12 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:digi_notes_2/views/components/result_screen.dart';
 import 'package:digi_notes_2/views/constants/colors/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:provider/provider.dart';
-import '../../data/api/detail_fetcher.dart';
-import '../../providers/detail_fetch_provider.dart';
 import '../../providers/internet_provider.dart';
 import '../../utils/enums.dart';
 import '../../utils/global_functions.dart';
@@ -41,6 +37,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
     isLoading = !isLoading;
     setState(() {});
   }
+
   InternetProvider internetProvider = InternetProvider();
 
   GlobalFunctions globalFunctions = GlobalFunctions();
@@ -76,6 +73,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CustomContainer(
+                    descriptionTitle: '',
                     boxColor: ConstColors.lightSky,
                     textColor: ConstColors.primaryColor,
                     inRow: false,
@@ -124,6 +122,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                     ),
                   ),
                   CustomContainer(
+                    descriptionTitle: '',
                     boxColor: ConstColors.lightSky,
                     textColor: ConstColors.primaryColor,
                     inRow: false,
@@ -169,6 +168,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                     ),
                   ),
                   CustomContainer(
+                    descriptionTitle: '',
                     boxColor: ConstColors.lightSky,
                     textColor: ConstColors.primaryColor,
                     inRow: false,
@@ -214,6 +214,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                     ),
                   ),
                   CustomContainer(
+                    descriptionTitle: '',
                     boxColor: ConstColors.lightSky,
                     textColor: ConstColors.primaryColor,
                     inRow: false,
@@ -388,6 +389,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                       }
                     },
                     child: CustomContainer(
+                      descriptionTitle: '',
                       boxColor: ConstColors.primaryColor,
                       textColor: ConstColors.whitetext,
                       inRow: true,

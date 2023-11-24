@@ -3,7 +3,6 @@ import 'package:digi_notes_2/views/constants/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
-import '../../../utils/notifications_services.dart';
 import '../../components/custom_container.dart';
 import '../../constants/colors/consts.dart';
 
@@ -76,6 +75,7 @@ class _DashboardUIState extends State<DashboardUI> {
                                 context, RouterNames.detail_selector);
                           },
                           child: CustomContainer(
+                            descriptionTitle: 'Previous Year Question Papers',
                             boxColor: const Color.fromARGB(255, 147, 206, 255),
                             inRow: false,
                             textColor: const Color.fromARGB(255, 35, 98, 150),
@@ -93,6 +93,7 @@ class _DashboardUIState extends State<DashboardUI> {
                                 context, RouterNames.detail_selector);
                           },
                           child: CustomContainer(
+                            descriptionTitle: 'Notes for All Subjects',
                             boxColor: const Color.fromARGB(255, 252, 212, 216),
                             inRow: false,
                             textColor: const Color.fromARGB(255, 255, 118, 132),
@@ -115,6 +116,7 @@ class _DashboardUIState extends State<DashboardUI> {
                                 context, RouterNames.detail_selector);
                           },
                           child: CustomContainer(
+                            descriptionTitle: 'Latest Syllabus',
                             boxColor: const Color.fromARGB(188, 172, 255, 175),
                             inRow: false,
                             textColor: const Color.fromARGB(255, 73, 165, 76),
@@ -132,6 +134,7 @@ class _DashboardUIState extends State<DashboardUI> {
                                 context, RouterNames.detail_selector);
                           },
                           child: CustomContainer(
+                            descriptionTitle: 'Notes, Sessionals, TimeTable',
                             boxColor: const Color.fromARGB(255, 255, 248, 186),
                             inRow: false,
                             textColor: const Color.fromARGB(255, 180, 169, 65),
@@ -179,6 +182,7 @@ class _DashboardUIState extends State<DashboardUI> {
                             Navigator.pushNamed(context, RouterNames.dsa);
                           },
                           child: CustomContainer(
+                            descriptionTitle: 'Data Structure & Algorithms',
                             boxColor: const Color.fromARGB(108, 233, 30, 98),
                             inRow: false,
                             textColor: const Color.fromARGB(230, 120, 16, 51),
@@ -203,6 +207,7 @@ class _DashboardUIState extends State<DashboardUI> {
                             });
                           },
                           child: CustomContainer(
+                            descriptionTitle: 'Latest Technology News',
                             boxColor: const Color.fromARGB(146, 155, 39, 176),
                             inRow: false,
                             textColor: const Color.fromARGB(255, 60, 15, 68),
@@ -224,6 +229,8 @@ class _DashboardUIState extends State<DashboardUI> {
                             Navigator.pushNamed(context, RouterNames.dev);
                           },
                           child: CustomContainer(
+                            descriptionTitle:
+                                'Make Projects, Develop Industry Skills',
                             boxColor: const Color.fromARGB(187, 139, 195, 74),
                             inRow: false,
                             textColor: const Color.fromARGB(251, 71, 100, 40),
@@ -240,6 +247,8 @@ class _DashboardUIState extends State<DashboardUI> {
                             Navigator.pushNamed(context, RouterNames.road_maps);
                           },
                           child: CustomContainer(
+                            descriptionTitle:
+                                'Technical Skill Development Roadmaps',
                             boxColor: const Color.fromARGB(148, 255, 153, 0),
                             inRow: false,
                             textColor: const Color.fromARGB(233, 78, 51, 11),

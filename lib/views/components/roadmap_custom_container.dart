@@ -1,21 +1,20 @@
 import 'package:digi_notes_2/views/constants/colors/colors.dart';
 import 'package:flutter/material.dart';
 
-class CustomContainer extends StatelessWidget {
-  const CustomContainer(
+class RoadmapCustomContainer extends StatelessWidget {
+  const RoadmapCustomContainer(
       {super.key,
       required this.child,
       required this.title,
       required this.inRow,
       required this.textColor,
-      required this.boxColor,
-      required this.descriptionTitle});
+      required this.boxColor});
   final Widget child;
   final String title;
   final bool inRow;
+
   final Color textColor;
   final Color boxColor;
-  final String descriptionTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -64,10 +63,7 @@ class CustomContainer extends StatelessWidget {
                               fontWeight: FontWeight.w500),
                         ),
                         Text(
-                          descriptionTitle,
-                          softWrap: true,
-                          // maxLines: 1,
-                          overflow: TextOverflow.visible,
+                          'Developer',
                           style: TextStyle(
                             color: ConstColors.lightGrey,
                             fontSize: 15,
@@ -79,6 +75,12 @@ class CustomContainer extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         child,
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Beginner to Advance'),
                       ],
                     ),
                   ]),

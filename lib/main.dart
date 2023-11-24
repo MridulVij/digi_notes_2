@@ -110,6 +110,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'providers/auth_providers.dart';
 import 'providers/notification_provider.dart';
+import 'utils/google_ads.dart';
 import 'utils/notifications_services.dart';
 import 'views/constants/colors/consts.dart';
 
@@ -117,6 +118,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await LocalNotifications.init();
+
   runApp(const MainApp());
 }
 

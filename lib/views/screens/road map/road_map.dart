@@ -4,9 +4,8 @@ import 'package:digi_notes_2/views/constants/colors/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../components/custom_container.dart';
+import '../../components/roadmap_custom_container.dart';
 import '../../components/custom_loading.dart';
-import 'road_map_details.dart';
 
 class RoadMapUI extends StatefulWidget {
   const RoadMapUI({super.key});
@@ -47,7 +46,7 @@ class _RoadMapUIState extends State<RoadMapUI> {
                         //   ),
                         // );
                       },
-                      child: CustomContainer(
+                      child: RoadmapCustomContainer(
                         boxColor: ConstColors.whitetext,
                         inRow: false,
                         textColor: Colors.black,
@@ -61,7 +60,6 @@ class _RoadMapUIState extends State<RoadMapUI> {
                               height: 50,
                               width: 50,
                             ),
-                            Text('Beginner to Advance')
                           ],
                         ),
                       ),
