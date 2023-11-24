@@ -40,7 +40,7 @@ class _NavbarUIState extends State<NavbarUI> {
     if (_currentIndex == 1) {
       CustomSnackbar.showCustomSnackbar(
           context, "Early Access Doesn't Represent Final Feature", 2);
-      launchUrl(Uri.parse(Url));
+      launchUrl(Uri.parse(Url), mode: LaunchMode.inAppWebView);
     }
   }
 

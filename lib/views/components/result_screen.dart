@@ -106,7 +106,7 @@ class _ResultScreenState extends State<ResultScreen> {
                 Padding(
                   padding: const EdgeInsets.all(4.0),
                   child: Text(
-                    'Acadmic Resources',
+                    'Academic Resources',
                     style: TextStyle(
                         color: ConstColors.primaryColor,
                         fontSize: 30,

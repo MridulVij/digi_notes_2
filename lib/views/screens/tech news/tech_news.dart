@@ -19,7 +19,7 @@ class _TechNewsUIState extends State<TechNewsUI> {
     // TODO: implement initState
     super.initState();
 
-    launchUrl(Uri.parse(Url));
+    launchUrl(Uri.parse(Url), mode: LaunchMode.inAppWebView);
   }
 
   final String Url = "https://www.javatpoint.com/";
