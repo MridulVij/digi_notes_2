@@ -1,5 +1,6 @@
 import 'package:digi_notes_2/views/constants/colors/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class CustomContainer extends StatelessWidget {
   const CustomContainer(
@@ -66,15 +67,17 @@ class CustomContainer extends StatelessWidget {
                         Text(
                           descriptionTitle,
                           softWrap: true,
-                          // maxLines: 1,
-                          overflow: TextOverflow.visible,
-                          style: TextStyle(
-                            color: ConstColors.lightGrey,
-                            fontSize: 15,
+                          maxLines: 5,
+                          overflow: TextOverflow.fade,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w300,
+                            color: Colors.black,
+                            fontSize: 10,
                           ),
                         ),
                       ],
                     ),
+                    const Gap(8),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

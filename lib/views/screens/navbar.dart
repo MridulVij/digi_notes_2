@@ -25,7 +25,7 @@ class _NavbarUIState extends State<NavbarUI> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    GoogleAds().initRewardedAd();
+    // GoogleAds().initRewardedAd();
   }
 
   int _currentIndex = 0;

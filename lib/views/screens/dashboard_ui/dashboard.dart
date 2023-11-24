@@ -52,8 +52,8 @@ class _DashboardUIState extends State<DashboardUI> {
                 ],
               ),
               Container(
-                margin: const EdgeInsets.all(8),
-                padding: const EdgeInsets.all(10),
+                margin: const EdgeInsets.all(5),
+                padding: const EdgeInsets.all(5),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: ConstColors.whitetext,
@@ -107,6 +107,7 @@ class _DashboardUIState extends State<DashboardUI> {
                         )
                       ],
                     ),
+                    const Gap(5),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -207,7 +208,7 @@ class _DashboardUIState extends State<DashboardUI> {
                             });
                           },
                           child: CustomContainer(
-                            descriptionTitle: 'Latest Technology News',
+                            descriptionTitle: 'Latest Tech News',
                             boxColor: const Color.fromARGB(146, 155, 39, 176),
                             inRow: false,
                             textColor: const Color.fromARGB(255, 60, 15, 68),
@@ -221,6 +222,7 @@ class _DashboardUIState extends State<DashboardUI> {
                         )
                       ],
                     ),
+                    const Gap(5),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -229,8 +231,7 @@ class _DashboardUIState extends State<DashboardUI> {
                             Navigator.pushNamed(context, RouterNames.dev);
                           },
                           child: CustomContainer(
-                            descriptionTitle:
-                                'Make Projects, Develop Industry Skills',
+                            descriptionTitle: 'Build Projects',
                             boxColor: const Color.fromARGB(187, 139, 195, 74),
                             inRow: false,
                             textColor: const Color.fromARGB(251, 71, 100, 40),
@@ -247,8 +248,7 @@ class _DashboardUIState extends State<DashboardUI> {
                             Navigator.pushNamed(context, RouterNames.road_maps);
                           },
                           child: CustomContainer(
-                            descriptionTitle:
-                                'Technical Skill Development Roadmaps',
+                            descriptionTitle: 'Job Designation Paths',
                             boxColor: const Color.fromARGB(148, 255, 153, 0),
                             inRow: false,
                             textColor: const Color.fromARGB(233, 78, 51, 11),

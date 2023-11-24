@@ -45,19 +45,19 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        appBarColor: Color.fromARGB(255, 242, 251, 255),
+        appBarColor: const Color.fromARGB(255, 147, 206, 255),
         child: Row(
           children: [
             CustomButton(
-                iconBackgroundColor: ConstColors.primaryColor,
+                iconBackgroundColor: const Color.fromARGB(255, 35, 98, 150),
                 icon: Icons.arrow_back_rounded,
                 iconColor: ConstColors.whitetext,
                 onPress: () => Navigator.pop(context),
                 radius: 22),
-            Text(
+            const Text(
               'Search Resources',
               style: TextStyle(
-                  color: ConstColors.primaryColor,
+                  color: Color.fromARGB(255, 35, 98, 150),
                   fontSize: 30,
                   fontWeight: FontWeight.w300),
             ),
@@ -73,7 +73,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CustomContainer(
-                    descriptionTitle: '',
+                    descriptionTitle: 'Select Session / Year',
                     boxColor: ConstColors.lightSky,
                     textColor: ConstColors.primaryColor,
                     inRow: false,
@@ -122,7 +122,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                     ),
                   ),
                   CustomContainer(
-                    descriptionTitle: '',
+                    descriptionTitle: 'Select College University',
                     boxColor: ConstColors.lightSky,
                     textColor: ConstColors.primaryColor,
                     inRow: false,
@@ -168,7 +168,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                     ),
                   ),
                   CustomContainer(
-                    descriptionTitle: '',
+                    descriptionTitle: 'Select Field / Course',
                     boxColor: ConstColors.lightSky,
                     textColor: ConstColors.primaryColor,
                     inRow: false,
@@ -214,7 +214,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                     ),
                   ),
                   CustomContainer(
-                    descriptionTitle: '',
+                    descriptionTitle: 'Select Semester',
                     boxColor: ConstColors.lightSky,
                     textColor: ConstColors.primaryColor,
                     inRow: false,
