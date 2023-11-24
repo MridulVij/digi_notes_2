@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:share_plus/share_plus.dart';
 import '../../data/api/detail_fetcher.dart';
+import '../../providers/internet_provider.dart';
 import '../../utils/enums.dart';
 import '../../utils/notifications_services.dart';
 import '../constants/colors/colors.dart';
@@ -11,6 +12,7 @@ import 'custom_appbar.dart';
 import 'custom_buttons.dart';
 import 'custom_loading.dart';
 import 'custom_selector.dart';
+import 'custom_snackbar.dart';
 import 'image_viewer.dart';
 import 'pdf_viewer.dart';
 
@@ -79,6 +81,8 @@ class _ResultScreenState extends State<ResultScreen> {
     finalPath = widget.queryPath + "/Pyqp/pyqp";
     print('API Show Path $finalPath');
   }
+
+  InternetProvider internetProvider = InternetProvider();
 
   @override
   Widget build(BuildContext context) {
@@ -260,19 +264,26 @@ class _ResultScreenState extends State<ResultScreen> {
                 checkFileExtension(documentSnapshot['u']);
                 return InkWell(
                   splashColor: Colors.grey[350],
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => isPDF
-                            ? PdfViewer(
-                                path: documentSnapshot['u'],
-                              )
-                            : ImageViewer(
-                                imageUrls: [documentSnapshot['u']],
-                                initialIndex: 0),
-                      ),
-                    );
+                  onTap: () async {
+                    bool result =
+                        await internetProvider.checkInternetConnectivity();
+                    if (result) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => isPDF
+                              ? PdfViewer(
+                                  path: documentSnapshot['u'],
+                                )
+                              : ImageViewer(
+                                  imageUrls: [documentSnapshot['u']],
+                                  initialIndex: 0),
+                        ),
+                      );
+                    } else {
+                      CustomSnackbar.showCustomSnackbar(
+                          context, "Please Check Your Internet Connection!", 1);
+                    }
                   },
                   child: CustomResultBox(
                     title: documentSnapshot['t'],

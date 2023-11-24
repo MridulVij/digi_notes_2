@@ -41,9 +41,9 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
     isLoading = !isLoading;
     setState(() {});
   }
+  InternetProvider internetProvider = InternetProvider();
 
   GlobalFunctions globalFunctions = GlobalFunctions();
-  InternetProvider internetProvider = InternetProvider();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
