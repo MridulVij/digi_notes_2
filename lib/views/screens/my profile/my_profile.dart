@@ -66,11 +66,21 @@ class _ProfileUIState extends State<ProfileUI> {
                     // mainAxisAlignment: MainAxisAlignment.,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      AutoSizeText(
-                        userData!.displayName!,
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
+                      Row(
+                        children: [
+                          AutoSizeText(
+                            userData!.displayName!,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                          Gap(5),
+                          Image.asset(
+                            'assets/images/blutk.png',
+                            height: 25,
+                            width: 25,
+                          ),
+                        ],
                       ),
                       AutoSizeText(
                         userData!.email!,

@@ -109,6 +109,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'providers/auth_providers.dart';
+import 'providers/internet_provider.dart';
 import 'providers/notification_provider.dart';
 import 'utils/google_ads.dart';
 import 'utils/notifications_services.dart';
@@ -131,7 +132,7 @@ class MainApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => GoogleSignInProvider()),
         ChangeNotifierProvider(create: (context) => NotificationProvider()),
-        // ChangeNotifierProvider(create: (context) => DetailFetchProvider())
+        ChangeNotifierProvider(create: (context) => InternetProviderNotifier())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

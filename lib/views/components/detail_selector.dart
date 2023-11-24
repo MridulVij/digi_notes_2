@@ -72,6 +72,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Gap(20),
                   CustomContainer(
                     descriptionTitle: 'Select Session / Year',
                     boxColor: ConstColors.lightSky,
@@ -121,6 +122,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                       ],
                     ),
                   ),
+                  Gap(10),
                   CustomContainer(
                     descriptionTitle: 'Select College University',
                     boxColor: ConstColors.lightSky,
@@ -167,6 +169,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                       ],
                     ),
                   ),
+                  Gap(10),
                   CustomContainer(
                     descriptionTitle: 'Select Field / Course',
                     boxColor: ConstColors.lightSky,
@@ -213,6 +216,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                       ],
                     ),
                   ),
+                  Gap(10),
                   CustomContainer(
                     descriptionTitle: 'Select Semester',
                     boxColor: ConstColors.lightSky,
@@ -354,6 +358,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                       ],
                     ),
                   ),
+                  Gap(20),
                   InkWell(
                     onTap: () async {
                       String queryUrl = base + sess + univrsty + corse + sem;

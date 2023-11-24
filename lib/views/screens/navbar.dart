@@ -6,6 +6,7 @@ import 'package:digi_notes_2/views/constants/colors/colors.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../providers/internet_provider.dart';
 import '../../providers/notification_provider.dart';
 import '../../utils/google_ads.dart';
 import '../components/custom_snackbar.dart';
@@ -25,7 +26,7 @@ class _NavbarUIState extends State<NavbarUI> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    // GoogleAds().initRewardedAd();
+    GoogleAds().initRewardedAd();
   }
 
   int _currentIndex = 0;

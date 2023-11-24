@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import '../../data/api/detail_fetcher.dart';
 import '../../providers/internet_provider.dart';
@@ -10,6 +11,7 @@ import '../../utils/notifications_services.dart';
 import '../constants/colors/colors.dart';
 import 'custom_appbar.dart';
 import 'custom_buttons.dart';
+import 'custom_live_updating.dart';
 import 'custom_loading.dart';
 import 'custom_selector.dart';
 import 'custom_snackbar.dart';
@@ -86,228 +88,206 @@ class _ResultScreenState extends State<ResultScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(
-        appBarColor: const Color.fromARGB(255, 242, 251, 255),
-        height: 155,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                CustomButton(
-                    iconBackgroundColor: ConstColors.primaryColor,
-                    icon: Icons.arrow_back_rounded,
-                    iconColor: ConstColors.whitetext,
-                    onPress: () => Navigator.pop(context),
-                    radius: 22),
-                Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Text(
-                    'Academic Resources',
-                    style: TextStyle(
-                        color: ConstColors.primaryColor,
-                        fontSize: 30,
-                        fontWeight: FontWeight.w300),
-                  ),
-                )
-              ],
-            ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Padding(
-                padding: const EdgeInsets.all(6.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    CustomSelector(
-                      backwardIcon: false,
-                      centerText: true,
-                      forwardIcon: false,
-                      isSelected: resource == Resource.pyqp,
-                      isSquareShapeButton: false,
-                      onPress: () {
-                        setState(() {
-                          resource = Resource.pyqp;
-                        });
-                        //
-                        pqyp = "/Pyqp/pyqp";
-                        finalPath = widget.queryPath + pqyp!;
-                      },
-                      titleText: " Prev-Year\nQs'n Papers",
+    return Consumer<InternetProviderNotifier>(
+      builder: (context, state, child) => Scaffold(
+        appBar: CustomAppBar(
+          appBarColor: const Color.fromARGB(255, 242, 251, 255),
+          height: 155,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  CustomButton(
+                      iconBackgroundColor: ConstColors.primaryColor,
+                      icon: Icons.arrow_back_rounded,
+                      iconColor: ConstColors.whitetext,
+                      onPress: () => Navigator.pop(context),
+                      radius: 22),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Text(
+                      'Academic Resources',
+                      style: TextStyle(
+                          color: ConstColors.primaryColor,
+                          fontSize: 30,
+                          fontWeight: FontWeight.w300),
                     ),
-                    const Gap(5),
-                    CustomSelector(
+                  )
+                ],
+              ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Padding(
+                  padding: const EdgeInsets.all(6.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CustomSelector(
                         backwardIcon: false,
                         centerText: true,
                         forwardIcon: false,
-                        isSelected: resource == Resource.sessionals,
+                        isSelected: resource == Resource.pyqp,
                         isSquareShapeButton: false,
                         onPress: () {
                           setState(() {
-                            resource = Resource.sessionals;
+                            resource = Resource.pyqp;
                           });
                           //
-                          sess = "/Sessional/sessional";
-                          finalPath = widget.queryPath + sess!;
+                          pqyp = "/Pyqp/pyqp";
+                          finalPath = widget.queryPath + pqyp!;
                         },
-                        titleText: "Sessionals"),
-                    const Gap(5),
-                    CustomSelector(
-                        backwardIcon: false,
-                        centerText: true,
-                        forwardIcon: false,
-                        isSelected: resource == Resource.notes,
-                        isSquareShapeButton: false,
-                        onPress: () {
-                          setState(() {
-                            resource = Resource.notes;
-                          });
-                          //
-                          nots = "/Notes/notes";
-                          finalPath = widget.queryPath + nots!;
-                        },
-                        titleText: "Notes"),
-                    const Gap(5),
-                    CustomSelector(
-                        backwardIcon: false,
-                        centerText: true,
-                        forwardIcon: false,
-                        isSelected: resource == Resource.syllabus,
-                        isSquareShapeButton: false,
-                        onPress: () {
-                          setState(() {
-                            resource = Resource.syllabus;
-                          });
-                          //
-                          syllbs = "/Syllabus/syllabus";
-                          finalPath = widget.queryPath + syllbs!;
-                        },
-                        titleText: "Syllabus"),
-                    const Gap(5),
-                    CustomSelector(
-                        backwardIcon: false,
-                        centerText: true,
-                        forwardIcon: false,
-                        isSelected: resource == Resource.timetable,
-                        isSquareShapeButton: false,
-                        onPress: () {
-                          setState(() {
-                            resource = Resource.timetable;
-                          });
-                          //
-                          tmetble = "/Timetable/timetable";
-                          finalPath = widget.queryPath + tmetble!;
-                        },
-                        titleText: "Time Table"),
-                    const Gap(5),
-                  ],
+                        titleText: " Prev-Year\nQs'n Papers",
+                      ),
+                      const Gap(5),
+                      CustomSelector(
+                          backwardIcon: false,
+                          centerText: true,
+                          forwardIcon: false,
+                          isSelected: resource == Resource.sessionals,
+                          isSquareShapeButton: false,
+                          onPress: () {
+                            setState(() {
+                              resource = Resource.sessionals;
+                            });
+                            //
+                            sess = "/Sessional/sessional";
+                            finalPath = widget.queryPath + sess!;
+                          },
+                          titleText: "Sessionals"),
+                      const Gap(5),
+                      CustomSelector(
+                          backwardIcon: false,
+                          centerText: true,
+                          forwardIcon: false,
+                          isSelected: resource == Resource.notes,
+                          isSquareShapeButton: false,
+                          onPress: () {
+                            setState(() {
+                              resource = Resource.notes;
+                            });
+                            //
+                            nots = "/Notes/notes";
+                            finalPath = widget.queryPath + nots!;
+                          },
+                          titleText: "Notes"),
+                      const Gap(5),
+                      CustomSelector(
+                          backwardIcon: false,
+                          centerText: true,
+                          forwardIcon: false,
+                          isSelected: resource == Resource.syllabus,
+                          isSquareShapeButton: false,
+                          onPress: () {
+                            setState(() {
+                              resource = Resource.syllabus;
+                            });
+                            //
+                            syllbs = "/Syllabus/syllabus";
+                            finalPath = widget.queryPath + syllbs!;
+                          },
+                          titleText: "Syllabus"),
+                      const Gap(5),
+                      CustomSelector(
+                          backwardIcon: false,
+                          centerText: true,
+                          forwardIcon: false,
+                          isSelected: resource == Resource.timetable,
+                          isSquareShapeButton: false,
+                          onPress: () {
+                            setState(() {
+                              resource = Resource.timetable;
+                            });
+                            //
+                            tmetble = "/Timetable/timetable";
+                            finalPath = widget.queryPath + tmetble!;
+                          },
+                          titleText: "Time Table"),
+                      const Gap(5),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                  child: Text(
-                    showPath,
-                    style: TextStyle(
-                        color: ConstColors.primaryColor,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w300),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 5),
-                  child: Container(
-                    padding: const EdgeInsets.all(4),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.green[100],
-                    ),
-                    child: Row(
-                      children: [
-                        Image.asset(
-                          'assets/images/live.gif',
-                          height: 15,
-                          width: 15,
-                        ),
-                        const Text(
-                          ' Live Updating',
-                          style: TextStyle(
-                            fontSize: 10,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ],
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                    child: Text(
+                      showPath,
+                      style: TextStyle(
+                          color: ConstColors.primaryColor,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w300),
                     ),
                   ),
-                ),
-              ],
-            )
-          ],
+                  // live updating widget
+                  (state.result) ? LiveUpdating() : NotLiveUpdating(),
+                ],
+              )
+            ],
+          ),
         ),
-      ),
-      body: StreamBuilder(
-        stream: DetailFetcher().fetchData(finalPath).snapshots(),
-        builder: (context, AsyncSnapshot<QuerySnapshot> asyncSnapshot) {
-          if (asyncSnapshot.hasData) {
-            return ListView.builder(
-              itemCount: asyncSnapshot.data!.docs.length,
-              itemBuilder: (context, index) {
-                DocumentSnapshot documentSnapshot =
-                    asyncSnapshot.data!.docs[index];
-                checkFileExtension(documentSnapshot['u']);
-                return InkWell(
-                  splashColor: Colors.grey[350],
-                  onTap: () async {
-                    bool result =
-                        await internetProvider.checkInternetConnectivity();
-                    if (result) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => isPDF
-                              ? PdfViewer(
-                                  path: documentSnapshot['u'],
-                                )
-                              : ImageViewer(
-                                  imageUrls: [documentSnapshot['u']],
-                                  initialIndex: 0),
-                        ),
-                      );
-                    } else {
-                      CustomSnackbar.showCustomSnackbar(
-                          context, "Please Check Your Internet Connection!", 1);
-                    }
-                  },
-                  child: CustomResultBox(
-                    title: documentSnapshot['t'],
-                    url: documentSnapshot['u'] ?? "",
-                    isPdf: isPDF,
-                  ),
-                );
-              },
-            );
-          }
-          //  else if (asyncSnapshot.hasError) {
-          //   return Center(
-          //     child: Text(
-          //         "No Data Found Please Try Again Later! We are Working on it!"),
-          //   );
-          // }
-          else {
-            return Center(
-                child: Container(
-              color: const Color.fromARGB(125, 0, 0, 0),
-              child: const CustomLoading(),
-            ));
-          }
-        },
+        body: StreamBuilder(
+          stream: DetailFetcher().fetchData(finalPath).snapshots(),
+          builder: (context, AsyncSnapshot<QuerySnapshot> asyncSnapshot) {
+            if (asyncSnapshot.hasData) {
+              return ListView.builder(
+                itemCount: asyncSnapshot.data!.docs.length,
+                itemBuilder: (context, index) {
+                  DocumentSnapshot documentSnapshot =
+                      asyncSnapshot.data!.docs[index];
+                  checkFileExtension(documentSnapshot['u']);
+                  return InkWell(
+                    splashColor: Colors.grey[350],
+                    onTap: () async {
+                      bool result =
+                          await internetProvider.checkInternetConnectivity();
+                      if (result) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => isPDF
+                                ? PdfViewer(
+                                    path: documentSnapshot['u'],
+                                  )
+                                : ImageViewer(
+                                    imageUrls: [documentSnapshot['u']],
+                                    initialIndex: 0),
+                          ),
+                        );
+                      } else {
+                        CustomSnackbar.showCustomSnackbar(context,
+                            "Please Check Your Internet Connection!", 1);
+                      }
+                    },
+                    child: CustomResultBox(
+                      title: documentSnapshot['t'],
+                      url: documentSnapshot['u'] ?? "",
+                      isPdf: isPDF,
+                    ),
+                  );
+                },
+              );
+            }
+            //  else if (asyncSnapshot.hasError) {
+            //   return Center(
+            //     child: Text(
+            //         "No Data Found Please Try Again Later! We are Working on it!"),
+            //   );
+            // }
+            else {
+              return Center(
+                  child: Container(
+                color: const Color.fromARGB(125, 0, 0, 0),
+                child: const CustomLoading(),
+              ));
+            }
+          },
+        ),
       ),
     );
   }
