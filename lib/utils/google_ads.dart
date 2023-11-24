@@ -5,9 +5,9 @@ class GoogleAds {
   static RewardedAd? rewardedAd;
   int rewardedAttempts = 0;
 
-  Future<void> initRewardedAd() {
-    return RewardedAd.load(
-      adUnitId: 'ca-app-pub-5498431563071990/5553987697',
+  initRewardedAd() {
+    RewardedAd.load(
+      adUnitId: 'ca-app-pub-5498431563071990/3944304817',
       request: const AdRequest(),
       rewardedAdLoadCallback: RewardedAdLoadCallback(
         onAdLoaded: (ad) {

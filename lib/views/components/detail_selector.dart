@@ -40,7 +40,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
   }
 
   InternetProvider internetProvider = InternetProvider();
-
+  GoogleAds ads = GoogleAds();
   GlobalFunctions globalFunctions = GlobalFunctions();
   @override
   Widget build(BuildContext context) {
@@ -373,7 +373,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                         bool result =
                             await internetProvider.checkInternetConnectivity();
                         if (result) {
-                          await GoogleAds().showRewardedAd();
+                          ads.showRewardedAd();
                           print(queryUrl);
                           Navigator.push(
                             context,

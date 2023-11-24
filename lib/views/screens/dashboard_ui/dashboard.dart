@@ -22,13 +22,12 @@ class _DashboardUIState extends State<DashboardUI> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Provider.of<InternetProviderNotifier>(context, listen: false)
-        .checkInternet();
-    AdsInit();
+    inits();
   }
 
-  void AdsInit() async {
-    await GoogleAds().initRewardedAd();
+  GoogleAds ads = GoogleAds();
+  void inits() {
+    ads.initRewardedAd();
   }
 
   @override
