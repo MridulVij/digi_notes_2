@@ -22,13 +22,6 @@ class NavbarUI extends StatefulWidget {
 }
 
 class _NavbarUIState extends State<NavbarUI> {
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    GoogleAds().initRewardedAd();
-  }
-
   int _currentIndex = 0;
   List<Widget> screenList = [
     const DashboardUI(),

@@ -6,6 +6,7 @@ import 'package:gap/gap.dart';
 import '../../providers/internet_provider.dart';
 import '../../utils/enums.dart';
 import '../../utils/global_functions.dart';
+import '../../utils/google_ads.dart';
 import 'custom_appbar.dart';
 import 'custom_buttons.dart';
 import 'custom_container.dart';
@@ -372,6 +373,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                         bool result =
                             await internetProvider.checkInternetConnectivity();
                         if (result) {
+                          await GoogleAds().showRewardedAd();
                           print(queryUrl);
                           Navigator.push(
                             context,

@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 import '../../../providers/internet_provider.dart';
+import '../../../utils/google_ads.dart';
 import '../../components/custom_container.dart';
 import '../../components/custom_live_updating.dart';
 import '../../constants/colors/consts.dart';
@@ -23,6 +24,11 @@ class _DashboardUIState extends State<DashboardUI> {
     super.initState();
     Provider.of<InternetProviderNotifier>(context, listen: false)
         .checkInternet();
+    AdsInit();
+  }
+
+  void AdsInit() async {
+    await GoogleAds().initRewardedAd();
   }
 
   @override
