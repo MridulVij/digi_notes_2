@@ -1,18 +1,13 @@
-// class ContestSwitches {
-//   bool isWeekly;
-//   bool isBiWeekly;
+import 'package:flutter/foundation.dart';
 
-//   ContestSwitches({required this.isBiWeekly, required this.isWeekly});
+class SettingsModel extends ChangeNotifier {
+  bool _isSwitched = false;
 
-//   factory ContestSwitches.fromJson(Map<String, dynamic> json) {
-//     return ContestSwitches(
-//         isWeekly: json['weekly'], isBiWeekly: json['biweekly']);
-//   }
+  bool get isSwitched => _isSwitched;
 
-//   List<Map<String, dynamic>> toJson() {
-//     return [
-//       {'weekly': isWeekly},
-//       {'biweekly': isBiWeekly}
-//     ];
-//   }
-// }
+  // Update switch state and notify listeners
+  void updateSwitchState(bool newState) {
+    _isSwitched = newState;
+    notifyListeners();
+  }
+}

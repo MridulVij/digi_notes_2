@@ -135,7 +135,7 @@ class MainApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => GoogleSignInProvider()),
         ChangeNotifierProvider(create: (context) => NotificationProvider()),
         ChangeNotifierProvider(create: (context) => InternetProviderNotifier()),
-        ChangeNotifierProvider(create: (context) => DSAProvider()),
+        ChangeNotifierProvider(create: (context) => SettingsModel()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

@@ -29,7 +29,6 @@ class _NavbarUIState extends State<NavbarUI> {
     super.initState();
     Provider.of<InternetProviderNotifier>(context, listen: false)
         .checkInternet();
-    Provider.of<DSAProvider>(context);
   }
 
   int _currentIndex = 0;
