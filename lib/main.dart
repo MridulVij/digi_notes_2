@@ -103,6 +103,7 @@
 //   }
 // }
 
+import 'package:digi_notes_2/providers/dsa_providers.dart';
 import 'package:digi_notes_2/utils/routes.dart';
 import 'package:digi_notes_2/views/constants/colors/colors.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -133,7 +134,8 @@ class MainApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => GoogleSignInProvider()),
         ChangeNotifierProvider(create: (context) => NotificationProvider()),
-        ChangeNotifierProvider(create: (context) => InternetProviderNotifier())
+        ChangeNotifierProvider(create: (context) => InternetProviderNotifier()),
+        ChangeNotifierProvider(create: (context) => DSAProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -154,9 +156,9 @@ class MainApp extends StatelessWidget {
           textTheme: const TextTheme(),
           scaffoldBackgroundColor: ConstColors.whitetext,
         ),
-        // initialRoute: RouterNames.splash_screen,
-        // onGenerateRoute: Routes.generateRoute,
-        home: DSAUI(),
+        initialRoute: RouterNames.splash_screen,
+        onGenerateRoute: Routes.generateRoute,
+        // home: DSAUI(),
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:digi_notes_2/providers/dsa_providers.dart';
 import 'package:digi_notes_2/views/constants/colors/consts.dart';
 import 'package:digi_notes_2/views/screens/tech%20news/tech_news.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -28,6 +29,7 @@ class _NavbarUIState extends State<NavbarUI> {
     super.initState();
     Provider.of<InternetProviderNotifier>(context, listen: false)
         .checkInternet();
+    Provider.of<DSAProvider>(context);
   }
 
   int _currentIndex = 0;
