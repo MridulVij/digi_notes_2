@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import '../../../providers/dsa_providers.dart';
-import '../../../utils/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
+import '../../../utils/google_ads.dart';
 import '../../components/custom_appbar.dart';
 import '../../components/custom_buttons.dart';
 import '../../components/custom_container.dart';
+import '../../components/custom_snackbar.dart';
 import '../../constants/colors/colors.dart';
 import 'components/dsa_container.dart';
 
@@ -17,9 +16,11 @@ class DSAUI extends StatefulWidget {
 }
 
 class _DSAUIState extends State<DSAUI> {
+  GoogleAds ads = GoogleAds();
   @override
   void initState() {
     super.initState();
+    ads.showRewardedAd();
   }
 
   bool weeklyAlert = false;
@@ -156,35 +157,52 @@ class _DSAUIState extends State<DSAUI> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  CustomContainer(
-                    inRow: false,
-                    boxColor: const Color.fromARGB(152, 155, 39, 176),
-                    descriptionTitle: 'Start Your DSA Journey',
-                    title: 'Roadmap',
-                    textColor: Color.fromARGB(241, 78, 21, 88),
-                    child: Image.asset(
-                      'assets/icons/dsa.png',
-                      height: 50,
-                      width: 50,
+                  InkWell(
+                    onTap: () {
+                      CustomSnackbar.showCustomSnackbar(
+                          context, "Please Wait!", 3);
+                      final String Url = "https://t.me/diginotescreatify";
+                      launchUrl(Uri.parse(Url),
+                          mode: LaunchMode.platformDefault);
+                    },
+                    child: CustomContainer(
+                      inRow: false,
+                      boxColor: const Color.fromARGB(152, 155, 39, 176),
+                      descriptionTitle: 'Start Your DSA Journey',
+                      title: 'Roadmap',
+                      textColor: Color.fromARGB(241, 78, 21, 88),
+                      child: Image.asset(
+                        'assets/icons/dsa.png',
+                        height: 50,
+                        width: 50,
+                      ),
                     ),
                   ),
-                  CustomContainer(
-                    inRow: false,
-                    boxColor: const Color.fromARGB(184, 33, 149, 243),
-                    descriptionTitle: 'Latest Free DSA Courses!',
-                    title: 'Courses',
-                    textColor: const Color.fromARGB(255, 17, 71, 116),
-                    child: Image.asset(
-                      'assets/icons/dsa.png',
-                      height: 50,
-                      width: 50,
+                  InkWell(
+                    onTap: () {
+                      final String Url =
+                          "https://www.geeksforgeeks.org/complete-guide-to-dsa-for-beginners/?ref=shm";
+                      launchUrl(Uri.parse(Url),
+                          mode: LaunchMode.externalApplication);
+                    },
+                    child: CustomContainer(
+                      inRow: false,
+                      boxColor: const Color.fromARGB(184, 33, 149, 243),
+                      descriptionTitle: 'Latest Free DSA Courses!',
+                      title: 'Courses',
+                      textColor: const Color.fromARGB(255, 17, 71, 116),
+                      child: Image.asset(
+                        'assets/icons/dsa.png',
+                        height: 50,
+                        width: 50,
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
           ),
-          Text('More Features Coming Soon in 1.1 Update!'),
+          const Text('More Features Coming Soon in 1.1 Update!'),
         ]),
       ),
     );

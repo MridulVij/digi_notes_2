@@ -27,7 +27,7 @@ class _DashboardUIState extends State<DashboardUI> {
 
   GoogleAds ads = GoogleAds();
   void inits() {
-    // ads.initRewardedAd(); // ad closed
+    ads.initRewardedAd();
     Provider.of<InternetProviderNotifier>(context, listen: false)
         .checkInternet();
   }
@@ -181,17 +181,30 @@ class _DashboardUIState extends State<DashboardUI> {
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        "Placement & Skill Section",
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w300),
-                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Placement & Skill Section",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.w300),
+                          ),
 
-                      // live updating
-                      (state.result) ? LiveUpdating() : NotLiveUpdating(),
+                          // live updating
+                          (state.result) ? LiveUpdating() : NotLiveUpdating(),
+                        ],
+                      ),
+                      Text(
+                        'Coding -',
+                        style: TextStyle(
+                          color: ConstColors.primaryColor,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -310,7 +323,40 @@ class _DashboardUIState extends State<DashboardUI> {
                     ],
                   ),
                 ),
-                const Gap(50),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Text(
+                    'Non Coding',
+                    style: TextStyle(
+                      color: ConstColors.primaryColor,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+                Container(
+                    margin: const EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: ConstColors.whitetext,
+                        boxShadow: [
+                          const BoxShadow(
+                            blurRadius: 5,
+                            color: Color.fromARGB(255, 202, 202, 202),
+                            offset: Offset(0, 2),
+                          ),
+                        ]),
+                    child: Center(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text('Feature in Development'),
+                          Text('Coming Soon in 1.1 Update!'),
+                        ],
+                      ),
+                    )),
+                Gap(50),
               ],
             ),
           )),

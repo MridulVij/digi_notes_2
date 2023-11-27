@@ -373,7 +373,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                         bool result =
                             await internetProvider.checkInternetConnectivity();
                         if (result) {
-                          // ads.showRewardedAd(); // Ads Closed
+                          ads.showRewardedAd();
                           print(queryUrl);
                           Navigator.push(
                             context,
