@@ -5,7 +5,9 @@ import '../../../providers/dsa_providers.dart';
 import '../../../utils/shared_preferences.dart';
 import '../../components/custom_appbar.dart';
 import '../../components/custom_buttons.dart';
+import '../../components/custom_container.dart';
 import '../../constants/colors/colors.dart';
+import 'components/dsa_container.dart';
 
 class DSAUI extends StatefulWidget {
   const DSAUI({super.key});
@@ -63,20 +65,7 @@ class _DSAUIState extends State<DSAUI> {
             ),
           ),
           // weekly biweekly switches
-
-          Container(
-            // padding: EdgeInsets.all(0),
-            margin: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-                color: ConstColors.whitetext,
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: [
-                  BoxShadow(
-                    offset: const Offset(0, 1),
-                    blurRadius: 5,
-                    color: ConstColors.lightGrey,
-                  )
-                ]),
+          DSAContainer(
             child: Column(
               children: [
                 Padding(
@@ -146,8 +135,56 @@ class _DSAUIState extends State<DSAUI> {
               ],
             ),
           ),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "DSA Roadmap & Guide",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
+                ),
 
-          Container()
+                // live updating
+                // (state.result) ? LiveUpdating() : NotLiveUpdating(),
+              ],
+            ),
+          ),
+          DSAContainer(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  CustomContainer(
+                    inRow: false,
+                    boxColor: const Color.fromARGB(152, 155, 39, 176),
+                    descriptionTitle: 'Start Your DSA Journey',
+                    title: 'Roadmap',
+                    textColor: Color.fromARGB(241, 78, 21, 88),
+                    child: Image.asset(
+                      'assets/icons/dsa.png',
+                      height: 50,
+                      width: 50,
+                    ),
+                  ),
+                  CustomContainer(
+                    inRow: false,
+                    boxColor: const Color.fromARGB(184, 33, 149, 243),
+                    descriptionTitle: 'Latest Free DSA Courses!',
+                    title: 'Courses',
+                    textColor: const Color.fromARGB(255, 17, 71, 116),
+                    child: Image.asset(
+                      'assets/icons/dsa.png',
+                      height: 50,
+                      width: 50,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Text('More Features Coming Soon in 1.1 Update!'),
         ]),
       ),
     );

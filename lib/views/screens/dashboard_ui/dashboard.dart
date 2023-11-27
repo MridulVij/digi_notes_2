@@ -264,7 +264,14 @@ class _DashboardUIState extends State<DashboardUI> {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              Navigator.pushNamed(context, RouterNames.dev);
+                              CustomSnackbar.showCustomSnackbar(context,
+                                  "Feature in Development! / Testing Mode!", 2);
+                              CustomSnackbar.showCustomSnackbar(context,
+                                  "Till Then - Discover & Follow RoadMaps!", 3);
+                              CustomSnackbar.showCustomSnackbar(
+                                  context, "Thanks", 1);
+                              Navigator.pushNamed(
+                                  context, RouterNames.road_maps);
                             },
                             child: CustomContainer(
                               descriptionTitle: 'Build Projects, Gather Skills',
