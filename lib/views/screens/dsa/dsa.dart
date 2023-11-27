@@ -97,17 +97,16 @@ class _DSAUIState extends State<DSAUI> {
                           ),
                         ],
                       ),
-                      Consumer<SettingsModel>(
-                        builder: (context, state, child) => Switch(
-                          activeTrackColor:
-                              const Color.fromARGB(230, 120, 16, 51),
-                          value: state.isWeeklySwitched,
-                          onChanged: (value) {
-                            state.updateWeeklySwitchState(value);
-                            SharedPreferencesService.setWeeklySwitchState(
-                                value);
-                          },
-                        ),
+                      Switch(
+                        activeTrackColor:
+                            const Color.fromARGB(230, 120, 16, 51),
+                        value: weeklyAlert,
+                        onChanged: (value) {
+                          // state.updateWeeklySwitchState(value);
+                          // SharedPreferencesService.setWeeklySwitchState(
+                          //     value);
+                          weeklyAlert = value;
+                        },
                       ),
                     ],
                   ),
@@ -130,17 +129,16 @@ class _DSAUIState extends State<DSAUI> {
                           )
                         ],
                       ),
-                      Consumer<SettingsModel>(
-                        builder: (context, state, child) => Switch(
-                          activeTrackColor:
-                              const Color.fromARGB(230, 120, 16, 51),
-                          value: state.isBiWeeklySwitched,
-                          onChanged: (value) {
-                            state.updateBiWeeklySwitchState(value);
-                            SharedPreferencesService.setBiWeeklySwitchState(
-                                value);
-                          },
-                        ),
+                      Switch(
+                        activeTrackColor:
+                            const Color.fromARGB(230, 120, 16, 51),
+                        value: biweeklyAlert,
+                        onChanged: (value) {
+                          biweeklyAlert = value;
+                          // state.updateBiWeeklySwitchState(value);
+                          // SharedPreferencesService.setBiWeeklySwitchState(
+                          //     value);
+                        },
                       ),
                     ],
                   ),
