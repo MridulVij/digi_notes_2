@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../../utils/google_ads.dart';
 import '../../components/roadmap_custom_container.dart';
 import '../../components/custom_loading.dart';
 
@@ -18,11 +19,7 @@ class RoadMapUI extends StatefulWidget {
 
 class _RoadMapUIState extends State<RoadMapUI> {
   DetailFetcher detailFetcher = DetailFetcher();
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
+  GoogleAds ads = GoogleAds();
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +44,7 @@ class _RoadMapUIState extends State<RoadMapUI> {
                               asyncSnapshot.data!.docs[index];
                           return InkWell(
                             onTap: () {
+                              ads.showRewardedAd();
                               launchUrl(Uri.parse(documentSnapshot['u']),
                                   mode: LaunchMode.platformDefault);
                               // Navigator.push(

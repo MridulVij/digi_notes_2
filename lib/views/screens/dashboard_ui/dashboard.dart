@@ -27,13 +27,13 @@ class _DashboardUIState extends State<DashboardUI> {
 
   GoogleAds ads = GoogleAds();
   void inits() {
-    ads.initRewardedAd();
+    // ads.initRewardedAd(); // ad closed
     Provider.of<InternetProviderNotifier>(context, listen: false)
         .checkInternet();
   }
 
   @override
-  List<String> title = ["Qs'n Papers", "Notes", "Syllabus", "Soutions"];
+  List<String> title = ["Qs'n Papers", "Notes", "Syllabus", "Solutions"];
   List<String> skillSection = ["DSA", "DEV", "Road Maps", "Tech News"];
   List<String> iconPaths = [
     "assets/svg/pyqp.svg",

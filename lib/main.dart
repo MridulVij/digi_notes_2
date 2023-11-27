@@ -114,6 +114,7 @@ import 'providers/notification_provider.dart';
 import 'utils/google_ads.dart';
 import 'utils/notifications_services.dart';
 import 'views/constants/colors/consts.dart';
+import 'views/screens/dsa/dsa.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -138,6 +139,10 @@ class MainApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Digi Notes',
         theme: ThemeData(
+          // switchTheme: SwitchThemeData(
+          //     trackColor: MaterialStateColor.resolveWith(
+          //   (states) => const Color.fromARGB(230, 120, 16, 51),
+          // )),
           appBarTheme: AppBarTheme(
             elevation: 0.0,
             surfaceTintColor: Colors.grey[200],
@@ -149,8 +154,9 @@ class MainApp extends StatelessWidget {
           textTheme: const TextTheme(),
           scaffoldBackgroundColor: ConstColors.whitetext,
         ),
-        initialRoute: RouterNames.splash_screen,
-        onGenerateRoute: Routes.generateRoute,
+        // initialRoute: RouterNames.splash_screen,
+        // onGenerateRoute: Routes.generateRoute,
+        home: DSAUI(),
       ),
     );
   }
