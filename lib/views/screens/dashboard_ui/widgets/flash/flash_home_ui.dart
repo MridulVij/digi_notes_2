@@ -51,6 +51,18 @@ class _FlashUIState extends State<FlashUI> {
                 ],
               ),
             ),
+            // Align(
+            //   alignment: Alignment.topLeft,
+            //   child: Text(
+            //     "Resource Contributers",
+            //     style: TextStyle(fontSize: 15, fontWeight: FontWeight.w300),
+            //   ),
+            // ),
+            Gap(59),
+            Text(
+              'Sorry, Feature in Development! Available in 1.1 Update!',
+              style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
+            ),
           ],
         ),
       ),

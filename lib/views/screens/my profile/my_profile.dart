@@ -82,11 +82,11 @@ class _ProfileUIState extends State<ProfileUI> {
                           ),
                         ],
                       ),
-                      AutoSizeText(
-                        userData!.email!,
-                        fontSize: 14,
-                        color: Colors.black,
-                      ),
+                      // AutoSizeText(
+                      //   userData!.email!,
+                      //   fontSize: 14,
+                      //   color: Colors.black,
+                      // ),
 
                       //
                       Container(
