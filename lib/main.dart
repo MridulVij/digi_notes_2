@@ -141,14 +141,9 @@ class MainApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Digi Notes',
         theme: ThemeData(
-          // switchTheme: SwitchThemeData(
-          //     trackColor: MaterialStateColor.resolveWith(
-          //   (states) => const Color.fromARGB(230, 120, 16, 51),
-          // )),
           appBarTheme: AppBarTheme(
             elevation: 0.0,
             surfaceTintColor: Colors.grey[200],
-            // backgroundColor: Colors.white,
           ),
           primarySwatch: Colors.blue,
           primaryColor: Colors.blue,
