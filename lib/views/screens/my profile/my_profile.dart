@@ -87,7 +87,6 @@ class _ProfileUIState extends State<ProfileUI> {
                       //   fontSize: 14,
                       //   color: Colors.black,
                       // ),
-
                       //
                       Container(
                         padding: const EdgeInsets.all(6),
