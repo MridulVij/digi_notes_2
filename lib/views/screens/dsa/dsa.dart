@@ -20,7 +20,7 @@ class _DSAUIState extends State<DSAUI> {
   @override
   void initState() {
     super.initState();
-    ads.showRewardedAd();
+    // ads.showRewardedAd();
   }
 
   bool weeklyAlert = false;
@@ -39,7 +39,7 @@ class _DSAUIState extends State<DSAUI> {
                 onPress: () => Navigator.pop(context),
                 radius: 22),
             const Text(
-              'DSA',
+              'DSA Section',
               style: TextStyle(
                   color: Color.fromARGB(230, 120, 16, 51),
                   fontSize: 30,
@@ -56,7 +56,7 @@ class _DSAUIState extends State<DSAUI> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Leetcode Contest Alerts",
+                  "Contest Alerts",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
                 ),
 
@@ -78,7 +78,7 @@ class _DSAUIState extends State<DSAUI> {
                         children: [
                           Icon(Icons.notifications_active_outlined),
                           Text(
-                            " Weekly Alert",
+                            " Leetcode Weekly",
                             style: TextStyle(
                               fontSize: 15,
                               color: Colors.black,
@@ -110,7 +110,7 @@ class _DSAUIState extends State<DSAUI> {
                         children: [
                           Icon(Icons.notifications_active_outlined),
                           Text(
-                            " BiWeekly Alert",
+                            " Leetcode BiWeekly",
                             style: TextStyle(
                               fontSize: 15,
                               color: Colors.black,
@@ -142,7 +142,7 @@ class _DSAUIState extends State<DSAUI> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "DSA Roadmap & Guide",
+                  "Courses & Guide",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
                 ),
 
@@ -161,7 +161,8 @@ class _DSAUIState extends State<DSAUI> {
                     onTap: () {
                       CustomSnackbar.showCustomSnackbar(
                           context, "Please Wait!", 3);
-                      final String Url = "https://t.me/diginotescreatify";
+                      final String Url =
+                          "https://www.geeksforgeeks.org/complete-guide-to-dsa-for-beginners/?ref=shm";
                       launchUrl(Uri.parse(Url),
                           mode: LaunchMode.platformDefault);
                     },
@@ -180,8 +181,7 @@ class _DSAUIState extends State<DSAUI> {
                   ),
                   InkWell(
                     onTap: () {
-                      final String Url =
-                          "https://www.geeksforgeeks.org/complete-guide-to-dsa-for-beginners/?ref=shm";
+                      final String Url = "https://t.me/diginotescreatify";
                       launchUrl(Uri.parse(Url),
                           mode: LaunchMode.externalApplication);
                     },

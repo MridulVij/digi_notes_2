@@ -27,7 +27,7 @@ class _DashboardUIState extends State<DashboardUI> {
 
   GoogleAds ads = GoogleAds();
   void inits() {
-    ads.initRewardedAd();
+    // ads.initRewardedAd();
     Provider.of<InternetProviderNotifier>(context, listen: false)
         .checkInternet();
   }

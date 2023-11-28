@@ -1,6 +1,5 @@
 import 'package:digi_notes_2/providers/auth_providers.dart';
 import 'package:digi_notes_2/views/components/detail_selector.dart';
-import 'package:digi_notes_2/views/components/result_screen.dart';
 import 'package:digi_notes_2/views/screens/auth_ui/auth_ui.dart';
 import 'package:digi_notes_2/views/screens/dashboard_ui/dashboard.dart';
 import 'package:digi_notes_2/views/screens/dashboard_ui/widgets/notification/notification_ui.dart';
@@ -10,8 +9,8 @@ import 'package:digi_notes_2/views/screens/road%20map/road_map.dart';
 import 'package:digi_notes_2/views/screens/splash_ui/splash.dart';
 import 'package:digi_notes_2/views/screens/tech%20news/tech_news.dart';
 import 'package:flutter/material.dart';
-
 import '../views/constants/colors/consts.dart';
+import '../views/screens/dashboard_ui/widgets/flash/flash_home_ui.dart';
 import 'donate_developer.dart';
 
 class Routes {
@@ -51,9 +50,11 @@ class Routes {
             case RouterNames.dev:
               return const DEVUI();
             case RouterNames.notifications:
-              return NotificationUI();
+              return const NotificationUI();
             case RouterNames.donate:
-              return Donate();
+              return const Donate();
+            case RouterNames.flash:
+              return const FlashUI();
             default:
               return const Scaffold(
                 body: Center(

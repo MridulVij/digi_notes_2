@@ -359,7 +359,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                       ],
                     ),
                   ),
-                  Gap(20),
+                 const Gap(20),
                   InkWell(
                     onTap: () async {
                       String queryUrl = base + sess + univrsty + corse + sem;
@@ -373,7 +373,7 @@ class _DetailSelectorUIState extends State<DetailSelectorUI> {
                         bool result =
                             await internetProvider.checkInternetConnectivity();
                         if (result) {
-                          ads.showRewardedAd();
+                          // ads.showRewardedAd();
                           print(queryUrl);
                           Navigator.push(
                             context,

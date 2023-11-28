@@ -88,6 +88,7 @@ class _NavbarUIState extends State<NavbarUI> {
                 onTap: () {
                   CustomSnackbar.showCustomSnackbar(
                       context, "Feature Available in 1.1 Version", 2);
+                  Navigator.pushNamed(context, RouterNames.flash);
                 },
                 child: Container(
                   padding:
