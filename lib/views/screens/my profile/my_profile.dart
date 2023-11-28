@@ -53,7 +53,7 @@ class _ProfileUIState extends State<ProfileUI> {
                       borderRadius: BorderRadius.circular(100),
                       child: userData!.photoURL!.isNotEmpty
                           ? Image.network(userData!.photoURL!)
-                          : Icon(Icons.account_circle)),
+                          : const Icon(Icons.account_circle)),
                 ],
               ),
             ),
@@ -74,7 +74,7 @@ class _ProfileUIState extends State<ProfileUI> {
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
                           ),
-                          Gap(5),
+                          const Gap(5),
                           Image.asset(
                             'assets/images/blutk.png',
                             height: 25,
@@ -87,6 +87,22 @@ class _ProfileUIState extends State<ProfileUI> {
                         fontSize: 14,
                         color: Colors.black,
                       ),
+
+                      //
+                      Container(
+                        padding: const EdgeInsets.all(6),
+                        margin: const EdgeInsets.all(6),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: const Color.fromARGB(255, 188, 251, 190),
+                        ),
+                        child: const Text(
+                          'Early Access Verified Member!',
+                          style: TextStyle(
+                              fontSize: 10,
+                              color: Color.fromARGB(255, 41, 105, 43)),
+                        ),
+                      )
                     ],
                   ),
                 ],
@@ -262,7 +278,7 @@ class _ProfileUIState extends State<ProfileUI> {
                         _isLoading = false;
                       });
                     },
-                    child: CustomContainer(
+                    child: const CustomContainer(
                         descriptionTitle: '',
                         title: "Log Out  ",
                         boxColor: Colors.red,

@@ -13,13 +13,16 @@ class _FlashUIState extends State<FlashUI> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.red[100],
+      ),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
-              height: 250,
+              height: 200,
               color: Colors.red[100],
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -40,8 +43,11 @@ class _FlashUIState extends State<FlashUI> {
                       ),
                     ],
                   ),
-                  Gap(50),
-                  Text('You Have ${flash} Flashes!')
+                  const Gap(60),
+                  Padding(
+                    padding: const EdgeInsets.all(2.0),
+                    child: Text('You Have $flash Flashes!'),
+                  )
                 ],
               ),
             ),

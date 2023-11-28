@@ -1,4 +1,3 @@
-import 'package:digi_notes_2/providers/dsa_providers.dart';
 import 'package:digi_notes_2/views/constants/colors/consts.dart';
 import 'package:digi_notes_2/views/screens/tech%20news/tech_news.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -9,8 +8,6 @@ import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../providers/internet_provider.dart';
 import '../../providers/notification_provider.dart';
-import '../../utils/google_ads.dart';
-import '../../utils/shared_preferences.dart';
 import '../components/custom_snackbar.dart';
 import 'dashboard_ui/dashboard.dart';
 import 'my profile/my_profile.dart';
@@ -87,7 +84,9 @@ class _NavbarUIState extends State<NavbarUI> {
               GestureDetector(
                 onTap: () {
                   CustomSnackbar.showCustomSnackbar(
-                      context, "Feature Available in 1.1 Version", 2);
+                      context, "Feature Available in 1.1 Version", 1);
+                  CustomSnackbar.showCustomSnackbar(
+                      context, "We Will Notify You Accordingly", 1);
                   Navigator.pushNamed(context, RouterNames.flash);
                 },
                 child: Container(
