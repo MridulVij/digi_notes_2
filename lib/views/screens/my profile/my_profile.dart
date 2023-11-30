@@ -23,6 +23,19 @@ class ProfileUI extends StatefulWidget {
 }
 
 class _ProfileUIState extends State<ProfileUI> {
+  void launchEmail() async {
+    final Uri emailLaunchUri = Uri(
+      scheme: 'mailto',
+      path: 'creatifycustomercare@gmail.com',
+      queryParameters: {
+        'subject': '',
+        'body': '',
+      },
+    );
+
+    await launchUrl(emailLaunchUri);
+  }
+
   bool _isLoading = false;
   final userData = FirebaseAuth.instance.currentUser;
   @override
@@ -124,14 +137,15 @@ class _ProfileUIState extends State<ProfileUI> {
             ),
             ListTile(
               onTap: () {
-                CustomSnackbar.showCustomSnackbar(
-                    context, "Feature Available in 1.1 Version", 2);
+                // CustomSnackbar.showCustomSnackbar(
+                //     context, "", 2);
+                launchEmail();
               },
               title: const Text("Upload Resources"),
               subtitle: Text(
-                  "Contribute Your Own HandWritten Notes with your Name!",
-                  style: TextStyle(color: ConstColors.lightGrey)),
-              leading: const Icon(Icons.workspace_premium_sharp),
+                  "Contribute Your HandWritten Notes with your Name!",
+                  style: TextStyle(color: ConstColors.lightGrey, fontSize: 12)),
+              leading: const Icon(Icons.upload_file_outlined),
             ),
             ListTile(
               onTap: () {
@@ -140,7 +154,7 @@ class _ProfileUIState extends State<ProfileUI> {
               },
               title: const Text("Unlock Premium"),
               subtitle: Text("Unlock All Resources, Remove Ads.",
-                  style: TextStyle(color: ConstColors.lightGrey)),
+                  style: TextStyle(color: ConstColors.lightGrey, fontSize: 12)),
               leading: const Icon(Icons.workspace_premium_sharp),
             ),
             ListTile(
@@ -150,7 +164,7 @@ class _ProfileUIState extends State<ProfileUI> {
               },
               title: const Text("Theme Mode"),
               subtitle: Text("Dark / Light",
-                  style: TextStyle(color: ConstColors.lightGrey)),
+                  style: TextStyle(color: ConstColors.lightGrey, fontSize: 12)),
               leading: const Icon(Icons.dark_mode),
             ),
             ListTile(
@@ -160,7 +174,7 @@ class _ProfileUIState extends State<ProfileUI> {
               },
               title: const Text("Clear Cache"),
               subtitle: Text("Delete Old Trash Pdf's, Images in App",
-                  style: TextStyle(color: ConstColors.lightGrey)),
+                  style: TextStyle(color: ConstColors.lightGrey, fontSize: 12)),
               leading: const Icon(Icons.delete),
             ),
             ListTile(
@@ -169,7 +183,7 @@ class _ProfileUIState extends State<ProfileUI> {
               },
               title: const Text("Donate Developer"),
               subtitle: Text("Buy me Coffee / Appreciate Hard Work!",
-                  style: TextStyle(color: ConstColors.lightGrey)),
+                  style: TextStyle(color: ConstColors.lightGrey, fontSize: 12)),
               leading: const Icon(Icons.monetization_on),
             ),
             ListTile(
@@ -181,7 +195,7 @@ class _ProfileUIState extends State<ProfileUI> {
               },
               title: const Text("About Developer"),
               subtitle: Text("What is Creatify?, Who developed this App?",
-                  style: TextStyle(color: ConstColors.lightGrey)),
+                  style: TextStyle(color: ConstColors.lightGrey, fontSize: 12)),
               leading: const Icon(Icons.person),
             ),
             ListTile(
@@ -197,7 +211,7 @@ class _ProfileUIState extends State<ProfileUI> {
               },
               title: const Text("Share App"),
               subtitle: Text("Share Digi Notes Apk file with your friends!",
-                  style: TextStyle(color: ConstColors.lightGrey)),
+                  style: TextStyle(color: ConstColors.lightGrey, fontSize: 12)),
               leading: const Icon(Icons.share),
             ),
             const Gap(10),
@@ -252,6 +266,17 @@ class _ProfileUIState extends State<ProfileUI> {
                       },
                       icon: Image.asset(
                         'assets/icons/linkd.png',
+                        height: 33,
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        Uri uri = Uri.parse(SocialMediaLinks.instagram);
+                        launchUrl(uri,
+                            mode: LaunchMode.externalNonBrowserApplication);
+                      },
+                      icon: SvgPicture.asset(
+                        'assets/icons/ig.svg',
                         height: 33,
                       ),
                     ),

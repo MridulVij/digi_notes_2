@@ -1,6 +1,7 @@
 class SocialMediaLinks {
   // static const String instagram = "https://www.instagram.com/mvismad_official/";
   static const String telegram = "https://t.me/diginotescreatify";
+  static const String instagram = "https://www.instagram.com/creatify_services";
   static const String linkedin =
       "https://www.linkedin.com/company/creatify-apps-store/?viewAsMember=true";
   static const String youtube = "https://www.youtube.com/@creatifyappsstore";
