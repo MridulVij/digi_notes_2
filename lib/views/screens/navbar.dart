@@ -38,6 +38,8 @@ class _NavbarUIState extends State<NavbarUI> {
   ];
 
   final String Url = "https://www.javatpoint.com/";
+  final userData = FirebaseAuth.instance.currentUser;
+  int energies = 0;
 
   void _onTabTapped(int index) {
     setState(() {
@@ -49,9 +51,6 @@ class _NavbarUIState extends State<NavbarUI> {
       launchUrl(Uri.parse(Url), mode: LaunchMode.inAppWebView);
     }
   }
-
-  final userData = FirebaseAuth.instance.currentUser;
-  int energies = 0;
 
   @override
   Widget build(BuildContext context) {

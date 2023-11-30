@@ -22,6 +22,12 @@ class _RoadMapUIState extends State<RoadMapUI> {
   GoogleAds ads = GoogleAds();
 
   @override
+  void initState() {
+    super.initState();
+    ads.showRewardedAd();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Consumer<InternetProviderNotifier>(
       builder: (context, state, child) => Scaffold(
@@ -44,7 +50,6 @@ class _RoadMapUIState extends State<RoadMapUI> {
                               asyncSnapshot.data!.docs[index];
                           return InkWell(
                             onTap: () {
-                              ads.showRewardedAd();
                               launchUrl(Uri.parse(documentSnapshot['u']),
                                   mode: LaunchMode.platformDefault);
                               // Navigator.push(

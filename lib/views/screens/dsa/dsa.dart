@@ -25,7 +25,7 @@ class _DSAUIState extends State<DSAUI> {
   @override
   void initState() {
     super.initState();
-    // ads.showRewardedAd();
+    ads.showRewardedAd();
   }
 
   bool weeklyAlert = false;

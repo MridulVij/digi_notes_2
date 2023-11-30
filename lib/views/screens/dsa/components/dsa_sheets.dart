@@ -27,6 +27,12 @@ class _DSASheetsState extends State<DSASheets> {
   GoogleAds ads = GoogleAds();
 
   @override
+  void initState() {
+    super.initState();
+    ads.showRewardedAd();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Consumer<InternetProviderNotifier>(
       builder: (context, state, child) => Scaffold(
