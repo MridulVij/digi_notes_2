@@ -20,4 +20,5 @@ class RouterNames {
   static const notifications = 'notifications';
   static const donate = 'donate';
   static const flash = 'flash';
+  static const dsasheets = 'dsasheets';
 }

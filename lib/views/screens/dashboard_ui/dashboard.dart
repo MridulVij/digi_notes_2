@@ -57,18 +57,21 @@ class _DashboardUIState extends State<DashboardUI> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
+                      const Text(
                         "Academic Section",
                         style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.w300),
                       ),
 
                       // live updating
-                      (state.result) ? LiveUpdating() : NotLiveUpdating(),
+                      (state.result)
+                          ? const LiveUpdating()
+                          : const NotLiveUpdating(),
                     ],
                   ),
                 ),
@@ -103,6 +106,7 @@ class _DashboardUIState extends State<DashboardUI> {
                               textColor: const Color.fromARGB(255, 35, 98, 150),
                               title: title[0],
                               child: SvgPicture.asset(
+                                color: const Color.fromARGB(255, 35, 98, 150),
                                 iconPaths[0],
                                 height: 80,
                                 width: 80,
@@ -123,6 +127,7 @@ class _DashboardUIState extends State<DashboardUI> {
                                   const Color.fromARGB(255, 255, 118, 132),
                               title: title[1],
                               child: SvgPicture.asset(
+                                color: const Color.fromARGB(255, 255, 118, 132),
                                 iconPaths[1],
                                 height: 80,
                                 width: 80,
@@ -148,6 +153,7 @@ class _DashboardUIState extends State<DashboardUI> {
                               textColor: const Color.fromARGB(255, 73, 165, 76),
                               title: title[2],
                               child: Image.asset(
+                                color: const Color.fromARGB(255, 73, 165, 76),
                                 iconPaths[2],
                                 width: 80,
                                 height: 80,
@@ -168,6 +174,7 @@ class _DashboardUIState extends State<DashboardUI> {
                                   const Color.fromARGB(255, 180, 169, 65),
                               title: title[3],
                               child: SvgPicture.asset(
+                                color: const Color.fromARGB(255, 180, 169, 65),
                                 iconPaths[3],
                                 width: 80,
                                 height: 80,
@@ -180,21 +187,24 @@ class _DashboardUIState extends State<DashboardUI> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
+                          const Text(
                             "Placement & Skill Section",
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.w300),
                           ),
 
                           // live updating
-                          (state.result) ? LiveUpdating() : NotLiveUpdating(),
+                          (state.result)
+                              ? const LiveUpdating()
+                              : const NotLiveUpdating(),
                         ],
                       ),
                       Text(
@@ -237,6 +247,7 @@ class _DashboardUIState extends State<DashboardUI> {
                               textColor: const Color.fromARGB(230, 120, 16, 51),
                               title: skillSection[0],
                               child: Image.asset(
+                                color: const Color.fromARGB(230, 120, 16, 51),
                                 skillIconPaths[0],
                                 width: 80,
                                 height: 80,
@@ -263,6 +274,7 @@ class _DashboardUIState extends State<DashboardUI> {
                               textColor: const Color.fromARGB(255, 60, 15, 68),
                               title: skillSection[3],
                               child: SvgPicture.asset(
+                                color: const Color.fromARGB(255, 60, 15, 68),
                                 skillIconPaths[3],
                                 width: 80,
                                 height: 80,
@@ -293,6 +305,7 @@ class _DashboardUIState extends State<DashboardUI> {
                               textColor: const Color.fromARGB(251, 71, 100, 40),
                               title: skillSection[1],
                               child: Image.asset(
+                                color: const Color.fromARGB(251, 71, 100, 40),
                                 skillIconPaths[1],
                                 width: 80,
                                 height: 80,
@@ -311,6 +324,7 @@ class _DashboardUIState extends State<DashboardUI> {
                               textColor: const Color.fromARGB(233, 78, 51, 11),
                               title: skillSection[2],
                               child: SvgPicture.asset(
+                                color: const Color.fromARGB(233, 78, 51, 11),
                                 skillIconPaths[2],
                                 width: 80,
                                 height: 80,
@@ -347,7 +361,7 @@ class _DashboardUIState extends State<DashboardUI> {
                             offset: Offset(0, 2),
                           ),
                         ]),
-                    child: Center(
+                    child: const Center(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -356,7 +370,7 @@ class _DashboardUIState extends State<DashboardUI> {
                         ],
                       ),
                     )),
-                Gap(50),
+                const Gap(50),
               ],
             ),
           )),

@@ -4,6 +4,7 @@ import 'package:digi_notes_2/views/screens/auth_ui/auth_ui.dart';
 import 'package:digi_notes_2/views/screens/dashboard_ui/dashboard.dart';
 import 'package:digi_notes_2/views/screens/dashboard_ui/widgets/notification/notification_ui.dart';
 import 'package:digi_notes_2/views/screens/dev/dev.dart';
+import 'package:digi_notes_2/views/screens/dsa/components/dsa_sheets.dart';
 import 'package:digi_notes_2/views/screens/dsa/dsa.dart';
 import 'package:digi_notes_2/views/screens/road%20map/road_map.dart';
 import 'package:digi_notes_2/views/screens/splash_ui/splash.dart';
@@ -55,6 +56,8 @@ class Routes {
               return const Donate();
             case RouterNames.flash:
               return const FlashUI();
+            case RouterNames.dsasheets:
+              return const DSASheets();
             default:
               return const Scaffold(
                 body: Center(
