@@ -175,7 +175,8 @@ class _ProfileUIState extends State<ProfileUI> {
             ),
             ListTile(
               onTap: () async {
-                String appDownloadLink = "";
+                String appDownloadLink =
+                    "https://creatifyappsstore.blogspot.com/2023/02/digi-notes-app.html";
                 await Share.share("App Download Link:\n${appDownloadLink}");
                 await LocalNotifications.showSimpleNotification(
                     title: "Thanks For Sharing, Digi Notes App!",
