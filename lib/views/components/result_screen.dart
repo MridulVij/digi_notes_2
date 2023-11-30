@@ -377,7 +377,8 @@ class CustomResultBox extends StatelessWidget {
                       size: 18,
                     ),
                     onPressed: () {
-                      String appLink = "";
+                      String appLink =
+                          "https://creatifyappsstore.blogspot.com/2023/02/digi-notes-app.html";
                       print("Share File");
                       Share.share(
                           "File Download Link: ${url}\n\nWant More Resources?\nDownload Digi Notes App Specially Designed for Your College!\nApp Download Link:\n${appLink}");

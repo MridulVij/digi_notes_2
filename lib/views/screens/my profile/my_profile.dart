@@ -127,6 +127,17 @@ class _ProfileUIState extends State<ProfileUI> {
                 CustomSnackbar.showCustomSnackbar(
                     context, "Feature Available in 1.1 Version", 2);
               },
+              title: const Text("Upload Resources"),
+              subtitle: Text(
+                  "Contribute Your Own HandWritten Notes with your Name!",
+                  style: TextStyle(color: ConstColors.lightGrey)),
+              leading: const Icon(Icons.workspace_premium_sharp),
+            ),
+            ListTile(
+              onTap: () {
+                CustomSnackbar.showCustomSnackbar(
+                    context, "Feature Available in 1.1 Version", 2);
+              },
               title: const Text("Unlock Premium"),
               subtitle: Text("Unlock All Resources, Remove Ads.",
                   style: TextStyle(color: ConstColors.lightGrey)),
