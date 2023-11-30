@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:digi_notes_2/data/api/detail_fetcher.dart';
 import 'package:digi_notes_2/providers/internet_provider.dart';
+import 'package:digi_notes_2/views/components/custom_snackbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -68,7 +69,8 @@ class _DSASheetsState extends State<DSASheets> {
                               child: InkWell(
                                 borderRadius: BorderRadius.circular(10),
                                 onTap: () {
-                                  //
+                                  CustomSnackbar.showCustomSnackbar(
+                                      context, 'Loading Sheet...', 2);
                                   launchUrl(Uri.parse(documentSnapshot['u']),
                                       mode: LaunchMode.platformDefault);
                                 },
